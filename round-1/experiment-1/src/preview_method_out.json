@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "method_name": "Boiling point vs altitude: 2x2 factorial of atmosphere model and thermodynamic model",
+    "description": "Four variants of water boiling point vs altitude (0-9 km): V1 isothermal + constant-enthalpy Clausius-Clapeyron; V2 isothermal + IAPWS-IF97 saturation; V3 ISA lapse-rate + constant-enthalpy; V4 ISA la...",
+    "parameters": {
+      "R_J_per_molK": 8.314462618,
+      "M_air_kg_per_mol": 0.0289644,
+      "g_m_per_s2": 9.80665,
+      "lapse_rate_K_per_m": 0.0065,
+      "T0_K": 288.15,
+      "P_sea_Pa": 101325.0,
+      "dH_J_per_mol": 40650.0,
+      "T_anchor_K": 373.15
+    },
+    "baseline": "V1 (isothermal + constant enthalpy) is the textbook shortcut; V2-V4 compared against it",
+    "benchmark": "Engineering ToolBox table (method unstated; a reference curve, not a measurement)",
+    "n_examples": 119,
+    "notes": "Band statistics and crossover results are in results/summary_by_band.json. No statistical test is performed."
+  },
+  "datasets": [
+    {
+      "dataset": "Engineering ToolBox boiling point vs altitude table (0-9 km)",
+      "examples": [
+        {
+          "input": "Boiling point of water at altitude 0 m (standard-atmosphere pressure, sea-level 101.325 kPa)",
+          "output": "100.0 C (Engineering ToolBox table)",
+          "predict_V1": "100.00 C",
+          "predict_V2": "99.97 C",
+          "predict_V3": "100.00 C",
+          "predict_V4": "99.97 C",
+          "metadata_residual_V1_K": 0.0,
+          "metadata_residual_V2_K": -0.0257,
+          "metadata_residual_V3_K": 0.0,
+          "metadata_residual_V4_K": -0.0257,
+          "metadata_altitude_m": 0.0
+        },
+        {
+          "input": "Boiling point of water at altitude 76 m (standard-atmosphere pressure, sea-level 101.325 kPa)",
+          "output": "99.7 C (Engineering ToolBox table)",
+          "predict_V1": "99.74 C",
+          "predict_V2": "99.72 C",
+          "predict_V3": "99.74 C",
+          "predict_V4": "99.72 C",
+          "metadata_residual_V1_K": 0.0436,
+          "metadata_residual_V2_K": 0.022,
+          "metadata_residual_V3_K": 0.0433,
+          "metadata_residual_V4_K": 0.0218,
+          "metadata_altitude_m": 76.0
+        },
+        {
+          "input": "Boiling point of water at altitude 152 m (standard-atmosphere pressure, sea-level 101.325 kPa)",
+          "output": "99.5 C (Engineering ToolBox table)",
+          "predict_V1": "99.49 C",
+          "predict_V2": "99.47 C",
+          "predict_V3": "99.49 C",
+          "predict_V4": "99.47 C",
+          "metadata_residual_V1_K": -0.0125,
+          "metadata_residual_V2_K": -0.0298,
+          "metadata_residual_V3_K": -0.0134,
+          "metadata_residual_V4_K": -0.0307,
+          "metadata_altitude_m": 152.0
+        }
+      ]
+    }
+  ]
+}
