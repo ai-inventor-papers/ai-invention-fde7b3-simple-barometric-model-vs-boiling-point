@@ -1,0 +1,75 @@
+{
+  "title": "Checking a Boiling-Point Altitude Table Against Physics",
+  "answer": "Short answer: the ToolBox table cannot be shown to be measured, and this round found no independent measured boiling-point dataset with station pressure, so the question of how well the barometric model predicts measurements is unresolved. (1) Computed or measured? The ToolBox page states no method, formula, steam table, IAPWS reference or measured dataset [1]. Its sample rows are 100.0 C at 0 m, 94.7 C at 1524 m, 89.6 C at 3048 m, 79.9 C at 6096 m and 71.1 C at 9144 m [1]. These rows were relayed through a summarising fetch and should be checked against the page. My own calculation, using the standard ISA pressure relation and a constant-enthalpy Clausius-Clapeyron inversion (40.65 kJ/mol anchored at 373.124 K and 101.325 kPa), gives residuals (table minus model) of about +0.03 K at 0 m, -0.1 K at 1.5 to 2.1 km, +0.2 K at 4.3 km, +0.3 K at 4.6 km, +0.8 K at 6.1 km, +1.7 K at 7.6 km, +2.6 K at 8.8 km and +2.8 K at 9.1 km. The model itself is not sourced here; the standard ISA constants were written from memory. The growing high-altitude residual is consistent with a table built on a different thermodynamic or pressure assumption, but it does not show which one. (2) Measured sources found: none meeting the plan's target. Summit boiling values in the sources cluster at about 68 to 72 C [4][5], and these are calculator or physics estimates rather than observations. One calculator notes that real summit pressure may be a little higher than its standard model, but gives no measurement [5]. A physics-education source gives 69 C for a summit pressure it lists as 260 (its unit appears to be a typo) [4]. No station-pressure record reaching 8 km was found, so the altitude coverage actually reached by measured data is zero in this round. (3) Keene (1995): not located after two targeted rounds of search. The only related ACS article returned, The direct relation between altitude and boiling point (DOI 10.1021/ed067p45), is a different paper; its page returned HTTP 403, so its content is unverified [2]. Reference points: the Wikipedia vapour-pressure article gives 101.418 kPa for the 100 C row and cites a 2002 Wagner and Pruss IAPWS formulation and an IAPWS saturation release [3]. Its accuracy table uses 101.32 kPa at 100 C, from Lide [3]. The IAPWS-95 normal boiling point of 373.124 K at 101.325 kPa and the watervaporpressure.com description of the IAPWS-95 saturation equation are noted [7], but the NIST NISTIR 5078 table could not be parsed, so the IAPWS inversion remains unperformed. Lower-precision Denver and La Paz figures appear in a LibreTexts table as 95 C at 633 mmHg and 88 C at 495 mmHg [6], but these are textbook values with no stated method. Confidence: high that the ToolBox page states no method; moderate on the residual pattern (depends on the relayed transcription and on the ISA constants); low on any agreement-with-measurement claim, because none was found. What would change this: a readable IAPWS saturation table for direct comparison, and at least two measured station-pressure boiling datasets reaching above 8 km. Counts: 1 page fetched with a method check and table, 1 failed ACS fetch, 1 NIST PDF unreadable, 1 Wikipedia page fetched, 4 search-snippet-only sources.",
+  "sources": [
+    {
+      "authors": null,
+      "index": 1,
+      "summary": "Table of water boiling point (C and F) by altitude (ft and m), from -1000 ft to 30000 ft, in 250 ft steps. States no method, formula, steam table, IAPWS reference or measured dataset; the only attribution is the citation line 'The Engineering ToolBox (2009)'. Values were relayed by a summarising fetch and need direct verification.",
+      "supporting_passages": [],
+      "title": "Water - Boiling Points vs. Altitude (Engineering ToolBox)",
+      "url": "https://www.engineeringtoolbox.com/boiling-points-water-altitude-d_1344.html",
+      "year": null
+    },
+    {
+      "authors": null,
+      "index": 2,
+      "summary": "ACS listing for a different altitude-boiling-point article in J. Chem. Educ. volume 67, found by search when looking for the Keene (1995) paper. Page returned HTTP 403; content not read and not verified. Not the Keene (1995) paper.",
+      "supporting_passages": [],
+      "title": "The direct relation between altitude and boiling point (Journal of Chemical Education, vol. 67)",
+      "url": "https://pubs.acs.org/doi/abs/10.1021/ed067p45",
+      "year": null
+    },
+    {
+      "authors": null,
+      "index": 3,
+      "summary": "Fetched page. Cites Wagner and Pruss (2002) for the IAPWS formulation and IAPWS (1992) supplementary release for the saturation correlation (Tc = 647.096 K, Pc = 22064 kPa). Main table gives 101.418 kPa at 100 C; accuracy table gives 101.32 kPa at 100 C, referenced to Lide (2005). Defines boiling point as the temperature where saturation vapour pressure equals ambient pressure. No boiling-point-versus-altitude data.",
+      "supporting_passages": [],
+      "title": "Vapour pressure of water (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Vapour_pressure_of_water",
+      "year": null
+    },
+    {
+      "authors": null,
+      "index": 4,
+      "summary": "Search-snippet only (page not opened). Given as a source for a summit estimate: about 69 C at a summit pressure listed in the snippet as '260 Pa', which appears to be a unit typo. Estimate, not a measurement.",
+      "supporting_passages": [],
+      "title": "The when and where of water in the history of the universe (arXiv:1803.01452)",
+      "url": "https://arxiv.org/pdf/1803.01452",
+      "year": null
+    },
+    {
+      "authors": null,
+      "index": 5,
+      "summary": "Search-snippet only (page not opened). Calculator site. Gives a summit boiling point near 70 C and says real summit pressure is often a little higher than its standard model, so measured values might be closer to 71 C. Unsourced claim; model output, not measurement.",
+      "supporting_passages": [],
+      "title": "Boiling Point of Water at Altitude Calculator (F and C)",
+      "url": "https://watercalculator.us/calculators/science/water-boiling-point-at-altitude-calculator",
+      "year": null
+    },
+    {
+      "authors": null,
+      "index": 6,
+      "summary": "Search-snippet only (page not opened). Textbook table of boiling points at sites with pressure in mmHg, e.g. Denver 5280 ft, 633 mmHg, 95 C; Bogota 11490 ft, 495 mmHg, 88 C; Mount Everest 240 mmHg, 70 C. Method not stated in the snippet.",
+      "supporting_passages": [],
+      "title": "5.5: Vapor Pressure (Chemistry LibreTexts, Mount Royal University Chem 1201)",
+      "url": "https://chem.libretexts.org/Courses/Mount_Royal_University/Chem_1201/Unit_5%3A_Intermolecular_Forces/5.5%3A_Vapor_Pressure",
+      "year": null
+    },
+    {
+      "authors": null,
+      "index": 7,
+      "summary": "Search-snippet only (page not opened). Secondary calculator site. Describes the Wagner-Pruss/IAPWS-95 saturation correlation and valid range 273.16 K to 647.096 K; claims about 0.025 percent agreement with experiment, which is not verified against the primary paper. Used only to identify the reference formulation; coefficients not verified.",
+      "supporting_passages": [],
+      "title": "IAPWS-95 (Wagner-Pruss) Saturation Pressure (watervaporpressure.com)",
+      "url": "https://www.watervaporpressure.com/formulas/iapws-95/",
+      "year": null
+    }
+  ],
+  "summary": "This round tested the Engineering ToolBox water-boiling-point-versus-altitude table. The page states no method, formula, steam table or measured dataset, so its provenance is unknown [1]. Its sea-level and altitude rows (for example 100.0 C at 0 m and 71.1 C at 9144 m) were relayed by a summarising fetch and must be checked against the page. Using the standard ISA pressure curve and a constant-enthalpy Clausius-Clapeyron model (40.65 kJ/mol anchored at 373.124 K), the table agrees with the model to within about 0.35 K up to 4.6 km. Above that the table runs higher: about +0.8 K at 6.1 km, +1.7 K at 7.6 km, +2.6 K at 8.8 km and +2.8 K at 9.1 km. This residual pattern is a computed result from the relayed values, not a published finding. It is consistent with a table built on a different thermodynamic or pressure assumption, but it does not identify which. No independent measured boiling-point dataset with station pressure was found, so the question of how well the barometric model predicts measurements is not answered. Summit estimates in the sources cluster at 68 to 72 C [4][5], and these are calculations, not observations. Keene (1995) in the Journal of Chemical Education was not located after two rounds of search. The only related altitude-boiling article found (ACS DOI 10.1021/ed067p45) returned HTTP 403, so its content is unverified [2]. The IAPWS-95 saturation table in NIST NISTIR 5078 could not be parsed by the fetch tool, so the IAPWS reference step is incomplete. Pressure-boiling values in the Wikipedia vapour-pressure article are tied to a Wagner-Pruss/IAPWS-based correlation, and its 100 C row corresponds to about 101.4 kPa [3]. Confidence: high that the ToolBox page states no method; moderate on the residual pattern (depends on transcription); low on any claim about measurement agreement, because none was found. What would change this: a readable IAPWS saturation table to compare with, and at least two measured station-pressure datasets reaching above 8 km.",
+  "follow_up_questions": [
+    "Can the NIST NISTIR 5078 IAPWS-95 saturation table (or the Wagner and Pruss 2002 paper) be read directly, so the ToolBox residuals can be compared with the IAPWS inversion at 8 to 9 km?",
+    "Which measured boiling-point datasets with recorded station pressure exist for altitudes from sea level to above 8 km (expedition records, meteorological station logs, or physics-education papers), and do they cover at least two independent sites?",
+    "Was Keene (1995) in the Journal of Chemical Education actually published, and does it report measured or computed boiling points? A direct DOI or ACS table-of-contents check would settle it."
+  ]
+}
