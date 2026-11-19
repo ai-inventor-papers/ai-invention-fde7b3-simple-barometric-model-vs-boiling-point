@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "status": "untested",
+    "statement": "No measured comparison; no accuracy claim; computed reference shown only as context.",
+    "n_measured": 0,
+    "n_computed_reference": 250,
+    "summary": {
+      "n_measured": 0,
+      "sources_retained": 0,
+      "measured_claim": "none",
+      "sea_level_confirmation_pass": true,
+      "sea_level_T_K": {
+        "V1": 373.124,
+        "V2": 373.12430000048056,
+        "V3": 373.124,
+        "V4": 373.12430000048056
+      },
+      "anchor_shift_mean_K_373.15_minus_373.124": {
+        "V1": 0.02408026919869826,
+        "V3": 0.023947203841504235
+      },
+      "sign_V1_minus_V3_computed_rows": {
+        "V1_gt_V3": 248,
+        "V1_lt_V3": 0,
+        "equal": 2
+      },
+      "computed_reference_rows": 250,
+      "figure": "not drawn: no measured band has n >= 3"
+    },
+    "band_statistics": [
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "0-3 km",
+        "variant": "V1",
+        "n": 40,
+        "bias_K": 0.020113536783085806,
+        "MAE_K": 0.03551791025220439,
+        "maxAE_K": 0.13718037523295834
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "0-3 km",
+        "variant": "V2",
+        "n": 40,
+        "bias_K": 0.11057050690195211,
+        "MAE_K": 0.11057050690195211,
+        "maxAE_K": 0.32641930299683963
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "0-3 km",
+        "variant": "V3",
+        "n": 40,
+        "bias_K": -0.09271533175862742,
+        "MAE_K": 0.09271533175862742,
+        "maxAE_K": 0.1964739444093766
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "0-3 km",
+        "variant": "V4",
+        "n": 40,
+        "bias_K": 0.00012216963050803997,
+        "MAE_K": 0.00026635300641970617,
+        "maxAE_K": 0.0006909785983566508
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "3-6 km",
+        "variant": "V1",
+        "n": 39,
+        "bias_K": 0.4608915269327933,
+        "MAE_K": 0.4608915269327933,
+        "maxAE_K": 0.8640298953412184
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "3-6 km",
+        "variant": "V2",
+        "n": 39,
+        "bias_K": 0.7678738051886372,
+        "MAE_K": 0.7678738051886372,
+        "maxAE_K": 1.2898080809883936
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "3-6 km",
+        "variant": "V3",
+        "n": 39,
+        "bias_K": -0.3274406023820208,
+        "MAE_K": 0.3274406023820208,
+        "maxAE_K": 0.4629914553079857
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "3-6 km",
+        "variant": "V4",
+        "n": 39,
+        "bias_K": 0.0004436274686685675,
+        "MAE_K": 0.00046706542863352626,
+        "maxAE_K": 0.001066785758723654
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "6 km and above",
+        "variant": "V1",
+        "n": 42,
+        "bias_K": 1.5415445627928417,
+        "MAE_K": 1.5415445627928417,
+        "maxAE_K": 2.2984755911658112
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "6 km and above",
+        "variant": "V2",
+        "n": 42,
+        "bias_K": 2.115973527586008,
+        "MAE_K": 2.115973527586008,
+        "maxAE_K": 3.0208919163096084
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "6 km and above",
+        "variant": "V3",
+        "n": 42,
+        "bias_K": -0.6448025182235562,
+        "MAE_K": 0.6448025182235562,
+        "maxAE_K": 0.8314015780163686
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_reference",
+        "band": "6 km and above",
+        "variant": "V4",
+        "n": 42,
+        "bias_K": 0.0007033929154179727,
+        "MAE_K": 0.0007033929154179727,
+        "maxAE_K": 0.0012710738159285029
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "0-3 km",
+        "variant": "V1",
+        "n": 40,
+        "bias_K": 0.20181353678308653,
+        "MAE_K": 0.20503613271953328,
+        "maxAE_K": 0.4031803752329779
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "0-3 km",
+        "variant": "V2",
+        "n": 40,
+        "bias_K": 0.29227050690195283,
+        "MAE_K": 0.2950463957891046,
+        "maxAE_K": 0.5924193029968592
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "0-3 km",
+        "variant": "V3",
+        "n": 40,
+        "bias_K": 0.0889846682413733,
+        "MAE_K": 0.09225123126612829,
+        "maxAE_K": 0.17304014364549403
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "0-3 km",
+        "variant": "V4",
+        "n": 40,
+        "bias_K": 0.18182216963050876,
+        "MAE_K": 0.18464130298504386,
+        "maxAE_K": 0.30634375870175745
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "3-6 km",
+        "variant": "V1",
+        "n": 39,
+        "bias_K": 0.4812248602661224,
+        "MAE_K": 0.4812248602661224,
+        "maxAE_K": 0.565281896528802
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "3-6 km",
+        "variant": "V2",
+        "n": 39,
+        "bias_K": 0.7882071385219663,
+        "MAE_K": 0.7882071385219663,
+        "maxAE_K": 0.9844161443589883
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "3-6 km",
+        "variant": "V3",
+        "n": 39,
+        "bias_K": -0.3071072690486916,
+        "MAE_K": 0.3114166782808434,
+        "maxAE_K": 0.7959914553080125
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "3-6 km",
+        "variant": "V4",
+        "n": 39,
+        "bias_K": 0.02077696080199769,
+        "MAE_K": 0.15158883677117985,
+        "maxAE_K": 0.3319332142413032
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "6 km and above",
+        "variant": "V1",
+        "n": 42,
+        "bias_K": 0.470354086602364,
+        "MAE_K": 0.470354086602364,
+        "maxAE_K": 0.5695184066841534
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "6 km and above",
+        "variant": "V2",
+        "n": 42,
+        "bias_K": 1.04478305139553,
+        "MAE_K": 1.04478305139553,
+        "maxAE_K": 1.120387060695748
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "6 km and above",
+        "variant": "V3",
+        "n": 42,
+        "bias_K": -1.715992994414034,
+        "MAE_K": 1.715992994414034,
+        "maxAE_K": 2.7674015780163472
+      },
+      {
+        "evidence": "computed_context",
+        "data_type": "computed_unknown_method",
+        "band": "6 km and above",
+        "variant": "V4",
+        "n": 42,
+        "bias_K": -1.0704870832750597,
+        "MAE_K": 1.0704870832750597,
+        "maxAE_K": 1.9351620066111082
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "dataset": "computed_reference_context",
+      "examples": [
+        {
+          "input": "{\"altitude_m\": -305.0}",
+          "output": "374.2500",
+          "metadata_dataset_label": "computed_reference_context",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_source_id": "engtoolbox_boiling_altitude",
+          "metadata_band": "nan",
+          "predict_V1_resid_K": "-0.0935",
+          "predict_V2_resid_K": "-0.1094",
+          "predict_V3_resid_K": "-0.0970",
+          "predict_V4_resid_K": "-0.1129"
+        },
+        {
+          "input": "{\"altitude_m\": -229.0}",
+          "output": "373.9500",
+          "metadata_dataset_label": "computed_reference_context",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_source_id": "engtoolbox_boiling_altitude",
+          "metadata_band": "nan",
+          "predict_V1_resid_K": "-0.0513",
+          "predict_V2_resid_K": "-0.0632",
+          "predict_V3_resid_K": "-0.0533",
+          "predict_V4_resid_K": "-0.0652"
+        },
+        {
+          "input": "{\"altitude_m\": -152.0}",
+          "output": "373.6500",
+          "metadata_dataset_label": "computed_reference_context",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_source_id": "engtoolbox_boiling_altitude",
+          "metadata_band": "nan",
+          "predict_V1_resid_K": "-0.0121",
+          "predict_V2_resid_K": "-0.0200",
+          "predict_V3_resid_K": "-0.0130",
+          "predict_V4_resid_K": "-0.0209"
+        }
+      ]
+    }
+  ]
+}

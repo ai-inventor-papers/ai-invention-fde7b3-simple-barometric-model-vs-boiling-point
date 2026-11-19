@@ -1,0 +1,23 @@
+{
+  "n_measured": 0,
+  "sources_retained": 0,
+  "measured_claim": "none",
+  "sea_level_confirmation_pass": true,
+  "sea_level_T_K": {
+    "V1": 373.124,
+    "V2": 373.12430000048056,
+    "V3": 373.124,
+    "V4": 373.12430000048056
+  },
+  "anchor_shift_mean_K_373.15_minus_373.124": {
+    "V1": 0.02408026919869826,
+    "V3": 0.023947203841504235
+  },
+  "sign_V1_minus_V3_computed_rows": {
+    "V1_gt_V3": 248,
+    "V1_lt_V3": 0,
+    "equal": 2
+  },
+  "computed_reference_rows": 250,
+  "figure": "not drawn: no measured band has n >= 3"
+}

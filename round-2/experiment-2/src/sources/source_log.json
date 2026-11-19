@@ -1,0 +1,9 @@
+{
+  "round": "gen_art_experiment_2",
+  "sources": [
+    {"name": "Osborne, Stimson and Ginnings (1939), J. Research NBS 23 (RP1229)", "url": "https://nvlpubs.nist.gov/nistpubs/jres/23/jresv23n2p261_a1b.pdf", "fetched": "text_layer_unreadable", "note": "WebFetch returned PDF metadata and embedded page images; no boiling-point-vs-pressure table text was readable.", "rows_retained": 0},
+    {"name": "CRC Handbook of Chemistry and Physics, water boiling point vs pressure table", "url": null, "fetched": false, "note": "Not fetched in this round; edition and table number unverified.", "rows_retained": 0},
+    {"name": "Keene (1995), J. Chem. Educ.", "url": null, "fetched": false, "note": "Not located in earlier rounds.", "rows_retained": 0},
+    {"name": "Engineering ToolBox boiling points vs altitude", "url": "https://www.engineeringtoolbox.com/boiling-points-water-altitude-d_1344.html", "fetched": "earlier_round_summary", "note": "Computed/unknown method; excluded from measured set.", "rows_retained": 0}
+  ]
+}

@@ -1,0 +1,21 @@
+[project]
+name = "gen-art-experiment-2-boiling-point"
+version = "0.1.0"
+requires-python = "==3.12.*"
+dependencies = [
+    "contourpy==1.4.0",
+    "cycler==0.12.1",
+    "fonttools==4.68.0",
+    "iapws==1.5.5",
+    "kiwisolver==1.5.1",
+    "loguru==0.8.0",
+    "matplotlib==3.11.2",
+    "numpy==2.5.5",
+    "packaging==26.3",
+    "pandas==3.1.1",
+    "pillow==13.0.0",
+    "pyparsing==3.3.3",
+    "python-dateutil==4.0.0",
+    "scipy==1.18.1",
+    "tzdata==2026.6",
+]
