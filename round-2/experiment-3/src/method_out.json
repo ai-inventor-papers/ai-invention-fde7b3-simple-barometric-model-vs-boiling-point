@@ -1,0 +1,2501 @@
+{
+  "metadata": {
+    "method_name": "Barometric and constant-enthalpy models of water boiling point (2x2 variants)",
+    "description": "Measured set n=0 above and below 5 km: no measured boiling observation could be cited after a bounded search. Only computed consistency checks are reported.",
+    "measured_n": 0,
+    "variants": {
+      "V1": "iso + CC",
+      "V2": "iso + IAPWS-97",
+      "V3": "ISA + CC",
+      "V4": "ISA + IAPWS-97"
+    },
+    "constants": {
+      "R": 8.314462618,
+      "M": 0.0289644,
+      "g": 9.80665,
+      "T0": 288.15,
+      "P0": 101325.0,
+      "L": 0.0065,
+      "Tref_K": 373.124,
+      "Pref_Pa": 101325.0,
+      "dH_J_per_mol": 40650.0
+    },
+    "unit_checks_pass": true,
+    "V4_vs_IAPWS_at_ISA_max_abs_K": 0.0009379339757060734,
+    "toolbox_residual_summary_computed": {
+      "ToolBox_resid_V1_K_bias": 0.3707672870443948,
+      "ToolBox_resid_V1_K_MAE": 0.3754160848797428,
+      "ToolBox_resid_V1_K_maxabs": 0.5692631256241043,
+      "ToolBox_resid_V2_K_bias": 0.6881894835812454,
+      "ToolBox_resid_V2_K_MAE": 0.69332910470969,
+      "ToolBox_resid_V2_K_maxabs": 1.1200449864940651,
+      "ToolBox_resid_V3_K_bias": -0.6459756759391189,
+      "ToolBox_resid_V3_K_MAE": 0.7052626837526537,
+      "ToolBox_resid_V3_K_maxabs": 2.767801497027051,
+      "ToolBox_resid_V4_K_bias": -0.2973870019058113,
+      "ToolBox_resid_V4_K_MAE": 0.4683311718400282,
+      "ToolBox_resid_V4_K_maxabs": 1.9355454538041386
+    },
+    "sensitivity_computed": {
+      "anchor_373.15K": {
+        "V1_change_bias_K": 0.024080244723678333,
+        "V1_change_maxabs_K": 0.026144104741661067,
+        "V3_change_bias_K": 0.023947177863310572,
+        "V3_change_maxabs_K": 0.026143609234168252
+      },
+      "dH_plus_500": {
+        "V1_change_bias_K": 0.16301515886836931,
+        "V1_change_maxabs_K": 0.3202631098668576,
+        "V3_change_bias_K": 0.17388023045046339,
+        "V3_change_maxabs_K": 0.3522280844253487
+      },
+      "dH_minus_500": {
+        "V1_change_bias_K": -0.1668634901385549,
+        "V1_change_maxabs_K": 0.32762324247073593,
+        "V3_change_bias_K": -0.17796490825726505,
+        "V3_change_maxabs_K": 0.3602484638174701
+      }
+    },
+    "band_summary_measured": {
+      "note": "Bands 3-6 km and 5-6 km overlap; a record can fall in both.",
+      "bands": [
+        {
+          "band": "0-3 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "3-6 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "5-6 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "6-7 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "7-8 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "above 8 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        }
+      ]
+    },
+    "note_iapws_bracket": "IAPWS solve bracket 273.16-647.0 K; plan's 373.946 K upper bound replaced (it is ~100.8 C, not the critical point)."
+  },
+  "datasets": [
+    {
+      "dataset": "engtoolbox_boiling_altitude_computed_check",
+      "examples": [
+        {
+          "input": "{\"altitude_m\": -305.0}",
+          "output": "374.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "374.1566",
+          "predict_V2_iso_IAPWS": "374.1406",
+          "predict_V3_ISA_CC": "374.1530",
+          "predict_V4_ISA_IAPWS": "374.1371"
+        },
+        {
+          "input": "{\"altitude_m\": -229.0}",
+          "output": "373.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "373.8987",
+          "predict_V2_iso_IAPWS": "373.8868",
+          "predict_V3_ISA_CC": "373.8967",
+          "predict_V4_ISA_IAPWS": "373.8848"
+        },
+        {
+          "input": "{\"altitude_m\": -152.0}",
+          "output": "373.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "373.6379",
+          "predict_V2_iso_IAPWS": "373.6300",
+          "predict_V3_ISA_CC": "373.6370",
+          "predict_V4_ISA_IAPWS": "373.6291"
+        },
+        {
+          "input": "{\"altitude_m\": -76.0}",
+          "output": "373.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "373.3808",
+          "predict_V2_iso_IAPWS": "373.3769",
+          "predict_V3_ISA_CC": "373.3805",
+          "predict_V4_ISA_IAPWS": "373.3767"
+        },
+        {
+          "input": "{\"altitude_m\": 0.0}",
+          "output": "373.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "373.1240",
+          "predict_V2_iso_IAPWS": "373.1243",
+          "predict_V3_ISA_CC": "373.1240",
+          "predict_V4_ISA_IAPWS": "373.1243"
+        },
+        {
+          "input": "{\"altitude_m\": 76.0}",
+          "output": "372.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "372.8676",
+          "predict_V2_iso_IAPWS": "372.8720",
+          "predict_V3_ISA_CC": "372.8674",
+          "predict_V4_ISA_IAPWS": "372.8718"
+        },
+        {
+          "input": "{\"altitude_m\": 152.0}",
+          "output": "372.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "372.6115",
+          "predict_V2_iso_IAPWS": "372.6202",
+          "predict_V3_ISA_CC": "372.6107",
+          "predict_V4_ISA_IAPWS": "372.6193"
+        },
+        {
+          "input": "{\"altitude_m\": 229.0}",
+          "output": "372.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "372.3525",
+          "predict_V2_iso_IAPWS": "372.3654",
+          "predict_V3_ISA_CC": "372.3505",
+          "predict_V4_ISA_IAPWS": "372.3634"
+        },
+        {
+          "input": "{\"altitude_m\": 305.0}",
+          "output": "372.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "372.0971",
+          "predict_V2_iso_IAPWS": "372.1143",
+          "predict_V3_ISA_CC": "372.0936",
+          "predict_V4_ISA_IAPWS": "372.1108"
+        },
+        {
+          "input": "{\"altitude_m\": 381.0}",
+          "output": "371.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "371.8421",
+          "predict_V2_iso_IAPWS": "371.8636",
+          "predict_V3_ISA_CC": "371.8366",
+          "predict_V4_ISA_IAPWS": "371.8582"
+        },
+        {
+          "input": "{\"altitude_m\": 457.0}",
+          "output": "371.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "371.5875",
+          "predict_V2_iso_IAPWS": "371.6133",
+          "predict_V3_ISA_CC": "371.5795",
+          "predict_V4_ISA_IAPWS": "371.6055"
+        },
+        {
+          "input": "{\"altitude_m\": 533.0}",
+          "output": "371.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "371.3332",
+          "predict_V2_iso_IAPWS": "371.3634",
+          "predict_V3_ISA_CC": "371.3224",
+          "predict_V4_ISA_IAPWS": "371.3528"
+        },
+        {
+          "input": "{\"altitude_m\": 610.0}",
+          "output": "370.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "371.0759",
+          "predict_V2_iso_IAPWS": "371.1106",
+          "predict_V3_ISA_CC": "371.0618",
+          "predict_V4_ISA_IAPWS": "371.0967"
+        },
+        {
+          "input": "{\"altitude_m\": 686.0}",
+          "output": "370.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "370.8223",
+          "predict_V2_iso_IAPWS": "370.8614",
+          "predict_V3_ISA_CC": "370.8044",
+          "predict_V4_ISA_IAPWS": "370.8438"
+        },
+        {
+          "input": "{\"altitude_m\": 762.0}",
+          "output": "370.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "370.5690",
+          "predict_V2_iso_IAPWS": "370.6126",
+          "predict_V3_ISA_CC": "370.5470",
+          "predict_V4_ISA_IAPWS": "370.5910"
+        },
+        {
+          "input": "{\"altitude_m\": 838.0}",
+          "output": "370.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "370.3161",
+          "predict_V2_iso_IAPWS": "370.3643",
+          "predict_V3_ISA_CC": "370.2895",
+          "predict_V4_ISA_IAPWS": "370.3381"
+        },
+        {
+          "input": "{\"altitude_m\": 914.0}",
+          "output": "369.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "370.0636",
+          "predict_V2_iso_IAPWS": "370.1163",
+          "predict_V3_ISA_CC": "370.0318",
+          "predict_V4_ISA_IAPWS": "370.0851"
+        },
+        {
+          "input": "{\"altitude_m\": 991.0}",
+          "output": "369.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "369.8080",
+          "predict_V2_iso_IAPWS": "369.8654",
+          "predict_V3_ISA_CC": "369.7708",
+          "predict_V4_ISA_IAPWS": "369.8288"
+        },
+        {
+          "input": "{\"altitude_m\": 1067.0}",
+          "output": "369.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "369.5562",
+          "predict_V2_iso_IAPWS": "369.6181",
+          "predict_V3_ISA_CC": "369.5130",
+          "predict_V4_ISA_IAPWS": "369.5757"
+        },
+        {
+          "input": "{\"altitude_m\": 1143.0}",
+          "output": "369.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "369.3046",
+          "predict_V2_iso_IAPWS": "369.3713",
+          "predict_V3_ISA_CC": "369.2551",
+          "predict_V4_ISA_IAPWS": "369.3226"
+        },
+        {
+          "input": "{\"altitude_m\": 1219.0}",
+          "output": "368.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "369.0535",
+          "predict_V2_iso_IAPWS": "369.1248",
+          "predict_V3_ISA_CC": "368.9971",
+          "predict_V4_ISA_IAPWS": "369.0695"
+        },
+        {
+          "input": "{\"altitude_m\": 1295.0}",
+          "output": "368.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "368.8026",
+          "predict_V2_iso_IAPWS": "368.8787",
+          "predict_V3_ISA_CC": "368.7390",
+          "predict_V4_ISA_IAPWS": "368.8163"
+        },
+        {
+          "input": "{\"altitude_m\": 1372.0}",
+          "output": "368.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "368.5488",
+          "predict_V2_iso_IAPWS": "368.6297",
+          "predict_V3_ISA_CC": "368.4774",
+          "predict_V4_ISA_IAPWS": "368.5597"
+        },
+        {
+          "input": "{\"altitude_m\": 1448.0}",
+          "output": "368.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "368.2987",
+          "predict_V2_iso_IAPWS": "368.3844",
+          "predict_V3_ISA_CC": "368.2192",
+          "predict_V4_ISA_IAPWS": "368.3064"
+        },
+        {
+          "input": "{\"altitude_m\": 1524.0}",
+          "output": "367.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "368.0488",
+          "predict_V2_iso_IAPWS": "368.1394",
+          "predict_V3_ISA_CC": "367.9608",
+          "predict_V4_ISA_IAPWS": "368.0531"
+        },
+        {
+          "input": "{\"altitude_m\": 1600.0}",
+          "output": "367.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "367.7994",
+          "predict_V2_iso_IAPWS": "367.8948",
+          "predict_V3_ISA_CC": "367.7023",
+          "predict_V4_ISA_IAPWS": "367.7997"
+        },
+        {
+          "input": "{\"altitude_m\": 1676.0}",
+          "output": "367.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "367.5502",
+          "predict_V2_iso_IAPWS": "367.6506",
+          "predict_V3_ISA_CC": "367.4438",
+          "predict_V4_ISA_IAPWS": "367.5462"
+        },
+        {
+          "input": "{\"altitude_m\": 1753.0}",
+          "output": "367.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "367.2981",
+          "predict_V2_iso_IAPWS": "367.4035",
+          "predict_V3_ISA_CC": "367.1817",
+          "predict_V4_ISA_IAPWS": "367.2894"
+        },
+        {
+          "input": "{\"altitude_m\": 1829.0}",
+          "output": "366.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "367.0497",
+          "predict_V2_iso_IAPWS": "367.1600",
+          "predict_V3_ISA_CC": "366.9230",
+          "predict_V4_ISA_IAPWS": "367.0359"
+        },
+        {
+          "input": "{\"altitude_m\": 1905.0}",
+          "output": "366.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "366.8016",
+          "predict_V2_iso_IAPWS": "366.9169",
+          "predict_V3_ISA_CC": "366.6641",
+          "predict_V4_ISA_IAPWS": "366.7823"
+        },
+        {
+          "input": "{\"altitude_m\": 1981.0}",
+          "output": "366.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "366.5538",
+          "predict_V2_iso_IAPWS": "366.6742",
+          "predict_V3_ISA_CC": "366.4052",
+          "predict_V4_ISA_IAPWS": "366.5286"
+        },
+        {
+          "input": "{\"altitude_m\": 2057.0}",
+          "output": "366.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "366.3063",
+          "predict_V2_iso_IAPWS": "366.4318",
+          "predict_V3_ISA_CC": "366.1461",
+          "predict_V4_ISA_IAPWS": "366.2749"
+        },
+        {
+          "input": "{\"altitude_m\": 2134.0}",
+          "output": "365.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "366.0559",
+          "predict_V2_iso_IAPWS": "366.1866",
+          "predict_V3_ISA_CC": "365.8836",
+          "predict_V4_ISA_IAPWS": "366.0178"
+        },
+        {
+          "input": "{\"altitude_m\": 2210.0}",
+          "output": "365.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "365.8091",
+          "predict_V2_iso_IAPWS": "365.9450",
+          "predict_V3_ISA_CC": "365.6243",
+          "predict_V4_ISA_IAPWS": "365.7640"
+        },
+        {
+          "input": "{\"altitude_m\": 2286.0}",
+          "output": "365.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "365.5627",
+          "predict_V2_iso_IAPWS": "365.7037",
+          "predict_V3_ISA_CC": "365.3650",
+          "predict_V4_ISA_IAPWS": "365.5102"
+        },
+        {
+          "input": "{\"altitude_m\": 2362.0}",
+          "output": "364.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "365.3166",
+          "predict_V2_iso_IAPWS": "365.4628",
+          "predict_V3_ISA_CC": "365.1055",
+          "predict_V4_ISA_IAPWS": "365.2562"
+        },
+        {
+          "input": "{\"altitude_m\": 2438.0}",
+          "output": "364.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "365.0708",
+          "predict_V2_iso_IAPWS": "365.2222",
+          "predict_V3_ISA_CC": "364.8460",
+          "predict_V4_ISA_IAPWS": "365.0023"
+        },
+        {
+          "input": "{\"altitude_m\": 2515.0}",
+          "output": "364.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "364.8221",
+          "predict_V2_iso_IAPWS": "364.9789",
+          "predict_V3_ISA_CC": "364.5829",
+          "predict_V4_ISA_IAPWS": "364.7449"
+        },
+        {
+          "input": "{\"altitude_m\": 2591.0}",
+          "output": "364.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "364.5770",
+          "predict_V2_iso_IAPWS": "364.7391",
+          "predict_V3_ISA_CC": "364.3231",
+          "predict_V4_ISA_IAPWS": "364.4908"
+        },
+        {
+          "input": "{\"altitude_m\": 2667.0}",
+          "output": "363.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "364.3322",
+          "predict_V2_iso_IAPWS": "364.4996",
+          "predict_V3_ISA_CC": "364.0633",
+          "predict_V4_ISA_IAPWS": "364.2367"
+        },
+        {
+          "input": "{\"altitude_m\": 2743.0}",
+          "output": "363.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "364.0877",
+          "predict_V2_iso_IAPWS": "364.2605",
+          "predict_V3_ISA_CC": "363.8033",
+          "predict_V4_ISA_IAPWS": "363.9825"
+        },
+        {
+          "input": "{\"altitude_m\": 2819.0}",
+          "output": "363.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "363.8436",
+          "predict_V2_iso_IAPWS": "364.0218",
+          "predict_V3_ISA_CC": "363.5433",
+          "predict_V4_ISA_IAPWS": "363.7282"
+        },
+        {
+          "input": "{\"altitude_m\": 2896.0}",
+          "output": "363.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "363.5965",
+          "predict_V2_iso_IAPWS": "363.7803",
+          "predict_V3_ISA_CC": "363.2797",
+          "predict_V4_ISA_IAPWS": "363.4706"
+        },
+        {
+          "input": "{\"altitude_m\": 2972.0}",
+          "output": "362.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "363.3530",
+          "predict_V2_iso_IAPWS": "363.5423",
+          "predict_V3_ISA_CC": "363.0194",
+          "predict_V4_ISA_IAPWS": "363.2162"
+        },
+        {
+          "input": "{\"altitude_m\": 3048.0}",
+          "output": "362.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "363.1099",
+          "predict_V2_iso_IAPWS": "363.3046",
+          "predict_V3_ISA_CC": "362.7590",
+          "predict_V4_ISA_IAPWS": "362.9618"
+        },
+        {
+          "input": "{\"altitude_m\": 3124.0}",
+          "output": "362.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "362.8671",
+          "predict_V2_iso_IAPWS": "363.0673",
+          "predict_V3_ISA_CC": "362.4985",
+          "predict_V4_ISA_IAPWS": "362.7073"
+        },
+        {
+          "input": "{\"altitude_m\": 3200.0}",
+          "output": "362.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "362.6246",
+          "predict_V2_iso_IAPWS": "362.8304",
+          "predict_V3_ISA_CC": "362.2379",
+          "predict_V4_ISA_IAPWS": "362.4527"
+        },
+        {
+          "input": "{\"altitude_m\": 3277.0}",
+          "output": "361.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "362.3792",
+          "predict_V2_iso_IAPWS": "362.5907",
+          "predict_V3_ISA_CC": "361.9738",
+          "predict_V4_ISA_IAPWS": "362.1948"
+        },
+        {
+          "input": "{\"altitude_m\": 3353.0}",
+          "output": "361.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "362.1373",
+          "predict_V2_iso_IAPWS": "362.3545",
+          "predict_V3_ISA_CC": "361.7130",
+          "predict_V4_ISA_IAPWS": "361.9401"
+        },
+        {
+          "input": "{\"altitude_m\": 3429.0}",
+          "output": "361.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "361.8958",
+          "predict_V2_iso_IAPWS": "362.1186",
+          "predict_V3_ISA_CC": "361.4521",
+          "predict_V4_ISA_IAPWS": "361.6854"
+        },
+        {
+          "input": "{\"altitude_m\": 3505.0}",
+          "output": "361.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "361.6546",
+          "predict_V2_iso_IAPWS": "361.8831",
+          "predict_V3_ISA_CC": "361.1911",
+          "predict_V4_ISA_IAPWS": "361.4306"
+        },
+        {
+          "input": "{\"altitude_m\": 3581.0}",
+          "output": "360.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "361.4137",
+          "predict_V2_iso_IAPWS": "361.6479",
+          "predict_V3_ISA_CC": "360.9299",
+          "predict_V4_ISA_IAPWS": "361.1757"
+        },
+        {
+          "input": "{\"altitude_m\": 3658.0}",
+          "output": "360.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "361.1700",
+          "predict_V2_iso_IAPWS": "361.4100",
+          "predict_V3_ISA_CC": "360.6653",
+          "predict_V4_ISA_IAPWS": "360.9174"
+        },
+        {
+          "input": "{\"altitude_m\": 3734.0}",
+          "output": "360.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "360.9297",
+          "predict_V2_iso_IAPWS": "361.1755",
+          "predict_V3_ISA_CC": "360.4039",
+          "predict_V4_ISA_IAPWS": "360.6625"
+        },
+        {
+          "input": "{\"altitude_m\": 3810.0}",
+          "output": "360.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "360.6898",
+          "predict_V2_iso_IAPWS": "360.9414",
+          "predict_V3_ISA_CC": "360.1425",
+          "predict_V4_ISA_IAPWS": "360.4074"
+        },
+        {
+          "input": "{\"altitude_m\": 3886.0}",
+          "output": "359.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "360.4502",
+          "predict_V2_iso_IAPWS": "360.7076",
+          "predict_V3_ISA_CC": "359.8809",
+          "predict_V4_ISA_IAPWS": "360.1523"
+        },
+        {
+          "input": "{\"altitude_m\": 3962.0}",
+          "output": "359.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "360.2109",
+          "predict_V2_iso_IAPWS": "360.4742",
+          "predict_V3_ISA_CC": "359.6192",
+          "predict_V4_ISA_IAPWS": "359.8971"
+        },
+        {
+          "input": "{\"altitude_m\": 4037.0}",
+          "output": "359.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "359.9751",
+          "predict_V2_iso_IAPWS": "360.2442",
+          "predict_V3_ISA_CC": "359.3609",
+          "predict_V4_ISA_IAPWS": "359.6452"
+        },
+        {
+          "input": "{\"altitude_m\": 4115.0}",
+          "output": "359.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "359.7301",
+          "predict_V2_iso_IAPWS": "360.0053",
+          "predict_V3_ISA_CC": "359.0921",
+          "predict_V4_ISA_IAPWS": "359.3832"
+        },
+        {
+          "input": "{\"altitude_m\": 4191.0}",
+          "output": "359.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "359.4918",
+          "predict_V2_iso_IAPWS": "359.7729",
+          "predict_V3_ISA_CC": "358.8300",
+          "predict_V4_ISA_IAPWS": "359.1278"
+        },
+        {
+          "input": "{\"altitude_m\": 4267.0}",
+          "output": "358.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "359.2538",
+          "predict_V2_iso_IAPWS": "359.5409",
+          "predict_V3_ISA_CC": "358.5679",
+          "predict_V4_ISA_IAPWS": "358.8724"
+        },
+        {
+          "input": "{\"altitude_m\": 4343.0}",
+          "output": "358.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "359.0161",
+          "predict_V2_iso_IAPWS": "359.3092",
+          "predict_V3_ISA_CC": "358.3057",
+          "predict_V4_ISA_IAPWS": "358.6169"
+        },
+        {
+          "input": "{\"altitude_m\": 4420.0}",
+          "output": "358.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "358.7756",
+          "predict_V2_iso_IAPWS": "359.0748",
+          "predict_V3_ISA_CC": "358.0399",
+          "predict_V4_ISA_IAPWS": "358.3580"
+        },
+        {
+          "input": "{\"altitude_m\": 4496.0}",
+          "output": "358.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "358.5385",
+          "predict_V2_iso_IAPWS": "358.8437",
+          "predict_V3_ISA_CC": "357.7774",
+          "predict_V4_ISA_IAPWS": "358.1023"
+        },
+        {
+          "input": "{\"altitude_m\": 4572.0}",
+          "output": "357.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "358.3017",
+          "predict_V2_iso_IAPWS": "358.6131",
+          "predict_V3_ISA_CC": "357.5148",
+          "predict_V4_ISA_IAPWS": "357.8466"
+        },
+        {
+          "input": "{\"altitude_m\": 4648.0}",
+          "output": "357.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "358.0653",
+          "predict_V2_iso_IAPWS": "358.3827",
+          "predict_V3_ISA_CC": "357.2521",
+          "predict_V4_ISA_IAPWS": "357.5908"
+        },
+        {
+          "input": "{\"altitude_m\": 4724.0}",
+          "output": "357.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "357.8292",
+          "predict_V2_iso_IAPWS": "358.1528",
+          "predict_V3_ISA_CC": "356.9892",
+          "predict_V4_ISA_IAPWS": "357.3350"
+        },
+        {
+          "input": "{\"altitude_m\": 4801.0}",
+          "output": "357.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "357.5902",
+          "predict_V2_iso_IAPWS": "357.9201",
+          "predict_V3_ISA_CC": "356.7228",
+          "predict_V4_ISA_IAPWS": "357.0757"
+        },
+        {
+          "input": "{\"altitude_m\": 4877.0}",
+          "output": "356.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "357.3547",
+          "predict_V2_iso_IAPWS": "357.6908",
+          "predict_V3_ISA_CC": "356.4598",
+          "predict_V4_ISA_IAPWS": "356.8197"
+        },
+        {
+          "input": "{\"altitude_m\": 4953.0}",
+          "output": "356.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "357.1195",
+          "predict_V2_iso_IAPWS": "357.4618",
+          "predict_V3_ISA_CC": "356.1966",
+          "predict_V4_ISA_IAPWS": "356.5636"
+        },
+        {
+          "input": "{\"altitude_m\": 5029.0}",
+          "output": "356.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "356.8846",
+          "predict_V2_iso_IAPWS": "357.2332",
+          "predict_V3_ISA_CC": "355.9333",
+          "predict_V4_ISA_IAPWS": "356.3075"
+        },
+        {
+          "input": "{\"altitude_m\": 5105.0}",
+          "output": "356.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "356.6501",
+          "predict_V2_iso_IAPWS": "357.0049",
+          "predict_V3_ISA_CC": "355.6699",
+          "predict_V4_ISA_IAPWS": "356.0513"
+        },
+        {
+          "input": "{\"altitude_m\": 5182.0}",
+          "output": "355.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "356.4127",
+          "predict_V2_iso_IAPWS": "356.7739",
+          "predict_V3_ISA_CC": "355.4029",
+          "predict_V4_ISA_IAPWS": "355.7916"
+        },
+        {
+          "input": "{\"altitude_m\": 5258.0}",
+          "output": "355.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "356.1788",
+          "predict_V2_iso_IAPWS": "356.5463",
+          "predict_V3_ISA_CC": "355.1392",
+          "predict_V4_ISA_IAPWS": "355.5352"
+        },
+        {
+          "input": "{\"altitude_m\": 5334.0}",
+          "output": "355.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "355.9451",
+          "predict_V2_iso_IAPWS": "356.3190",
+          "predict_V3_ISA_CC": "354.8754",
+          "predict_V4_ISA_IAPWS": "355.2788"
+        },
+        {
+          "input": "{\"altitude_m\": 5410.0}",
+          "output": "355.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "355.7118",
+          "predict_V2_iso_IAPWS": "356.0920",
+          "predict_V3_ISA_CC": "354.6115",
+          "predict_V4_ISA_IAPWS": "355.0223"
+        },
+        {
+          "input": "{\"altitude_m\": 5486.0}",
+          "output": "354.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "355.4787",
+          "predict_V2_iso_IAPWS": "355.8654",
+          "predict_V3_ISA_CC": "354.3475",
+          "predict_V4_ISA_IAPWS": "354.7657"
+        },
+        {
+          "input": "{\"altitude_m\": 5563.0}",
+          "output": "354.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "355.2429",
+          "predict_V2_iso_IAPWS": "355.6361",
+          "predict_V3_ISA_CC": "354.0799",
+          "predict_V4_ISA_IAPWS": "354.5057"
+        },
+        {
+          "input": "{\"altitude_m\": 5639.0}",
+          "output": "354.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "355.0105",
+          "predict_V2_iso_IAPWS": "355.4101",
+          "predict_V3_ISA_CC": "353.8156",
+          "predict_V4_ISA_IAPWS": "354.2489"
+        },
+        {
+          "input": "{\"altitude_m\": 5715.0}",
+          "output": "354.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "354.7784",
+          "predict_V2_iso_IAPWS": "355.1845",
+          "predict_V3_ISA_CC": "353.5512",
+          "predict_V4_ISA_IAPWS": "353.9921"
+        },
+        {
+          "input": "{\"altitude_m\": 5791.0}",
+          "output": "354.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "354.5466",
+          "predict_V2_iso_IAPWS": "354.9592",
+          "predict_V3_ISA_CC": "353.2867",
+          "predict_V4_ISA_IAPWS": "353.7352"
+        },
+        {
+          "input": "{\"altitude_m\": 5867.0}",
+          "output": "353.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "354.3150",
+          "predict_V2_iso_IAPWS": "354.7342",
+          "predict_V3_ISA_CC": "353.0220",
+          "predict_V4_ISA_IAPWS": "353.4782"
+        },
+        {
+          "input": "{\"altitude_m\": 5944.0}",
+          "output": "353.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "354.0808",
+          "predict_V2_iso_IAPWS": "354.5066",
+          "predict_V3_ISA_CC": "352.7537",
+          "predict_V4_ISA_IAPWS": "353.2178"
+        },
+        {
+          "input": "{\"altitude_m\": 6020.0}",
+          "output": "353.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "353.8499",
+          "predict_V2_iso_IAPWS": "354.2822",
+          "predict_V3_ISA_CC": "352.4888",
+          "predict_V4_ISA_IAPWS": "352.9607"
+        },
+        {
+          "input": "{\"altitude_m\": 6096.0}",
+          "output": "353.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "353.6193",
+          "predict_V2_iso_IAPWS": "354.0582",
+          "predict_V3_ISA_CC": "352.2238",
+          "predict_V4_ISA_IAPWS": "352.7035"
+        },
+        {
+          "input": "{\"altitude_m\": 6172.0}",
+          "output": "352.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "353.3890",
+          "predict_V2_iso_IAPWS": "353.8346",
+          "predict_V3_ISA_CC": "351.9586",
+          "predict_V4_ISA_IAPWS": "352.4462"
+        },
+        {
+          "input": "{\"altitude_m\": 6248.0}",
+          "output": "352.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "353.1589",
+          "predict_V2_iso_IAPWS": "353.6112",
+          "predict_V3_ISA_CC": "351.6934",
+          "predict_V4_ISA_IAPWS": "352.1888"
+        },
+        {
+          "input": "{\"altitude_m\": 6325.0}",
+          "output": "352.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "352.9262",
+          "predict_V2_iso_IAPWS": "353.3852",
+          "predict_V3_ISA_CC": "351.4244",
+          "predict_V4_ISA_IAPWS": "351.9279"
+        },
+        {
+          "input": "{\"altitude_m\": 6401.0}",
+          "output": "352.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "352.6968",
+          "predict_V2_iso_IAPWS": "353.1625",
+          "predict_V3_ISA_CC": "351.1589",
+          "predict_V4_ISA_IAPWS": "351.6704"
+        },
+        {
+          "input": "{\"altitude_m\": 6477.0}",
+          "output": "351.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "352.4677",
+          "predict_V2_iso_IAPWS": "352.9402",
+          "predict_V3_ISA_CC": "350.8932",
+          "predict_V4_ISA_IAPWS": "351.4128"
+        },
+        {
+          "input": "{\"altitude_m\": 6553.0}",
+          "output": "351.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "352.2389",
+          "predict_V2_iso_IAPWS": "352.7181",
+          "predict_V3_ISA_CC": "350.6274",
+          "predict_V4_ISA_IAPWS": "351.1551"
+        },
+        {
+          "input": "{\"altitude_m\": 6629.0}",
+          "output": "351.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "352.0104",
+          "predict_V2_iso_IAPWS": "352.4964",
+          "predict_V3_ISA_CC": "350.3615",
+          "predict_V4_ISA_IAPWS": "350.8973"
+        },
+        {
+          "input": "{\"altitude_m\": 6706.0}",
+          "output": "351.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "351.7792",
+          "predict_V2_iso_IAPWS": "352.2720",
+          "predict_V3_ISA_CC": "350.0919",
+          "predict_V4_ISA_IAPWS": "350.6360"
+        },
+        {
+          "input": "{\"altitude_m\": 6782.0}",
+          "output": "351.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "351.5512",
+          "predict_V2_iso_IAPWS": "352.0509",
+          "predict_V3_ISA_CC": "349.8257",
+          "predict_V4_ISA_IAPWS": "350.3780"
+        },
+        {
+          "input": "{\"altitude_m\": 6858.0}",
+          "output": "350.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "351.3236",
+          "predict_V2_iso_IAPWS": "351.8302",
+          "predict_V3_ISA_CC": "349.5593",
+          "predict_V4_ISA_IAPWS": "350.1200"
+        },
+        {
+          "input": "{\"altitude_m\": 6934.0}",
+          "output": "350.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "351.0963",
+          "predict_V2_iso_IAPWS": "351.6097",
+          "predict_V3_ISA_CC": "349.2929",
+          "predict_V4_ISA_IAPWS": "349.8619"
+        },
+        {
+          "input": "{\"altitude_m\": 7010.0}",
+          "output": "350.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "350.8693",
+          "predict_V2_iso_IAPWS": "351.3896",
+          "predict_V3_ISA_CC": "349.0262",
+          "predict_V4_ISA_IAPWS": "349.6036"
+        },
+        {
+          "input": "{\"altitude_m\": 7087.0}",
+          "output": "350.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "350.6395",
+          "predict_V2_iso_IAPWS": "351.1668",
+          "predict_V3_ISA_CC": "348.7560",
+          "predict_V4_ISA_IAPWS": "349.3419"
+        },
+        {
+          "input": "{\"altitude_m\": 7163.0}",
+          "output": "349.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "350.4131",
+          "predict_V2_iso_IAPWS": "350.9473",
+          "predict_V3_ISA_CC": "348.4891",
+          "predict_V4_ISA_IAPWS": "349.0835"
+        },
+        {
+          "input": "{\"altitude_m\": 7239.0}",
+          "output": "349.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "350.1869",
+          "predict_V2_iso_IAPWS": "350.7281",
+          "predict_V3_ISA_CC": "348.2221",
+          "predict_V4_ISA_IAPWS": "348.8250"
+        },
+        {
+          "input": "{\"altitude_m\": 7315.0}",
+          "output": "349.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "349.9611",
+          "predict_V2_iso_IAPWS": "350.5092",
+          "predict_V3_ISA_CC": "347.9549",
+          "predict_V4_ISA_IAPWS": "348.5664"
+        },
+        {
+          "input": "{\"altitude_m\": 7391.0}",
+          "output": "349.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "349.7355",
+          "predict_V2_iso_IAPWS": "350.2907",
+          "predict_V3_ISA_CC": "347.6876",
+          "predict_V4_ISA_IAPWS": "348.3078"
+        },
+        {
+          "input": "{\"altitude_m\": 7468.0}",
+          "output": "349.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "349.5073",
+          "predict_V2_iso_IAPWS": "350.0696",
+          "predict_V3_ISA_CC": "347.4167",
+          "predict_V4_ISA_IAPWS": "348.0456"
+        },
+        {
+          "input": "{\"altitude_m\": 7544.0}",
+          "output": "348.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "349.2823",
+          "predict_V2_iso_IAPWS": "349.8516",
+          "predict_V3_ISA_CC": "347.1491",
+          "predict_V4_ISA_IAPWS": "347.7867"
+        },
+        {
+          "input": "{\"altitude_m\": 7620.0}",
+          "output": "348.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "349.0576",
+          "predict_V2_iso_IAPWS": "349.6340",
+          "predict_V3_ISA_CC": "346.8814",
+          "predict_V4_ISA_IAPWS": "347.5278"
+        },
+        {
+          "input": "{\"altitude_m\": 7696.0}",
+          "output": "348.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "348.8332",
+          "predict_V2_iso_IAPWS": "349.4167",
+          "predict_V3_ISA_CC": "346.6135",
+          "predict_V4_ISA_IAPWS": "347.2687"
+        },
+        {
+          "input": "{\"altitude_m\": 7772.0}",
+          "output": "348.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "348.6091",
+          "predict_V2_iso_IAPWS": "349.1997",
+          "predict_V3_ISA_CC": "346.3455",
+          "predict_V4_ISA_IAPWS": "347.0096"
+        },
+        {
+          "input": "{\"altitude_m\": 7849.0}",
+          "output": "347.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "348.3823",
+          "predict_V2_iso_IAPWS": "348.9801",
+          "predict_V3_ISA_CC": "346.0738",
+          "predict_V4_ISA_IAPWS": "346.7469"
+        },
+        {
+          "input": "{\"altitude_m\": 7925.0}",
+          "output": "347.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "348.1588",
+          "predict_V2_iso_IAPWS": "348.7637",
+          "predict_V3_ISA_CC": "345.8055",
+          "predict_V4_ISA_IAPWS": "346.4876"
+        },
+        {
+          "input": "{\"altitude_m\": 8001.0}",
+          "output": "347.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "347.9355",
+          "predict_V2_iso_IAPWS": "348.5476",
+          "predict_V3_ISA_CC": "345.5371",
+          "predict_V4_ISA_IAPWS": "346.2282"
+        },
+        {
+          "input": "{\"altitude_m\": 8077.0}",
+          "output": "347.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "347.7125",
+          "predict_V2_iso_IAPWS": "348.3319",
+          "predict_V3_ISA_CC": "345.2685",
+          "predict_V4_ISA_IAPWS": "345.9687"
+        },
+        {
+          "input": "{\"altitude_m\": 8153.0}",
+          "output": "347.05",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "347.4899",
+          "predict_V2_iso_IAPWS": "348.1164",
+          "predict_V3_ISA_CC": "344.9998",
+          "predict_V4_ISA_IAPWS": "345.7090"
+        },
+        {
+          "input": "{\"altitude_m\": 8230.0}",
+          "output": "346.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "347.2645",
+          "predict_V2_iso_IAPWS": "347.8984",
+          "predict_V3_ISA_CC": "344.7274",
+          "predict_V4_ISA_IAPWS": "345.4459"
+        },
+        {
+          "input": "{\"altitude_m\": 8306.0}",
+          "output": "346.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "347.0424",
+          "predict_V2_iso_IAPWS": "347.6836",
+          "predict_V3_ISA_CC": "344.4584",
+          "predict_V4_ISA_IAPWS": "345.1861"
+        },
+        {
+          "input": "{\"altitude_m\": 8382.0}",
+          "output": "346.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "346.8206",
+          "predict_V2_iso_IAPWS": "347.4690",
+          "predict_V3_ISA_CC": "344.1892",
+          "predict_V4_ISA_IAPWS": "344.9262"
+        },
+        {
+          "input": "{\"altitude_m\": 8458.0}",
+          "output": "346.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "346.5991",
+          "predict_V2_iso_IAPWS": "347.2548",
+          "predict_V3_ISA_CC": "343.9199",
+          "predict_V4_ISA_IAPWS": "344.6661"
+        },
+        {
+          "input": "{\"altitude_m\": 8534.0}",
+          "output": "345.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "346.3778",
+          "predict_V2_iso_IAPWS": "347.0408",
+          "predict_V3_ISA_CC": "343.6504",
+          "predict_V4_ISA_IAPWS": "344.4060"
+        },
+        {
+          "input": "{\"altitude_m\": 8611.0}",
+          "output": "345.75",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "346.1539",
+          "predict_V2_iso_IAPWS": "346.8244",
+          "predict_V3_ISA_CC": "343.3773",
+          "predict_V4_ISA_IAPWS": "344.1424"
+        },
+        {
+          "input": "{\"altitude_m\": 8687.0}",
+          "output": "345.55",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "345.9332",
+          "predict_V2_iso_IAPWS": "346.6110",
+          "predict_V3_ISA_CC": "343.1075",
+          "predict_V4_ISA_IAPWS": "343.8820"
+        },
+        {
+          "input": "{\"altitude_m\": 8763.0}",
+          "output": "345.35",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "345.7128",
+          "predict_V2_iso_IAPWS": "346.3980",
+          "predict_V3_ISA_CC": "342.8376",
+          "predict_V4_ISA_IAPWS": "343.6216"
+        },
+        {
+          "input": "{\"altitude_m\": 8839.0}",
+          "output": "345.15",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "345.4927",
+          "predict_V2_iso_IAPWS": "346.1853",
+          "predict_V3_ISA_CC": "342.5676",
+          "predict_V4_ISA_IAPWS": "343.3611"
+        },
+        {
+          "input": "{\"altitude_m\": 8916.0}",
+          "output": "344.85",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "345.2700",
+          "predict_V2_iso_IAPWS": "345.9700",
+          "predict_V3_ISA_CC": "342.2938",
+          "predict_V4_ISA_IAPWS": "343.0970"
+        },
+        {
+          "input": "{\"altitude_m\": 8992.0}",
+          "output": "344.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "345.0504",
+          "predict_V2_iso_IAPWS": "345.7579",
+          "predict_V3_ISA_CC": "342.0234",
+          "predict_V4_ISA_IAPWS": "342.8363"
+        },
+        {
+          "input": "{\"altitude_m\": 9068.0}",
+          "output": "344.45",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "344.8311",
+          "predict_V2_iso_IAPWS": "345.5461",
+          "predict_V3_ISA_CC": "341.7529",
+          "predict_V4_ISA_IAPWS": "342.5754"
+        },
+        {
+          "input": "{\"altitude_m\": 9144.0}",
+          "output": "344.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "344.6121",
+          "predict_V2_iso_IAPWS": "345.3345",
+          "predict_V3_ISA_CC": "341.4822",
+          "predict_V4_ISA_IAPWS": "342.3145"
+        }
+      ]
+    },
+    {
+      "dataset": "iapws_if97_at_isa_consistency_computed",
+      "examples": [
+        {
+          "input": "{\"altitude_m\": -305.0}",
+          "output": "374.137",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "374.1371"
+        },
+        {
+          "input": "{\"altitude_m\": -229.0}",
+          "output": "373.885",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "373.8848"
+        },
+        {
+          "input": "{\"altitude_m\": -152.0}",
+          "output": "373.629",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "373.6291"
+        },
+        {
+          "input": "{\"altitude_m\": -76.0}",
+          "output": "373.377",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "373.3767"
+        },
+        {
+          "input": "{\"altitude_m\": 0.0}",
+          "output": "373.124",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "373.1243"
+        },
+        {
+          "input": "{\"altitude_m\": 76.0}",
+          "output": "372.872",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "372.8718"
+        },
+        {
+          "input": "{\"altitude_m\": 152.0}",
+          "output": "372.619",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "372.6193"
+        },
+        {
+          "input": "{\"altitude_m\": 229.0}",
+          "output": "372.363",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "372.3634"
+        },
+        {
+          "input": "{\"altitude_m\": 305.0}",
+          "output": "372.111",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "372.1108"
+        },
+        {
+          "input": "{\"altitude_m\": 381.0}",
+          "output": "371.858",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "371.8582"
+        },
+        {
+          "input": "{\"altitude_m\": 457.0}",
+          "output": "371.605",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "371.6055"
+        },
+        {
+          "input": "{\"altitude_m\": 533.0}",
+          "output": "371.353",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "371.3528"
+        },
+        {
+          "input": "{\"altitude_m\": 610.0}",
+          "output": "371.097",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "371.0967"
+        },
+        {
+          "input": "{\"altitude_m\": 686.0}",
+          "output": "370.844",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "370.8438"
+        },
+        {
+          "input": "{\"altitude_m\": 762.0}",
+          "output": "370.591",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "370.5910"
+        },
+        {
+          "input": "{\"altitude_m\": 838.0}",
+          "output": "370.338",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "370.3381"
+        },
+        {
+          "input": "{\"altitude_m\": 914.0}",
+          "output": "370.085",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "370.0851"
+        },
+        {
+          "input": "{\"altitude_m\": 991.0}",
+          "output": "369.829",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "369.8288"
+        },
+        {
+          "input": "{\"altitude_m\": 1067.0}",
+          "output": "369.576",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "369.5757"
+        },
+        {
+          "input": "{\"altitude_m\": 1143.0}",
+          "output": "369.323",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "369.3226"
+        },
+        {
+          "input": "{\"altitude_m\": 1219.0}",
+          "output": "369.069",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "369.0695"
+        },
+        {
+          "input": "{\"altitude_m\": 1295.0}",
+          "output": "368.816",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "368.8163"
+        },
+        {
+          "input": "{\"altitude_m\": 1372.0}",
+          "output": "368.560",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "368.5597"
+        },
+        {
+          "input": "{\"altitude_m\": 1448.0}",
+          "output": "368.306",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "368.3064"
+        },
+        {
+          "input": "{\"altitude_m\": 1524.0}",
+          "output": "368.053",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "368.0531"
+        },
+        {
+          "input": "{\"altitude_m\": 1600.0}",
+          "output": "367.800",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "367.7997"
+        },
+        {
+          "input": "{\"altitude_m\": 1676.0}",
+          "output": "367.546",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "367.5462"
+        },
+        {
+          "input": "{\"altitude_m\": 1753.0}",
+          "output": "367.289",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "367.2894"
+        },
+        {
+          "input": "{\"altitude_m\": 1829.0}",
+          "output": "367.036",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "367.0359"
+        },
+        {
+          "input": "{\"altitude_m\": 1905.0}",
+          "output": "366.782",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "366.7823"
+        },
+        {
+          "input": "{\"altitude_m\": 1981.0}",
+          "output": "366.529",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "366.5286"
+        },
+        {
+          "input": "{\"altitude_m\": 2057.0}",
+          "output": "366.275",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "366.2749"
+        },
+        {
+          "input": "{\"altitude_m\": 2134.0}",
+          "output": "366.018",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "366.0178"
+        },
+        {
+          "input": "{\"altitude_m\": 2210.0}",
+          "output": "365.764",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "365.7640"
+        },
+        {
+          "input": "{\"altitude_m\": 2286.0}",
+          "output": "365.510",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "365.5102"
+        },
+        {
+          "input": "{\"altitude_m\": 2362.0}",
+          "output": "365.256",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "365.2562"
+        },
+        {
+          "input": "{\"altitude_m\": 2438.0}",
+          "output": "365.002",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "365.0023"
+        },
+        {
+          "input": "{\"altitude_m\": 2515.0}",
+          "output": "364.745",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "364.7449"
+        },
+        {
+          "input": "{\"altitude_m\": 2591.0}",
+          "output": "364.491",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "364.4908"
+        },
+        {
+          "input": "{\"altitude_m\": 2667.0}",
+          "output": "364.237",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "364.2367"
+        },
+        {
+          "input": "{\"altitude_m\": 2743.0}",
+          "output": "363.982",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "363.9825"
+        },
+        {
+          "input": "{\"altitude_m\": 2819.0}",
+          "output": "363.728",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "363.7282"
+        },
+        {
+          "input": "{\"altitude_m\": 2896.0}",
+          "output": "363.470",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "363.4706"
+        },
+        {
+          "input": "{\"altitude_m\": 2972.0}",
+          "output": "363.216",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "363.2162"
+        },
+        {
+          "input": "{\"altitude_m\": 3048.0}",
+          "output": "362.962",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "362.9618"
+        },
+        {
+          "input": "{\"altitude_m\": 3124.0}",
+          "output": "362.707",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "362.7073"
+        },
+        {
+          "input": "{\"altitude_m\": 3200.0}",
+          "output": "362.453",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "362.4527"
+        },
+        {
+          "input": "{\"altitude_m\": 3277.0}",
+          "output": "362.195",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "362.1948"
+        },
+        {
+          "input": "{\"altitude_m\": 3353.0}",
+          "output": "361.940",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "361.9401"
+        },
+        {
+          "input": "{\"altitude_m\": 3429.0}",
+          "output": "361.685",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "361.6854"
+        },
+        {
+          "input": "{\"altitude_m\": 3505.0}",
+          "output": "361.430",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "361.4306"
+        },
+        {
+          "input": "{\"altitude_m\": 3581.0}",
+          "output": "361.176",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "361.1757"
+        },
+        {
+          "input": "{\"altitude_m\": 3658.0}",
+          "output": "360.917",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "360.9174"
+        },
+        {
+          "input": "{\"altitude_m\": 3734.0}",
+          "output": "360.662",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "360.6625"
+        },
+        {
+          "input": "{\"altitude_m\": 3810.0}",
+          "output": "360.407",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "360.4074"
+        },
+        {
+          "input": "{\"altitude_m\": 3886.0}",
+          "output": "360.152",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "360.1523"
+        },
+        {
+          "input": "{\"altitude_m\": 3962.0}",
+          "output": "359.897",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "359.8971"
+        },
+        {
+          "input": "{\"altitude_m\": 4037.0}",
+          "output": "359.645",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "359.6452"
+        },
+        {
+          "input": "{\"altitude_m\": 4115.0}",
+          "output": "359.383",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "359.3832"
+        },
+        {
+          "input": "{\"altitude_m\": 4191.0}",
+          "output": "359.128",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "359.1278"
+        },
+        {
+          "input": "{\"altitude_m\": 4267.0}",
+          "output": "358.872",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "358.8724"
+        },
+        {
+          "input": "{\"altitude_m\": 4343.0}",
+          "output": "358.617",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "358.6169"
+        },
+        {
+          "input": "{\"altitude_m\": 4420.0}",
+          "output": "358.358",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "358.3580"
+        },
+        {
+          "input": "{\"altitude_m\": 4496.0}",
+          "output": "358.102",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "358.1023"
+        },
+        {
+          "input": "{\"altitude_m\": 4572.0}",
+          "output": "357.846",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "357.8466"
+        },
+        {
+          "input": "{\"altitude_m\": 4648.0}",
+          "output": "357.591",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "357.5908"
+        },
+        {
+          "input": "{\"altitude_m\": 4724.0}",
+          "output": "357.335",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "357.3350"
+        },
+        {
+          "input": "{\"altitude_m\": 4801.0}",
+          "output": "357.075",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "357.0757"
+        },
+        {
+          "input": "{\"altitude_m\": 4877.0}",
+          "output": "356.819",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "356.8197"
+        },
+        {
+          "input": "{\"altitude_m\": 4953.0}",
+          "output": "356.563",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "356.5636"
+        },
+        {
+          "input": "{\"altitude_m\": 5029.0}",
+          "output": "356.307",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "356.3075"
+        },
+        {
+          "input": "{\"altitude_m\": 5105.0}",
+          "output": "356.051",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "356.0513"
+        },
+        {
+          "input": "{\"altitude_m\": 5182.0}",
+          "output": "355.791",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "355.7916"
+        },
+        {
+          "input": "{\"altitude_m\": 5258.0}",
+          "output": "355.535",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "355.5352"
+        },
+        {
+          "input": "{\"altitude_m\": 5334.0}",
+          "output": "355.279",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "355.2788"
+        },
+        {
+          "input": "{\"altitude_m\": 5410.0}",
+          "output": "355.022",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "355.0223"
+        },
+        {
+          "input": "{\"altitude_m\": 5486.0}",
+          "output": "354.765",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "354.7657"
+        },
+        {
+          "input": "{\"altitude_m\": 5563.0}",
+          "output": "354.505",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "354.5057"
+        },
+        {
+          "input": "{\"altitude_m\": 5639.0}",
+          "output": "354.249",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "354.2489"
+        },
+        {
+          "input": "{\"altitude_m\": 5715.0}",
+          "output": "353.992",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "353.9921"
+        },
+        {
+          "input": "{\"altitude_m\": 5791.0}",
+          "output": "353.735",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "353.7352"
+        },
+        {
+          "input": "{\"altitude_m\": 5867.0}",
+          "output": "353.478",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "353.4782"
+        },
+        {
+          "input": "{\"altitude_m\": 5944.0}",
+          "output": "353.217",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "353.2178"
+        },
+        {
+          "input": "{\"altitude_m\": 6020.0}",
+          "output": "352.960",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "352.9607"
+        },
+        {
+          "input": "{\"altitude_m\": 6096.0}",
+          "output": "352.703",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "352.7035"
+        },
+        {
+          "input": "{\"altitude_m\": 6172.0}",
+          "output": "352.446",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "352.4462"
+        },
+        {
+          "input": "{\"altitude_m\": 6248.0}",
+          "output": "352.188",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "352.1888"
+        },
+        {
+          "input": "{\"altitude_m\": 6325.0}",
+          "output": "351.928",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "351.9279"
+        },
+        {
+          "input": "{\"altitude_m\": 6401.0}",
+          "output": "351.670",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "351.6704"
+        },
+        {
+          "input": "{\"altitude_m\": 6477.0}",
+          "output": "351.412",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "351.4128"
+        },
+        {
+          "input": "{\"altitude_m\": 6553.0}",
+          "output": "351.155",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "351.1551"
+        },
+        {
+          "input": "{\"altitude_m\": 6629.0}",
+          "output": "350.897",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "350.8973"
+        },
+        {
+          "input": "{\"altitude_m\": 6706.0}",
+          "output": "350.636",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "350.6360"
+        },
+        {
+          "input": "{\"altitude_m\": 6782.0}",
+          "output": "350.378",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "350.3780"
+        },
+        {
+          "input": "{\"altitude_m\": 6858.0}",
+          "output": "350.120",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "350.1200"
+        },
+        {
+          "input": "{\"altitude_m\": 6934.0}",
+          "output": "349.861",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "349.8619"
+        },
+        {
+          "input": "{\"altitude_m\": 7010.0}",
+          "output": "349.603",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "349.6036"
+        },
+        {
+          "input": "{\"altitude_m\": 7087.0}",
+          "output": "349.342",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "349.3419"
+        },
+        {
+          "input": "{\"altitude_m\": 7163.0}",
+          "output": "349.083",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "349.0835"
+        },
+        {
+          "input": "{\"altitude_m\": 7239.0}",
+          "output": "348.825",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "348.8250"
+        },
+        {
+          "input": "{\"altitude_m\": 7315.0}",
+          "output": "348.566",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "348.5664"
+        },
+        {
+          "input": "{\"altitude_m\": 7391.0}",
+          "output": "348.307",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "348.3078"
+        },
+        {
+          "input": "{\"altitude_m\": 7468.0}",
+          "output": "348.045",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "348.0456"
+        },
+        {
+          "input": "{\"altitude_m\": 7544.0}",
+          "output": "347.786",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "347.7867"
+        },
+        {
+          "input": "{\"altitude_m\": 7620.0}",
+          "output": "347.527",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "347.5278"
+        },
+        {
+          "input": "{\"altitude_m\": 7696.0}",
+          "output": "347.268",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "347.2687"
+        },
+        {
+          "input": "{\"altitude_m\": 7772.0}",
+          "output": "347.009",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "347.0096"
+        },
+        {
+          "input": "{\"altitude_m\": 7849.0}",
+          "output": "346.746",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "346.7469"
+        },
+        {
+          "input": "{\"altitude_m\": 7925.0}",
+          "output": "346.487",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "346.4876"
+        },
+        {
+          "input": "{\"altitude_m\": 8001.0}",
+          "output": "346.228",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "346.2282"
+        },
+        {
+          "input": "{\"altitude_m\": 8077.0}",
+          "output": "345.968",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "345.9687"
+        },
+        {
+          "input": "{\"altitude_m\": 8153.0}",
+          "output": "345.709",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "345.7090"
+        },
+        {
+          "input": "{\"altitude_m\": 8230.0}",
+          "output": "345.445",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "345.4459"
+        },
+        {
+          "input": "{\"altitude_m\": 8306.0}",
+          "output": "345.186",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "345.1861"
+        },
+        {
+          "input": "{\"altitude_m\": 8382.0}",
+          "output": "344.926",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "344.9262"
+        },
+        {
+          "input": "{\"altitude_m\": 8458.0}",
+          "output": "344.666",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "344.6661"
+        },
+        {
+          "input": "{\"altitude_m\": 8534.0}",
+          "output": "344.406",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "344.4060"
+        },
+        {
+          "input": "{\"altitude_m\": 8611.0}",
+          "output": "344.142",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "344.1424"
+        },
+        {
+          "input": "{\"altitude_m\": 8687.0}",
+          "output": "343.882",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "343.8820"
+        },
+        {
+          "input": "{\"altitude_m\": 8763.0}",
+          "output": "343.621",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "343.6216"
+        },
+        {
+          "input": "{\"altitude_m\": 8839.0}",
+          "output": "343.361",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "343.3611"
+        },
+        {
+          "input": "{\"altitude_m\": 8916.0}",
+          "output": "343.097",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "343.0970"
+        },
+        {
+          "input": "{\"altitude_m\": 8992.0}",
+          "output": "342.836",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "342.8363"
+        },
+        {
+          "input": "{\"altitude_m\": 9068.0}",
+          "output": "342.575",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "342.5754"
+        },
+        {
+          "input": "{\"altitude_m\": 9144.0}",
+          "output": "342.314",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "342.3145"
+        }
+      ]
+    }
+  ]
+}

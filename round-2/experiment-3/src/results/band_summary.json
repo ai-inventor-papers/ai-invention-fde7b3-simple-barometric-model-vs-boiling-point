@@ -1,0 +1,53 @@
+{
+  "note": "Bands 3-6 km and 5-6 km overlap; a record can fall in both.",
+  "bands": [
+    {
+      "band": "0-3 km",
+      "n": 0,
+      "V1_iso_CC": "n=0, no statistic",
+      "V2_iso_IAPWS": "n=0, no statistic",
+      "V3_ISA_CC": "n=0, no statistic",
+      "V4_ISA_IAPWS": "n=0, no statistic"
+    },
+    {
+      "band": "3-6 km",
+      "n": 0,
+      "V1_iso_CC": "n=0, no statistic",
+      "V2_iso_IAPWS": "n=0, no statistic",
+      "V3_ISA_CC": "n=0, no statistic",
+      "V4_ISA_IAPWS": "n=0, no statistic"
+    },
+    {
+      "band": "5-6 km",
+      "n": 0,
+      "V1_iso_CC": "n=0, no statistic",
+      "V2_iso_IAPWS": "n=0, no statistic",
+      "V3_ISA_CC": "n=0, no statistic",
+      "V4_ISA_IAPWS": "n=0, no statistic"
+    },
+    {
+      "band": "6-7 km",
+      "n": 0,
+      "V1_iso_CC": "n=0, no statistic",
+      "V2_iso_IAPWS": "n=0, no statistic",
+      "V3_ISA_CC": "n=0, no statistic",
+      "V4_ISA_IAPWS": "n=0, no statistic"
+    },
+    {
+      "band": "7-8 km",
+      "n": 0,
+      "V1_iso_CC": "n=0, no statistic",
+      "V2_iso_IAPWS": "n=0, no statistic",
+      "V3_ISA_CC": "n=0, no statistic",
+      "V4_ISA_IAPWS": "n=0, no statistic"
+    },
+    {
+      "band": "above 8 km",
+      "n": 0,
+      "V1_iso_CC": "n=0, no statistic",
+      "V2_iso_IAPWS": "n=0, no statistic",
+      "V3_ISA_CC": "n=0, no statistic",
+      "V4_ISA_IAPWS": "n=0, no statistic"
+    }
+  ]
+}

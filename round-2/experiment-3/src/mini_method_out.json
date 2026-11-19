@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "method_name": "Barometric and constant-enthalpy models of water boiling point (2x2 variants)",
+    "description": "Measured set n=0 above and below 5 km: no measured boiling observation could be cited after a bounded search. Only computed consistency checks are reported.",
+    "measured_n": 0,
+    "variants": {
+      "V1": "iso + CC",
+      "V2": "iso + IAPWS-97",
+      "V3": "ISA + CC",
+      "V4": "ISA + IAPWS-97"
+    },
+    "constants": {
+      "R": 8.314462618,
+      "M": 0.0289644,
+      "g": 9.80665,
+      "T0": 288.15,
+      "P0": 101325.0,
+      "L": 0.0065,
+      "Tref_K": 373.124,
+      "Pref_Pa": 101325.0,
+      "dH_J_per_mol": 40650.0
+    },
+    "unit_checks_pass": true,
+    "V4_vs_IAPWS_at_ISA_max_abs_K": 0.0009379339757060734,
+    "toolbox_residual_summary_computed": {
+      "ToolBox_resid_V1_K_bias": 0.3707672870443948,
+      "ToolBox_resid_V1_K_MAE": 0.3754160848797428,
+      "ToolBox_resid_V1_K_maxabs": 0.5692631256241043,
+      "ToolBox_resid_V2_K_bias": 0.6881894835812454,
+      "ToolBox_resid_V2_K_MAE": 0.69332910470969,
+      "ToolBox_resid_V2_K_maxabs": 1.1200449864940651,
+      "ToolBox_resid_V3_K_bias": -0.6459756759391189,
+      "ToolBox_resid_V3_K_MAE": 0.7052626837526537,
+      "ToolBox_resid_V3_K_maxabs": 2.767801497027051,
+      "ToolBox_resid_V4_K_bias": -0.2973870019058113,
+      "ToolBox_resid_V4_K_MAE": 0.4683311718400282,
+      "ToolBox_resid_V4_K_maxabs": 1.9355454538041386
+    },
+    "sensitivity_computed": {
+      "anchor_373.15K": {
+        "V1_change_bias_K": 0.024080244723678333,
+        "V1_change_maxabs_K": 0.026144104741661067,
+        "V3_change_bias_K": 0.023947177863310572,
+        "V3_change_maxabs_K": 0.026143609234168252
+      },
+      "dH_plus_500": {
+        "V1_change_bias_K": 0.16301515886836931,
+        "V1_change_maxabs_K": 0.3202631098668576,
+        "V3_change_bias_K": 0.17388023045046339,
+        "V3_change_maxabs_K": 0.3522280844253487
+      },
+      "dH_minus_500": {
+        "V1_change_bias_K": -0.1668634901385549,
+        "V1_change_maxabs_K": 0.32762324247073593,
+        "V3_change_bias_K": -0.17796490825726505,
+        "V3_change_maxabs_K": 0.3602484638174701
+      }
+    },
+    "band_summary_measured": {
+      "note": "Bands 3-6 km and 5-6 km overlap; a record can fall in both.",
+      "bands": [
+        {
+          "band": "0-3 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "3-6 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "5-6 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "6-7 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "7-8 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        },
+        {
+          "band": "above 8 km",
+          "n": 0,
+          "V1_iso_CC": "n=0, no statistic",
+          "V2_iso_IAPWS": "n=0, no statistic",
+          "V3_ISA_CC": "n=0, no statistic",
+          "V4_ISA_IAPWS": "n=0, no statistic"
+        }
+      ]
+    },
+    "note_iapws_bracket": "IAPWS solve bracket 273.16-647.0 K; plan's 373.946 K upper bound replaced (it is ~100.8 C, not the critical point)."
+  },
+  "datasets": [
+    {
+      "dataset": "engtoolbox_boiling_altitude_computed_check",
+      "examples": [
+        {
+          "input": "{\"altitude_m\": -305.0}",
+          "output": "374.25",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "374.1566",
+          "predict_V2_iso_IAPWS": "374.1406",
+          "predict_V3_ISA_CC": "374.1530",
+          "predict_V4_ISA_IAPWS": "374.1371"
+        },
+        {
+          "input": "{\"altitude_m\": -229.0}",
+          "output": "373.95",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "373.8987",
+          "predict_V2_iso_IAPWS": "373.8868",
+          "predict_V3_ISA_CC": "373.8967",
+          "predict_V4_ISA_IAPWS": "373.8848"
+        },
+        {
+          "input": "{\"altitude_m\": -152.0}",
+          "output": "373.65",
+          "metadata_source": "engtoolbox_boiling_altitude",
+          "metadata_data_type": "computed_unknown_method",
+          "metadata_role": "computed consistency check, not measured",
+          "predict_V1_iso_CC": "373.6379",
+          "predict_V2_iso_IAPWS": "373.6300",
+          "predict_V3_ISA_CC": "373.6370",
+          "predict_V4_ISA_IAPWS": "373.6291"
+        }
+      ]
+    },
+    {
+      "dataset": "iapws_if97_at_isa_consistency_computed",
+      "examples": [
+        {
+          "input": "{\"altitude_m\": -305.0}",
+          "output": "374.137",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "374.1371"
+        },
+        {
+          "input": "{\"altitude_m\": -229.0}",
+          "output": "373.885",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "373.8848"
+        },
+        {
+          "input": "{\"altitude_m\": -152.0}",
+          "output": "373.629",
+          "metadata_source": "iapws_if97_saturation",
+          "metadata_data_type": "computed_reference",
+          "metadata_role": "V4 reproduction check, not measured",
+          "predict_V4_ISA_IAPWS": "373.6291"
+        }
+      ]
+    }
+  ]
+}
