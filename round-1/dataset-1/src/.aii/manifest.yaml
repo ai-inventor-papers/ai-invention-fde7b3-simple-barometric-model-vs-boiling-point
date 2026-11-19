@@ -1,0 +1,4 @@
+entries:
+  - path: .venv/
+    delete: regenerable
+    source: "uv venv .venv --python 3.12 && uv pip install --python .venv/bin/python iapws pymupdf python-dotenv jsonschema requests html2text"

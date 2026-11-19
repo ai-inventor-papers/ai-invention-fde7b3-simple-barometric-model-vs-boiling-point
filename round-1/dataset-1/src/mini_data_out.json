@@ -1,0 +1,104 @@
+{
+ "metadata": {
+  "description": "Water boiling temperature vs altitude/pressure reference table. No measured rows: all rows are computed_reference or computed_unknown_method.",
+  "n_measured": 0,
+  "n_computed_reference": 125,
+  "n_computed_unknown_method": 125
+ },
+ "datasets": [
+  {
+   "dataset": "engtoolbox_boiling_altitude",
+   "examples": [
+    {
+     "input": "{\"altitude_m\": -305, \"pressure_Pa\": null}",
+     "output": "374.25",
+     "metadata_row_index": 0,
+     "metadata_data_type": "computed_unknown_method",
+     "metadata_source_id": "engtoolbox_boiling_altitude",
+     "metadata_altitude_m": -305,
+     "metadata_pressure_Pa": null,
+     "metadata_method_note": "Published tabulated value; the source does not state its method. Benchmark only.",
+     "metadata_reference_pressure_note": "none stated",
+     "metadata_citation": "Engineering ToolBox, 'Water - Boiling Points vs. Altitude', https://www.engineeringtoolbox.com/boiling-points-water-altitude-d_1344.html (accessed 2026-11-19)",
+     "metadata_raw_value": 101.1,
+     "metadata_raw_unit": "C"
+    },
+    {
+     "input": "{\"altitude_m\": -229, \"pressure_Pa\": null}",
+     "output": "373.95",
+     "metadata_row_index": 1,
+     "metadata_data_type": "computed_unknown_method",
+     "metadata_source_id": "engtoolbox_boiling_altitude",
+     "metadata_altitude_m": -229,
+     "metadata_pressure_Pa": null,
+     "metadata_method_note": "Published tabulated value; the source does not state its method. Benchmark only.",
+     "metadata_reference_pressure_note": "none stated",
+     "metadata_citation": "Engineering ToolBox, 'Water - Boiling Points vs. Altitude', https://www.engineeringtoolbox.com/boiling-points-water-altitude-d_1344.html (accessed 2026-11-19)",
+     "metadata_raw_value": 100.8,
+     "metadata_raw_unit": "C"
+    },
+    {
+     "input": "{\"altitude_m\": -152, \"pressure_Pa\": null}",
+     "output": "373.65",
+     "metadata_row_index": 2,
+     "metadata_data_type": "computed_unknown_method",
+     "metadata_source_id": "engtoolbox_boiling_altitude",
+     "metadata_altitude_m": -152,
+     "metadata_pressure_Pa": null,
+     "metadata_method_note": "Published tabulated value; the source does not state its method. Benchmark only.",
+     "metadata_reference_pressure_note": "none stated",
+     "metadata_citation": "Engineering ToolBox, 'Water - Boiling Points vs. Altitude', https://www.engineeringtoolbox.com/boiling-points-water-altitude-d_1344.html (accessed 2026-11-19)",
+     "metadata_raw_value": 100.5,
+     "metadata_raw_unit": "C"
+    }
+   ]
+  },
+  {
+   "dataset": "iapws_if97_saturation",
+   "examples": [
+    {
+     "input": "{\"altitude_m\": -305, \"pressure_Pa\": 105043.1}",
+     "output": "374.137",
+     "metadata_row_index": 125,
+     "metadata_data_type": "computed_reference",
+     "metadata_source_id": "iapws_if97_saturation",
+     "metadata_altitude_m": -305,
+     "metadata_pressure_Pa": 105043.1,
+     "metadata_method_note": "IAPWS-IF97 Tsat(P), with pressure from the ISA troposphere formula P=101325*(1-2.25577e-5*h)^5.25588 (a standard-atmosphere model, not a measurement)",
+     "metadata_reference_pressure_note": "pressure is the ISA model value at the altitude",
+     "metadata_citation": "Wagner W, Pruss A (2002) The IAPWS Formulation 1995 for the Thermodynamic Properties of Ordinary Water Substance for General and Scientific Use, J Phys Chem Ref Data 31:387-535; IAPWS-IF97 evaluated with the iapws Python package v1.5.5",
+     "metadata_raw_value": null,
+     "metadata_raw_unit": null
+    },
+    {
+     "input": "{\"altitude_m\": -229, \"pressure_Pa\": 104106.4}",
+     "output": "373.885",
+     "metadata_row_index": 126,
+     "metadata_data_type": "computed_reference",
+     "metadata_source_id": "iapws_if97_saturation",
+     "metadata_altitude_m": -229,
+     "metadata_pressure_Pa": 104106.4,
+     "metadata_method_note": "IAPWS-IF97 Tsat(P), with pressure from the ISA troposphere formula P=101325*(1-2.25577e-5*h)^5.25588 (a standard-atmosphere model, not a measurement)",
+     "metadata_reference_pressure_note": "pressure is the ISA model value at the altitude",
+     "metadata_citation": "Wagner W, Pruss A (2002) The IAPWS Formulation 1995 for the Thermodynamic Properties of Ordinary Water Substance for General and Scientific Use, J Phys Chem Ref Data 31:387-535; IAPWS-IF97 evaluated with the iapws Python package v1.5.5",
+     "metadata_raw_value": null,
+     "metadata_raw_unit": null
+    },
+    {
+     "input": "{\"altitude_m\": -152, \"pressure_Pa\": 103164.4}",
+     "output": "373.629",
+     "metadata_row_index": 127,
+     "metadata_data_type": "computed_reference",
+     "metadata_source_id": "iapws_if97_saturation",
+     "metadata_altitude_m": -152,
+     "metadata_pressure_Pa": 103164.4,
+     "metadata_method_note": "IAPWS-IF97 Tsat(P), with pressure from the ISA troposphere formula P=101325*(1-2.25577e-5*h)^5.25588 (a standard-atmosphere model, not a measurement)",
+     "metadata_reference_pressure_note": "pressure is the ISA model value at the altitude",
+     "metadata_citation": "Wagner W, Pruss A (2002) The IAPWS Formulation 1995 for the Thermodynamic Properties of Ordinary Water Substance for General and Scientific Use, J Phys Chem Ref Data 31:387-535; IAPWS-IF97 evaluated with the iapws Python package v1.5.5",
+     "metadata_raw_value": null,
+     "metadata_raw_unit": null
+    }
+   ]
+  }
+ ]
+}
