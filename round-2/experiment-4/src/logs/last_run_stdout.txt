@@ -1,0 +1,12 @@
+15:08:09|INFO   |Variant B: dH_eff = 41829.70 J/mol, fit rms lnP = 1.15e-03
+15:08:09|INFO   |Dataset names found: ['engtoolbox_boiling_altitude', 'iapws_if97_saturation']; sizes [125, 125]
+15:08:09|INFO   |Loaded 125 ToolBox rows and 125 IAPWS-at-ISA rows; altitudes -305 .. 9144 m
+15:08:09|INFO   |Evaluated 25/125 altitudes
+15:08:09|INFO   |Evaluated 50/125 altitudes
+15:08:09|INFO   |Evaluated 75/125 altitudes
+15:08:09|INFO   |Evaluated 100/125 altitudes
+15:08:09|INFO   |Evaluated 125/125 altitudes
+15:08:09|INFO   |Model evaluation done in 0.3 s
+15:08:09|INFO   |Loop cross-check: all band statistics agree within 1e-9 K
+15:08:09|INFO   |Checks: 3=3.00e-04 K, 5 max=5.28e-04 K (stored P), 6 iso=+0.493, isa=-1.694
+15:08:09|INFO   |All outputs written in 0.5 s

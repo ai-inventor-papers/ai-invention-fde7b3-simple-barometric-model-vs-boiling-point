@@ -1,0 +1,84 @@
+{
+  "1_pressure_at_h0": {
+    "P_iso_Pa": 101325.0,
+    "P_isa_Pa": 101325.0,
+    "P0_Pa": 101325.0,
+    "pass": true
+  },
+  "2_formula_A_at_P0": {
+    "373.124": {
+      "tb_at_P0_K": 373.124,
+      "pass": true
+    },
+    "373.15": {
+      "tb_at_P0_K": 373.15,
+      "pass": true
+    }
+  },
+  "3_IAPWS_inversion_at_P0": {
+    "tb_K": 373.124300000477,
+    "anchor_K": 373.124,
+    "abs_diff_K": 0.0003000004769546649,
+    "pass": true
+  },
+  "4_ISA_pressure_at_9144m": {
+    "P_isa_Pa": 30090.21491599422,
+    "dataset_reference_Pa": 30089.6,
+    "abs_diff_Pa": 0.6149159942215192,
+    "pass": true
+  },
+  "5_C_isa_reproduces_iapws_reference": {
+    "max_abs_diff_using_stored_pressure_K": 0.0005283386857968253,
+    "at_altitude_m": 7849.0,
+    "max_abs_diff_using_formula_pressure_K": 0.0009379339791166785,
+    "at_altitude_m_formula": 7849.0,
+    "pass": true
+  },
+  "6_reproduce_earlier_round_biases_A373.15_vs_ToolBox_6_9km": {
+    "isothermal_bias_K": 0.49281797988885634,
+    "expected_isothermal_range_K": [
+      0.2,
+      0.5
+    ],
+    "isa_bias_K": -1.693838817216312,
+    "expected_isa_about_K": -1.6,
+    "pass_isothermal_range": true,
+    "pass_isa_within_0_3_of_minus_1_6": true,
+    "note": "a value outside the expected range means a bug or a change in data; reported, not forced"
+  },
+  "7_loop_vs_numpy_band_statistics": {
+    "n_mismatches": 0,
+    "tolerance_K": 1e-09,
+    "pass": true
+  },
+  "8_sea_level_anchor_shift": {
+    "shift_K_signed": -0.025999999999953616,
+    "magnitude_K": 0.025999999999953616,
+    "expected_magnitude_K": 0.025999999999953616,
+    "pass": true
+  },
+  "grid_note": {
+    "plan_grid": "linspace(0,8992,119)+[9144] (120 points)",
+    "dataset_altitudes_used": 125,
+    "dataset_altitude_min_m": -305.0,
+    "dataset_altitude_max_m": 9144.0,
+    "decision": "dataset altitudes used directly, as the plan allows when the grid differs"
+  },
+  "fit_B": {
+    "dH_eff_J_per_mol": 41829.695833259204,
+    "intercept_a": 25.011686192084014,
+    "fit_range_K": [
+      343.15,
+      373.15
+    ],
+    "n_points": 31,
+    "fit_rms_lnP": 0.0011526733500577925,
+    "fit_max_abs_lnP": 0.002393715134980212,
+    "fit_max_rel_pressure_error": 0.002390852483486139
+  },
+  "dH_C_local_isa_J_per_mol": {
+    "min": 41282.24655685319,
+    "max": 42373.82813961102
+  },
+  "all_pass_for_gates": true
+}

@@ -1,0 +1,52 @@
+{
+  "P0_Pa": 101325.0,
+  "T0_K": 288.15,
+  "lapse_K_per_m": 0.0065,
+  "g0_m_per_s2": 9.80665,
+  "R_J_per_mol_K": 8.314462618,
+  "M_kg_per_mol": 0.0289644,
+  "dH_vap_J_per_mol": 40650.0,
+  "anchor_IAPWS_K": 373.124,
+  "anchor_old_K": 373.15,
+  "isa_exponent_computed": 5.255785959221189,
+  "scale_height_m": 8434.6603105082,
+  "sources": {
+    "P0_T0_L": {
+      "source": "ISO 2533:1975 as summarised in the Wikipedia article 'International Standard Atmosphere'",
+      "url": "https://en.wikipedia.org/wiki/International_Standard_Atmosphere",
+      "fetched_2026_11_19": true,
+      "note": "page gives 101,325 Pa, 288.15 K, 6.5 K/km; the ISO 2533 PDF itself was not fetched"
+    },
+    "g0": {
+      "source": "standard gravity definition (CGPM 1901); not fetched from a document",
+      "fetched": false
+    },
+    "R": {
+      "source": "CODATA 2018 (NIST), not fetched",
+      "fetched": false
+    },
+    "M": {
+      "source": "ISO 2533 ISA constant 28.9644 g/mol; the fetched Wikipedia ICAO table lists 28.966 (rounded)",
+      "url": "https://en.wikipedia.org/wiki/International_Standard_Atmosphere",
+      "fetched_2026_11_19": true,
+      "note": "M = 0.0289644 kg/mol gives exponent 5.25588, matching the dataset's ISA exponent"
+    },
+    "dH_vap": {
+      "source": "plan value 40650 J/mol; not independently verified here",
+      "fetched": false
+    },
+    "anchor_IAPWS": {
+      "source": "IAPWS-IF97; verified by the computed check 3 (inversion at P0 returns 373.124 K)"
+    },
+    "anchor_old": {
+      "source": "value used in the earlier round, not verified"
+    }
+  },
+  "not_verified_by_fetch": [
+    "g0",
+    "R",
+    "dH_vap",
+    "M (rounded in fetched source)",
+    "anchor_old"
+  ]
+}

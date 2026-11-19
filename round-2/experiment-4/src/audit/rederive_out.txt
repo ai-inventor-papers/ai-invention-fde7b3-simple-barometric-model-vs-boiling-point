@@ -1,0 +1,16 @@
+max |P recomputed - stored| over altitudes: 1.019e-10 Pa
+max |Tb rearranged - stored model| for variants A373.124/A373.15: 1.137e-13 K
+6-9 km vs ToolBox  isothermal A373.124           bias=+0.4700 K n=42
+6-9 km vs ToolBox  isothermal A373.15            bias=+0.4928 K n=42
+6-9 km vs ToolBox  isothermal B_effective        bias=+1.1023 K n=42
+6-9 km vs ToolBox  isothermal C_iapws_inversion  bias=+1.0445 K n=42
+6-9 km vs ToolBox  isa        A373.124           bias=-1.7163 K n=42
+6-9 km vs ToolBox  isa        A373.15            bias=-1.6938 K n=42
+6-9 km vs ToolBox  isa        B_effective        bias=-1.0307 K n=42
+6-9 km vs ToolBox  isa        C_iapws_inversion  bias=-1.0708 K n=42
+anchor shift 6-9 km isothermal -0.0228 K, ISA -0.0225 K
+Z (B_effective, isothermal) = -134.51%
+Z (C_iapws_inversion, isothermal) = -122.21%
+Z (B_effective, isa) = 39.95%
+Z (C_iapws_inversion, isa) = 37.61%
+ISA minus isothermal 6-9 km (A373.15, ToolBox) = -2.1867 K

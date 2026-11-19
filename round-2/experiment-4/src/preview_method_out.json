@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "method_name": "Boiling-point model residual attribution",
+    "description": "Isothermal and ISA pressure models crossed with four thermodynamic variants; residuals vs computed references.",
+    "reference_status": "computed reference, not measured; agreement statistics only",
+    "variants": [
+      "A373.124",
+      "A373.15",
+      "B_effective",
+      "C_iapws_inversion"
+    ],
+    "limitations": [
+      "No measured rows: no accuracy claim against measurement.",
+      "Band 6-9 km includes 9144 m.",
+      "Variant B fitted to the same IAPWS curve that defines the reference.",
+      "Standard atmosphere only; no station pressure variation."
+    ],
+    "fit_B": {
+      "dH_eff_J_per_mol": 41829.695833259204,
+      "intercept_a": 25.011686192084014,
+      "fit_range_K": [
+        343.15,
+        373.15
+      ],
+      "n_points": 31,
+      "fit_rms_lnP": 0.0011526733500577925,
+      "fit_max_abs_lnP": 0.002393715134980212,
+      "fit_max_rel_pressure_error": 0.002390852483486139
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "boiling_point_altitude_residuals",
+      "examples": [
+        {
+          "input": "{\"altitude_m\": -305.0, \"band\": \"below sea level\", \"P_isothermal_Pa\": 105055.995, \"P_isa_Pa\": 105042.987}",
+          "output": "374.250",
+          "metadata_altitude_m": -305.0,
+          "metadata_band": "below sea level",
+          "metadata_ref_toolbox_K": 374.25,
+          "metadata_ref_iapws_isa_K": 374.137,
+          "predict_isothermal_A373124": "374.156553",
+          "metadata_residual_toolbox_isothermal_A373124_K": -0.09344684470380571,
+          "predict_isothermal_A37315": "374.182697",
+          "metadata_residual_toolbox_isothermal_A37315_K": -0.06730273996214464,
+          "predict_isothermal_B_effective": "374.127354",
+          "metadata_residual_toolbox_isothermal_B_effective_K": -0.12264557962583922,
+          "predict_isothermal_C_iapws_inversion": "374.140597",
+          "metadata_residual_toolbox_isothermal_C_iapws_inversion_K": -0.10940346609504559,
+          "predict_isa_A373124": "374.153008",
+          "metadata_residual_toolbox_isa_A373124_K": -0.09699242026829324,
+          "predict_isa_A37315": "374.179151",
+          "metadata_residual_toolbox_isa_A37315_K": -0.07084881103412499,
+          "predict_isa_B_effective": "374.123909",
+          "metadata_residual_toolbox_isa_B_effective_K": -0.12609062478372834,
+          "predict_isa_C_iapws_inversion": "374.137106",
+          "metadata_residual_toolbox_isa_C_iapws_inversion_K": -0.11289444787604452
+        },
+        {
+          "input": "{\"altitude_m\": -229.0, \"band\": \"below sea level\", \"P_isothermal_Pa\": 104113.646, \"P_isa_Pa\": 104106.37}",
+          "output": "373.950",
+          "metadata_altitude_m": -229.0,
+          "metadata_band": "below sea level",
+          "metadata_ref_toolbox_K": 373.95,
+          "metadata_ref_iapws_isa_K": 373.885,
+          "predict_isothermal_A373124": "373.898727",
+          "metadata_residual_toolbox_isothermal_A373124_K": -0.051273000370940736,
+          "predict_isothermal_A37315": "373.924835",
+          "metadata_residual_toolbox_isothermal_A37315_K": -0.02516491556099254,
+          "predict_isothermal_B_effective": "373.876834",
+          "metadata_residual_toolbox_isothermal_B_effective_K": -0.07316620831841192,
+          "predict_isothermal_C_iapws_inversion": "373.886762",
+          "metadata_residual_toolbox_isothermal_C_iapws_inversion_K": -0.06323760014805657,
+          "predict_isa_A373124": "373.896729",
+          "metadata_residual_toolbox_isa_A373124_K": -0.05327127407934995,
+          "predict_isa_A37315": "373.922837",
+          "metadata_residual_toolbox_isa_A37315_K": -0.02716346834381511,
+          "predict_isa_B_effective": "373.874892",
+          "metadata_residual_toolbox_isa_B_effective_K": -0.0751078988934637,
+          "predict_isa_C_iapws_inversion": "373.884795",
+          "metadata_residual_toolbox_isa_C_iapws_inversion_K": -0.06520475894984656
+        },
+        {
+          "input": "{\"altitude_m\": -152.0, \"band\": \"below sea level\", \"P_isothermal_Pa\": 103167.518, \"P_isa_Pa\": 103164.338}",
+          "output": "373.650",
+          "metadata_altitude_m": -152.0,
+          "metadata_band": "below sea level",
+          "metadata_ref_toolbox_K": 373.65,
+          "metadata_ref_iapws_isa_K": 373.629,
+          "predict_isothermal_A373124": "373.637871",
+          "metadata_residual_toolbox_isothermal_A373124_K": -0.012129485495108838,
+          "predict_isothermal_A37315": "373.663942",
+          "metadata_residual_toolbox_isothermal_A37315_K": 0.013942181298546075,
+          "predict_isothermal_B_effective": "373.623359",
+          "metadata_residual_toolbox_isothermal_B_effective_K": -0.026641238353647623,
+          "predict_isothermal_C_iapws_inversion": "373.629990",
+          "metadata_residual_toolbox_isothermal_C_iapws_inversion_K": -0.020009586777064214,
+          "predict_isa_A373124": "373.636990",
+          "metadata_residual_toolbox_isa_A373124_K": -0.013009657172347033,
+          "predict_isa_A37315": "373.663062",
+          "metadata_residual_toolbox_isa_A37315_K": 0.013061886784100807,
+          "predict_isa_B_effective": "373.622503",
+          "metadata_residual_toolbox_isa_B_effective_K": -0.02749652073504194,
+          "predict_isa_C_iapws_inversion": "373.629124",
+          "metadata_residual_toolbox_isa_C_iapws_inversion_K": -0.02087589917380228
+        }
+      ]
+    }
+  ]
+}
