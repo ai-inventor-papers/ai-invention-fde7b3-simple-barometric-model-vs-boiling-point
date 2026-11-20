@@ -1,0 +1,22 @@
+{
+  "type": "bar",
+  "aspect": "16:9",
+  "xlabel": "Altitude band",
+  "ylabel": "Mean residual vs table (K)",
+  "ylim": [-2.0, 1.5],
+  "categories": ["0-3 km", "3-6 km", "6-9 km"],
+  "annotate": true,
+  "fmt": ".2f",
+  "color_map": {
+    "Isothermal, constant enthalpy": "#0173B2",
+    "Isothermal, IAPWS-IF97": "#56B4E9",
+    "ISA, constant enthalpy": "#DE8F05",
+    "ISA, IAPWS-IF97": "#CA9161"
+  },
+  "series": [
+    {"label": "Isothermal, constant enthalpy", "values": [0.2271, 0.5050, 0.4978]},
+    {"label": "Isothermal, IAPWS-IF97", "values": [0.2922, 0.7880, 1.0422]},
+    {"label": "ISA, constant enthalpy", "values": [0.1142, -0.2834, -1.6430]},
+    {"label": "ISA, IAPWS-IF97", "values": [0.1818, 0.0206, -1.0291]}
+  ]
+}

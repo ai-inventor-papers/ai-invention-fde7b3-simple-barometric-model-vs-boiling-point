@@ -1,0 +1,115 @@
+{
+  "type": "line",
+  "xlabel": "Altitude (m)",
+  "ylabel": "Residual vs table (K)",
+  "aspect": "4:3",
+  "xlim": [
+    0,
+    9000
+  ],
+  "ylim": [
+    -3.0,
+    1.8
+  ],
+  "legend_loc": "upper right",
+  "color_map": {
+    "Isothermal, constant enthalpy": "#0173B2",
+    "Isothermal, IAPWS-IF97": "#56B4E9",
+    "ISA, constant enthalpy": "#DE8F05",
+    "ISA, IAPWS-IF97": "#CA9161"
+  },
+  "series": [
+    {
+      "label": "Isothermal, constant enthalpy",
+      "x": [
+        0,
+        1524,
+        2972,
+        4496,
+        6020,
+        7468,
+        8992
+      ],
+      "values": [
+        0.0,
+        0.22,
+        0.43,
+        0.51,
+        0.52,
+        0.48,
+        0.42
+      ],
+      "linestyle": "-",
+      "marker": "o"
+    },
+    {
+      "label": "Isothermal, IAPWS-IF97",
+      "x": [
+        0,
+        1524,
+        2972,
+        4496,
+        6020,
+        7468,
+        8992
+      ],
+      "values": [
+        -0.03,
+        0.29,
+        0.59,
+        0.79,
+        0.93,
+        1.02,
+        1.11
+      ],
+      "linestyle": "--",
+      "marker": "s"
+    },
+    {
+      "label": "ISA, constant enthalpy",
+      "x": [
+        0,
+        1524,
+        2972,
+        4496,
+        6020,
+        7468,
+        8992
+      ],
+      "values": [
+        0.0,
+        0.14,
+        0.09,
+        -0.25,
+        -0.84,
+        -1.61,
+        -2.6
+      ],
+      "linestyle": "-",
+      "marker": "^"
+    },
+    {
+      "label": "ISA, IAPWS-IF97",
+      "x": [
+        0,
+        1524,
+        2972,
+        4496,
+        6020,
+        7468,
+        8992
+      ],
+      "values": [
+        -0.03,
+        0.2,
+        0.27,
+        0.05,
+        -0.39,
+        -1.0,
+        -1.81
+      ],
+      "linestyle": "--",
+      "marker": "D"
+    }
+  ]
+}

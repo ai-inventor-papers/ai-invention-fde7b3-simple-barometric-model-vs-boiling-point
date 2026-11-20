@@ -1,0 +1,85 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{graphicx, geometry, amsmath, hyperref, booktabs, longtable, xcolor, array}
+\geometry{margin=1in}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\tabcolsep}{4pt}
+\sloppy
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+\title{Isothermal Barometric Boiling Points Match a Computed Table to 0.6 K}
+\author{Executive summary of the internal research report}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+
+\section{Headline}
+
+The isothermal barometric model with a constant enthalpy of vaporisation lies within 0.6 K of the Engineering ToolBox table from sea level to about 9 km. At 6 to 9 km its mean residual is $+0.498$ K, and the largest absolute residual is $0.593$ K, from one computation on 119 altitudes (\texttt{gen\_art\_experiment\_1}, Iteration 1). The computation is deterministic, so no interval is given. The paper headline gives the range as 0 to 9.1 km; the computation's grid ends at 8,992 m, and the 9,144 m point is in the 125-row reference set only, so the range in this summary is sea level to 8,992 m.
+
+\emph{Scope and grade.} This is a single exploratory estimate against a computed reference. The table's method is unstated, it tracks a standard-atmosphere calculation below 5 km, and the method behind it above 5 km is unidentified. No measured boiling-point and station-pressure pair was recoverable, so the title's question about measured boiling points is not answered. The run's own record grades this result as a \emph{lead}, consistent with the computed reference and not an accuracy result. The later Iteration 2 computations on the same table give $+0.470$ K at 6 km and above, on a different altitude set, so the two values are similar but not the same computation. The Iteration 2 record grades its evidence as weak or null, because no measured test was obtained.
+
+\section{Goal}
+
+The run asked how well the simple barometric formula predicts the boiling point of water at altitude, compared with published measurements. It tested whether adding the International Standard Atmosphere (ISA) lapse rate to the pressure profile improves the match, and whether the remaining error comes from the atmosphere or from the thermodynamic step. The hypothesis required a measured benchmark as the decisive test.
+
+\section{What was tried}
+
+\textbf{Iteration 1.} The Engineering ToolBox table was checked for provenance. A 250-row reference table was built, with 125 ToolBox rows and 125 IAPWS-IF97 rows at ISA pressures, and no measured rows. Four model variants (isothermal or ISA atmosphere, each with constant enthalpy or the IAPWS curve) were compared with the table. The measured search returned nothing.
+
+\textbf{Iteration 2.} The measured search was retried in two experiments, with zero rows again. The four variants were compared with the table and with the IAPWS-at-ISA computed reference. A third experiment split the residual into an atmosphere term and a thermodynamic term. The review's objections led to corrections, which the report records inside the affected sections.
+
+\section{Key results}
+
+Each number is read from the named artifact's output files. The grade is the round record's grade for the artifact's result.
+
+{\small\begin{longtable}{>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{4.0cm}>{\raggedright\arraybackslash}p{2.3cm}}
+\toprule
+Result & Value (K) & Source (artifact, round) & Grade \\
+\midrule
+\endhead
+Isothermal, constant enthalpy, bias vs table, 6 to 9 km & $+0.498$ (MAE $0.498$, max $0.593$; 119 altitudes) & \texttt{gen\_art\_experiment\_1}, Iteration 1 & Lead \\
+Isothermal, constant enthalpy, bias vs table, 6 km and above & $+0.470$ (max $0.570$; 125 altitudes) & \texttt{gen\_art\_experiment\_2}, Iteration 2 & Weak or null \\
+ISA, constant enthalpy, bias vs table, 6 km and above & $-1.716$ (max $2.767$; 125 altitudes) & \texttt{gen\_art\_experiment\_2}, Iteration 2 & Weak or null \\
+ISA, constant enthalpy, below 3 km vs isothermal & $+0.089$ vs $+0.202$ & \texttt{gen\_art\_experiment\_2}, Iteration 2 & Weak or null \\
+Mean residual 0 to 1 km vs 1 to 3 km, isothermal & $+0.088$ vs $+0.302$ & \texttt{gen\_art\_experiment\_1}, Iteration 1 & Lead \\
+Table minus IAPWS-at-ISA, below 5 km (70 rows) & $-0.306$ to $+0.113$ (median $-0.170$) & \texttt{gen\_art\_experiment\_2}, Iteration 2 & Weak or null \\
+Table minus IAPWS-at-ISA, 5 km and above (55 rows) & $+0.043$ to $+1.936$ & \texttt{gen\_art\_experiment\_2}, Iteration 2 & Weak or null \\
+Atmosphere effect, ISA minus isothermal, 6 to 9 km & $-2.186$ & \texttt{gen\_art\_experiment\_4}, Iteration 2 & Weak or null \\
+Thermodynamic effect, 6 to 9 km (effective enthalpy; IAPWS inversion) & $+0.632$; $+0.574$ (isothermal) & \texttt{gen\_art\_experiment\_4}, Iteration 2 & Weak or null \\
+Reduction of ISA 6 to 9 km bias from the thermodynamic correction & about 40\% (target: more than half, not met) & \texttt{gen\_art\_experiment\_4}, Iteration 2 & Weak or null \\
+Sea-level pressure $\pm 1$ kPa, change in every band (isothermal, 40650 J/mol) & $0.25$ to $0.28$ & \texttt{gen\_art\_experiment\_1}, Iteration 1 & Lead \\
+Enthalpy $\pm 500$ J/mol, full-range bias change (isothermal) & $+0.163$; $-0.167$ & \texttt{gen\_art\_experiment\_3}, Iteration 2 & Weak or null \\
+Measured pairs in any band & $n = 0$ & \texttt{gen\_art\_experiment\_2} and \texttt{gen\_art\_experiment\_3}, Iteration 2 & Null \\
+\bottomrule
+\end{longtable}}
+
+The residual of the ISA model with constant enthalpy agrees with an independent implementation of the same formula, to within about 0.03 K at 9.1 km. That is a code-level consistency check, because the research artifact's ISA constants were written from memory.
+
+\section{What failed}
+
+\begin{itemize}
+\item \emph{Measured comparison.} No measured boiling-point and station-pressure row was transcribed in either round. Osborne, Stimson and Ginnings (1939), the CRC Handbook, Keene (1995), the NIST RP1229 paper and summit or station records above 8 km were each tried. The sources were not readable, or the search did not find them. The measured criteria of the hypothesis could not be evaluated.
+\item \emph{Provenance of the table above 5 km.} No variant reproduces the table above 5 km, and its method there is not identified.
+\item \emph{Success criterion (c).} The ISA thermodynamic correction reduced the 6 to 9 km bias by about 40\%, not more than half. The atmosphere term was about three times the thermodynamic term at that band, so the Iteration 1 expectation that the thermodynamic step carries most of the error was not supported against this table.
+\item \emph{Saturation table.} The NIST IAPWS-95 saturation table could not be parsed, so the IAPWS inversion was checked only against the \texttt{iapws} package.
+\item \emph{Within-band claim.} The Iteration 2 draft said the isothermal model was less accurate than the ISA model in every band against the IAPWS-at-ISA reference. The table shows it is closer at 0 to 3 km, so that statement was corrected.
+\end{itemize}
+
+\section{Open questions}
+
+\begin{itemize}
+\item Can two measured boiling-point and station-pressure sets be obtained, with each row's source recorded, one of them above 8 km? Only these can answer the title question.
+\item What method produced the ToolBox table above 5 km? The table is most likely a standard-atmosphere calculation below 5 km, and none of the four variants matches it above 5 km.
+\item Does the 0.6 K agreement hold under other constants? A 1 kPa change in sea-level pressure moves every band by 0.25 to 0.28 K, which is as large as the residuals.
+\item Can the research artifact's residuals be written to a file, so that the 9.1 km comparison can be recomputed rather than read from text?
+\end{itemize}
+
+The full internal research report runs to 19 pages. It gives every iteration in order, with every table.
+
+\end{document}
