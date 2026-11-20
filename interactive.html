@@ -1,0 +1,925 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barometric boiling points against a computed table: interactive companion</title>
+<style>
+:root{--ink:#1d2430;--muted:#5a6472;--line:#d9dee6;--paper:#ffffff;--ground:#f6f7f9;--accent:#0b5ea8;--accent-ink:#ffffff;--base:#6b7b8c;--focus:#0b5ea8;--warn:#8a4b00}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
+.skip-link{position:absolute;left:8px;top:-60px;background:var(--ink);color:#fff;padding:10px 14px;z-index:100;border-radius:4px}
+.skip-link:focus{top:8px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 18px}
+header.hero{background:var(--paper);border-bottom:1px solid var(--line);padding:28px 0 18px}
+.kicker{margin:0 0 6px;color:var(--muted);font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:clamp(26px,4.2vw,38px);line-height:1.2;margin:0 0 10px;font-weight:750;letter-spacing:-.01em}
+h2{font-size:clamp(23px,3vw,28px);line-height:1.25;margin:0 0 10px;font-weight:720}
+h3{font-size:19px;line-height:1.3;margin:0 0 8px;font-weight:700}
+p{max-width:70ch;margin:0 0 12px}
+.byline{color:var(--muted);margin:0 0 14px;font-size:15px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1.5px solid var(--accent);border-radius:6px;color:var(--accent);text-decoration:none;font-weight:600;background:var(--paper);font-size:16px}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn:hover{text-decoration:underline}
+.sec-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:15px}
+.sec-nav a{display:inline-block;min-height:40px;line-height:40px;color:var(--ink);text-decoration:none;border-bottom:2px solid transparent}
+.sec-nav a[aria-current="true"]{border-bottom-color:var(--accent);font-weight:650}
+main{padding:8px 0 40px}
+section.block{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px 20px;margin:22px 0}
+.q{font-weight:600;color:var(--ink);margin-bottom:10px}
+.answer{margin-bottom:14px}
+.single{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:14px 0 18px;padding:12px 14px;border-left:4px solid var(--accent);background:#f2f7fc}
+.single .big{font-size:34px;font-weight:750;font-variant-numeric:tabular-nums;color:var(--ink)}
+.single .lab{max-width:48ch}
+.view{border-top:1px solid var(--line);margin-top:26px;padding-top:18px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;margin:10px 0 14px;align-items:flex-start}
+fieldset{border:1px solid var(--line);border-radius:8px;padding:8px 12px 10px;margin:0;min-width:0}
+legend{font-size:14px;color:var(--muted);padding:0 4px}
+.opt{display:flex;align-items:center;gap:8px;min-height:40px;padding:4px 2px;font-size:16px;cursor:pointer}
+.opt input{width:20px;height:20px;margin:0;accent-color:var(--accent)}
+.opt[aria-disabled="true"]{color:var(--muted);cursor:default}
+input[type=range]{width:100%;min-height:40px;accent-color:var(--accent)}
+select,input[type=search],input[type=text]{min-height:40px;font:inherit;font-size:16px;padding:6px 10px;border:1.5px solid #aab3bf;border-radius:6px;background:#fff;color:var(--ink);max-width:100%}
+.slider{flex:1 1 260px;min-width:0}
+.slider label{display:block;font-size:15px;margin-bottom:2px}
+.readout{font-variant-numeric:tabular-nums;font-weight:650}
+.chart{width:100%;position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:inherit}
+.legend{list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0;padding:0;font-size:15px}
+.legend li{display:flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:28px;height:0;border-top:4px solid;border-radius:2px}
+.sw.dash{border-top-style:dashed;border-top-width:3px}
+.tbl-wrap{overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:6px;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:650;background:#f4f6f9;text-align:right}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:150px}
+tr.sel td{background:#e8f1fb}
+.takeaway{margin:14px 0 0;padding:10px 12px;background:#f2f7fc;border-radius:6px;font-size:16px;font-weight:550;max-width:none}
+.note{font-size:15px;color:var(--muted)}
+.rowbtn{all:unset;cursor:pointer;color:var(--accent);font-weight:600;display:inline-block;min-height:40px;line-height:40px}
+.rowbtn:focus-visible{outline:3px solid var(--focus);outline-offset:1px}
+.detail{border:1px solid var(--line);border-radius:8px;padding:14px;margin-top:12px;background:#fbfcfd}
+.ba{display:grid;grid-template-columns:1fr;gap:10px}
+.ba .card{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:#fff}
+.ba .card h4{margin:0 0 4px;font-size:16px}
+.ba .card p{margin:0;font-size:15px}
+.ba dl{margin:0}
+.ba dt{color:var(--muted);font-size:14px;margin-top:4px}
+.ba dd{margin:0;font-variant-numeric:tabular-nums;font-weight:600}
+.io{font-size:15px;margin:0 0 8px;overflow-wrap:anywhere}
+.stepper{display:grid;grid-template-columns:1fr;gap:16px}
+.pipe{max-width:360px;margin:0 auto;width:100%}
+.stage-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px;padding:0;list-style:none}
+.stage-tabs button{min-height:40px;padding:6px 10px;border:1.5px solid #aab3bf;border-radius:6px;background:#fff;font:inherit;font-size:15px;cursor:pointer;color:var(--ink)}
+.stage-tabs button[aria-current="step"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.step-card{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:#fbfcfd}
+.step-card dt{font-weight:650;margin-top:8px;color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:.03em}
+.step-card dd{margin:2px 0 0;font-size:16px}
+.stepnav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.stepnav button{min-height:44px;min-width:110px;padding:8px 14px;border:1.5px solid var(--accent);border-radius:6px;background:#fff;color:var(--accent);font:inherit;font-weight:600;cursor:pointer}
+.stepnav button:disabled{opacity:.45;cursor:not-allowed;border-color:#aab3bf;color:var(--muted)}
+.pipe .box{fill:#eef2f7;stroke:#aab3bf}
+.pipe .box.cur{fill:var(--accent);stroke:var(--accent)}
+.pipe .lbl{font-size:14px;fill:var(--ink)}
+.pipe .lbl.cur{fill:#fff;font-weight:650}
+.pipe .arr{stroke:#8a96a5;stroke-width:2;fill:none}
+.fail-list{padding-left:20px;max-width:70ch}
+.fail-list li{margin:0 0 8px}
+.chart-tip,.tipbox{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:#fff;padding:6px 9px;border-radius:5px;font-size:14px;line-height:1.4;max-width:min(300px,calc(100vw - 16px));font-variant-numeric:tabular-nums}
+.chart-tip[hidden]{display:none}
+.term-wrap{position:relative;display:inline}
+button.term{all:unset;cursor:pointer;color:var(--ink);text-decoration:underline dotted 1.5px;text-underline-offset:3px;min-height:24px;display:inline}
+button.term:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
+.tip{position:absolute;left:0;top:calc(100% + 6px);width:min(280px,calc(100vw - 40px));background:#fff;color:var(--ink);border:1.5px solid var(--ink);border-radius:6px;padding:8px 10px;font-size:15px;line-height:1.45;z-index:30;box-shadow:0 4px 14px rgba(0,0,0,.14);font-weight:400;text-align:left}
+.tip[hidden]{display:none}
+dl.gloss{display:grid;grid-template-columns:1fr;gap:10px 18px;margin:8px 0 0}
+dl.gloss dt{font-weight:650}
+dl.gloss dd{margin:2px 0 0;color:var(--ink)}
+.prov li{margin-bottom:8px;font-size:15px}
+.prov code{font-size:14px;overflow-wrap:anywhere}
+footer{background:var(--paper);border-top:1px solid var(--line);padding:24px 0 40px;font-size:16px}
+footer h2{font-size:21px}
+footer ul{padding-left:20px}
+footer li{margin-bottom:6px}
+@media (min-width:760px){
+  .stepper{grid-template-columns:320px 1fr;align-items:start}
+  .ba{grid-template-columns:1fr 1fr}
+  dl.gloss{grid-template-columns:200px 1fr}
+  .sec-nav ul{font-size:16px}
+}
+@media (max-width:480px){
+  body{font-size:17px}
+  section.block{padding:18px 14px}
+  .single .big{font-size:28px}
+  .controls{flex-direction:column;align-items:stretch}
+  .controls .slider{flex:none}
+  .tbl-wrap table{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style></head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Interactive companion to the paper</p>
+    <h1>Isothermal Barometric Boiling Points Match a Computed Table to 0.6 K</h1>
+    <p class="byline">The paper gives no author line.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://cdn.jsdelivr.net/gh/ai-inventor-papers/ai-invention-fde7b3-simple-barometric-model-vs-boiling-point@main/paper.pdf">Read the paper (PDF)</a>
+      <a class="btn" href="https://cdn.jsdelivr.net/gh/ai-inventor-papers/ai-invention-fde7b3-simple-barometric-model-vs-boiling-point@main/report.pdf">Read the full research report</a>
+      <a class="btn" href="https://github.com/ai-inventor-papers/ai-invention-fde7b3-simple-barometric-model-vs-boiling-point">Code repository</a>
+    </div>
+    <nav class="sec-nav" aria-label="Sections on this page">
+      <ul>
+        <li><a href="#finding">The finding</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#evidence">Explore the evidence</a></li>
+        <li><a href="#try">Try it</a></li>
+        <li><a href="#fails">Where it fails</a></li>
+        <li><a href="#sources">Sources and glossary</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<div class="wrap">
+
+<!-- ============ THE FINDING ============ -->
+<section class="block" id="finding" aria-labelledby="h-finding">
+  <h2 id="h-finding">The finding</h2>
+  <p class="q">Question: how well does the simple barometric formula predict the boiling point of water at altitude, compared with published measurements?</p>
+  <p class="answer">It has not been tested against measurements, because no measured boiling-point and station-pressure pairs could be recovered. Against the Engineering ToolBox table, a <span class="term-wrap"><button class="term" data-term="reftable">reference table of unstated method</button></span>, the isothermal model with a constant <span class="term-wrap"><button class="term" data-term="enthalpy">enthalpy of vaporisation</button></span> stays within 0.6 K at every recorded altitude. The atmosphere model matters more: above 6 km the ISA model sits about 2.1 K below the isothermal one.</p>
+  <p class="single"><span class="big" id="bigNum">0.59 K</span><span class="lab">largest absolute <span class="term-wrap"><button class="term" data-term="residual">residual</button></span> of the isothermal, constant-enthalpy baseline across all recorded altitudes, against the table.</span></p>
+
+  <div class="view" aria-labelledby="h-headline">
+    <h3 id="h-headline">Residual by altitude band, four combinations</h3>
+    <p class="q">Question: does the baseline hold in every altitude band, and how far do the other combinations depart from it?</p>
+    <div class="controls">
+      <fieldset>
+        <legend>Combinations shown</legend>
+        <label class="opt" aria-disabled="true"><input type="checkbox" id="hl-V1" checked disabled> Isothermal, constant enthalpy (baseline, always shown)</label>
+        <label class="opt"><input type="checkbox" class="hl-chk" id="hl-V2" value="V2"> Isothermal, IAPWS model</label>
+        <label class="opt"><input type="checkbox" class="hl-chk" id="hl-V3" value="V3" checked> ISA, constant enthalpy</label>
+        <label class="opt"><input type="checkbox" class="hl-chk" id="hl-V4" value="V4"> ISA, IAPWS model</label>
+      </fieldset>
+      <fieldset>
+        <legend>Statistic</legend>
+        <label class="opt"><input type="radio" name="hl-stat" value="bias" checked> Mean residual (bias)</label>
+        <label class="opt"><input type="radio" name="hl-stat" value="max"> Largest absolute residual</label>
+      </fieldset>
+    </div>
+    <div class="chart" id="hlChart" role="img" aria-label="Bar chart of residuals by altitude band for the selected combinations"></div>
+    <ul class="legend" id="hlLegend"></ul>
+    <div class="tbl-wrap"><table id="hlTable"><caption style="text-align:left;padding:6px 10px;color:var(--muted);font-size:14px">Values in kelvin, model minus table, from the run's band summary.</caption></table></div>
+    <p class="takeaway" id="hlTake" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="block" id="how" aria-labelledby="h-how">
+  <h2 id="h-how">How it works</h2>
+  <p class="q">Question: how does one altitude become a boiling temperature and then a residual?</p>
+  <p>The stepper follows one recorded altitude, 8,992 m, the row with the largest ISA gap. Pressure at that altitude is computed in the page from the run's own constants. The boiling temperatures, the table value and the residuals are the values the run recorded. Use the buttons, the stage tabs or the left and right arrow keys.</p>
+  <div class="stepper" data-stepper>
+    <div>
+      <svg class="pipe" id="pipe" viewBox="0 0 300 330" role="img" aria-label="Pipeline: altitude, pressure, boiling point, table comparison, band statistics"></svg>
+    </div>
+    <div>
+      <ul class="stage-tabs" id="stageTabs" aria-label="Stages"></ul>
+      <div class="step-card">
+        <dl id="stepBody"></dl>
+      </div>
+      <div class="stepnav">
+        <button type="button" id="stepPrev">Previous stage</button>
+        <button type="button" id="stepNext">Next stage</button>
+        <p class="note" id="stepAnnounce" aria-live="polite" style="margin:0"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE THE EVIDENCE ============ -->
+<section class="block" id="evidence" aria-labelledby="h-evidence">
+  <h2 id="h-evidence">Explore the evidence</h2>
+  <p class="q">Question: where, along the altitude range, does each combination leave the table?</p>
+
+  <div class="view" aria-labelledby="h-line">
+    <h3 id="h-line">Residual against altitude</h3>
+    <p class="note">Each point is one of the 119 recorded altitudes. Hover or tap the chart to read all selected values at the nearest altitude. Keyboard users move the altitude slider below.</p>
+    <div class="controls">
+      <fieldset>
+        <legend>Combinations shown</legend>
+        <label class="opt" aria-disabled="true"><input type="checkbox" checked disabled> Isothermal, constant enthalpy (baseline)</label>
+        <label class="opt"><input type="checkbox" class="ln-chk" value="V2"> Isothermal, IAPWS model</label>
+        <label class="opt"><input type="checkbox" class="ln-chk" value="V3" checked> ISA, constant enthalpy</label>
+        <label class="opt"><input type="checkbox" class="ln-chk" value="V4"> ISA, IAPWS model</label>
+      </fieldset>
+      <div class="slider">
+        <label for="lnIdx">Altitude record: <span class="readout" id="lnReadout"></span></label>
+        <input type="range" id="lnIdx" min="0" max="118" step="1" value="0" aria-describedby="lnReadout">
+      </div>
+    </div>
+    <div class="chart" id="lnChart" role="img" aria-label="Line chart of residual against altitude for the selected combinations"></div>
+    <ul class="legend" id="lnLegend"></ul>
+    <p class="takeaway" id="lnTake" aria-live="polite"></p>
+  </div>
+
+  <div class="view" aria-labelledby="h-items">
+    <h3 id="h-items">Item browser: the 119 recorded altitudes</h3>
+    <p class="q">Question: what happens at one altitude, and which altitudes are the hard ones?</p>
+    <div class="controls">
+      <div class="slider" style="flex:1 1 200px">
+        <label for="itBand">Altitude band</label>
+        <select id="itBand">
+          <option value="all">All bands</option>
+          <option value="0">0 to 3 km</option>
+          <option value="1">3 to 6 km</option>
+          <option value="2">6 to 9 km</option>
+        </select>
+      </div>
+      <div class="slider" style="flex:1 1 200px">
+        <label for="itSort">Sort by</label>
+        <select id="itSort">
+          <option value="asc">Altitude, low to high</option>
+          <option value="desc">Altitude, high to low</option>
+          <option value="isa">Largest ISA residual</option>
+          <option value="base">Largest baseline residual</option>
+        </select>
+      </div>
+      <div class="slider" style="flex:1 1 200px">
+        <label for="itSearch">Find altitude (m)</label>
+        <input type="search" id="itSearch" placeholder="for example 8992" inputmode="numeric">
+      </div>
+      <fieldset>
+        <legend>Filter</legend>
+        <label class="opt"><input type="checkbox" id="itFlag"> Only altitudes more than 1 K from the table in some combination</label>
+      </fieldset>
+    </div>
+    <p class="note" id="itCount" aria-live="polite"></p>
+    <div class="tbl-wrap" style="max-height:340px;overflow:auto">
+      <table id="itTable">
+        <thead><tr><th scope="col">Altitude, m</th><th scope="col">Table, °C</th><th scope="col">Baseline residual, K</th><th scope="col">ISA residual, K</th></tr></thead>
+        <tbody id="itBody"></tbody>
+      </table>
+    </div>
+    <div class="detail" id="itDetail" aria-live="polite"></div>
+    <p class="takeaway" id="itTake" aria-live="polite"></p>
+  </div>
+
+  <div class="view" aria-labelledby="h-sens">
+    <h3 id="h-sens">Does the answer hold under other conditions?</h3>
+    <p class="q">Question: how much does the band bias move when the enthalpy of vaporisation or the sea-level pressure is changed?</p>
+    <div class="controls">
+      <fieldset>
+        <legend>Enthalpy of vaporisation</legend>
+        <label class="opt"><input type="radio" name="sn-dh" value="40150"> 40.15 kJ/mol (−500 J/mol)</label>
+        <label class="opt"><input type="radio" name="sn-dh" value="40650" checked> 40.65 kJ/mol (default)</label>
+        <label class="opt"><input type="radio" name="sn-dh" value="41150"> 41.15 kJ/mol (+500 J/mol)</label>
+      </fieldset>
+      <fieldset>
+        <legend>Sea-level pressure</legend>
+        <label class="opt"><input type="radio" name="sn-p" value="100.325"> 100.325 kPa (−1 kPa)</label>
+        <label class="opt"><input type="radio" name="sn-p" value="101.325" checked> 101.325 kPa (default)</label>
+        <label class="opt"><input type="radio" name="sn-p" value="102.325"> 102.325 kPa (+1 kPa)</label>
+      </fieldset>
+    </div>
+    <div class="chart" id="snChart" role="img" aria-label="Bar chart of band bias under the chosen conditions"></div>
+    <ul class="legend" id="snLegend"></ul>
+    <div class="tbl-wrap"><table id="snTable"></table></div>
+    <p class="takeaway" id="snTake" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ============ TRY IT ============ -->
+<section class="block" id="try" aria-labelledby="h-try">
+  <h2 id="h-try">Try it</h2>
+  <p class="q">Question: what does the constant-enthalpy calculation give at any altitude, and does the page reproduce the run?</p>
+  <p>This is a live copy of the two constant-enthalpy calculations. The pressure formulas and the Clausius-Clapeyron inversion are the run's own, with the constants recorded in the run. The IAPWS values need the full steam formulation and are not recomputed here; they stay as recorded.</p>
+  <div class="controls">
+    <div class="slider">
+      <label for="tyAlt">Altitude: <span class="readout" id="tyAltOut"></span></label>
+      <input type="range" id="tyAlt" min="0" max="9000" step="1" value="8992" aria-describedby="tyAltOut">
+    </div>
+    <div class="slider">
+      <label for="tyDh">Enthalpy of vaporisation: <span class="readout" id="tyDhOut"></span></label>
+      <input type="range" id="tyDh" min="39.65" max="41.65" step="0.01" value="40.65" aria-describedby="tyDhOut">
+    </div>
+  </div>
+  <div class="tbl-wrap"><table id="tyTable"></table></div>
+  <p class="note" id="tyRec"></p>
+  <p class="note" id="tyCheck"></p>
+  <p class="takeaway" id="tyTake" aria-live="polite"></p>
+</section>
+
+<!-- ============ WHERE IT FAILS ============ -->
+<section class="block" id="fails" aria-labelledby="h-fails">
+  <h2 id="h-fails">Where it fails</h2>
+  <p class="q">Question: at what size of miss does each combination leave the table, and where does that happen?</p>
+  <div class="controls">
+    <div class="slider">
+      <label for="flThr">Flag residuals larger than: <span class="readout" id="flThrOut"></span></label>
+      <input type="range" id="flThr" min="0.25" max="2.5" step="0.05" value="1" aria-describedby="flThrOut">
+    </div>
+  </div>
+  <div class="chart" id="flChart" role="img" aria-label="Bar chart of how many altitudes each combination flags"></div>
+  <div class="tbl-wrap"><table id="flTable"></table></div>
+  <p class="takeaway" id="flTake" aria-live="polite"></p>
+  <p class="note">The counts use the recorded residuals, rounded to four decimals in the run's file. A residual that sits exactly on the threshold may fall on either side.</p>
+  <h3>What the paper says it does not show</h3>
+  <ul class="fail-list">
+    <li><strong>No measured comparison.</strong> Zero measured boiling-point and station-pressure pairs were retained, so nothing here tests accuracy against measurement.</li>
+    <li><strong>Unstated reference method.</strong> The Engineering ToolBox table's method is unknown, and above 5 km it agrees with none of the four combinations.</li>
+    <li><strong>Shared reference.</strong> The reference series rest on the same IAPWS saturation curve, so the fitted enthalpy is not independent of the reference.</li>
+    <li><strong>Standard atmosphere only.</strong> The ISA residuals describe a standard atmosphere, not weather or local conditions at a station.</li>
+    <li><strong>No uncertainty estimates.</strong> The computations are deterministic, so no interval is given.</li>
+  </ul>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2 id="sources">Sources and glossary</h2>
+    <p><strong>Documents</strong></p>
+    <ul>
+      <li><a href="https://cdn.jsdelivr.net/gh/ai-inventor-papers/ai-invention-fde7b3-simple-barometric-model-vs-boiling-point@main/paper.pdf">Read the paper (PDF)</a></li>
+      <li><a href="https://cdn.jsdelivr.net/gh/ai-inventor-papers/ai-invention-fde7b3-simple-barometric-model-vs-boiling-point@main/report.pdf">Read the full research report</a></li>
+      <li><a href="https://github.com/ai-inventor-papers/ai-invention-fde7b3-simple-barometric-model-vs-boiling-point">Code repository</a></li>
+      <li><a href="index.html">Back to the paper's presentation page</a></li>
+    </ul>
+    <h3>Where each view's data comes from</h3>
+    <ul class="prov" id="provList"></ul>
+    <h3>Glossary</h3>
+    <dl class="gloss" id="glossList"></dl>
+  </div>
+</footer>
+
+<div class="chart-tip" id="chartTip" hidden aria-hidden="true"></div>
+
+<script type="application/json" id="data-items" data-source="gen_art_experiment_1/full_method_out.json (datasets[0].examples)">[{"h":0.0,"input":"Boiling point of water at altitude 0 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"100.0 C (Engineering ToolBox table)","tb":100.0,"p":{"V1":100.0,"V2":99.97,"V3":100.0,"V4":99.97},"r":{"V1":0.0,"V2":-0.0257,"V3":0.0,"V4":-0.0257}},{"h":76.0,"input":"Boiling point of water at altitude 76 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"99.7 C (Engineering ToolBox table)","tb":99.7,"p":{"V1":99.74,"V2":99.72,"V3":99.74,"V4":99.72},"r":{"V1":0.0436,"V2":0.022,"V3":0.0433,"V4":0.0218}},{"h":152.0,"input":"Boiling point of water at altitude 152 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"99.5 C (Engineering ToolBox table)","tb":99.5,"p":{"V1":99.49,"V2":99.47,"V3":99.49,"V4":99.47},"r":{"V1":-0.0125,"V2":-0.0298,"V3":-0.0134,"V4":-0.0307}},{"h":229.0,"input":"Boiling point of water at altitude 229 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"99.2 C (Engineering ToolBox table)","tb":99.2,"p":{"V1":99.23,"V2":99.22,"V3":99.23,"V4":99.21},"r":{"V1":0.0284,"V2":0.0154,"V3":0.0264,"V4":0.0134}},{"h":305.0,"input":"Boiling point of water at altitude 305 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"98.9 C (Engineering ToolBox table)","tb":98.9,"p":{"V1":98.97,"V2":98.96,"V3":98.97,"V4":98.96},"r":{"V1":0.073,"V2":0.0643,"V3":0.0694,"V4":0.0608}},{"h":381.0,"input":"Boiling point of water at altitude 381 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"98.6 C (Engineering ToolBox table)","tb":98.6,"p":{"V1":98.72,"V2":98.71,"V3":98.71,"V4":98.71},"r":{"V1":0.118,"V2":0.1136,"V3":0.1124,"V4":0.1082}},{"h":457.0,"input":"Boiling point of water at altitude 457 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"98.4 C (Engineering ToolBox table)","tb":98.4,"p":{"V1":98.46,"V2":98.46,"V3":98.46,"V4":98.46},"r":{"V1":0.0633,"V2":0.0633,"V3":0.0553,"V4":0.0555}},{"h":533.0,"input":"Boiling point of water at altitude 533 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"98.1 C (Engineering ToolBox table)","tb":98.1,"p":{"V1":98.21,"V2":98.21,"V3":98.2,"V4":98.2},"r":{"V1":0.1089,"V2":0.1134,"V3":0.0981,"V4":0.1028}},{"h":610.0,"input":"Boiling point of water at altitude 610 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"97.8 C (Engineering ToolBox table)","tb":97.8,"p":{"V1":97.95,"V2":97.96,"V3":97.94,"V4":97.95},"r":{"V1":0.1516,"V2":0.1606,"V3":0.1375,"V4":0.1467}},{"h":686.0,"input":"Boiling point of water at altitude 686 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"97.6 C (Engineering ToolBox table)","tb":97.6,"p":{"V1":97.7,"V2":97.71,"V3":97.68,"V4":97.69},"r":{"V1":0.098,"V2":0.1114,"V3":0.0801,"V4":0.0938}},{"h":762.0,"input":"Boiling point of water at altitude 762 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"97.3 C (Engineering ToolBox table)","tb":97.3,"p":{"V1":97.44,"V2":97.46,"V3":97.42,"V4":97.44},"r":{"V1":0.1447,"V2":0.1626,"V3":0.1226,"V4":0.141}},{"h":838.0,"input":"Boiling point of water at altitude 838 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"97.1 C (Engineering ToolBox table)","tb":97.1,"p":{"V1":97.19,"V2":97.21,"V3":97.17,"V4":97.19},"r":{"V1":0.0917,"V2":0.1143,"V3":0.0651,"V4":0.0881}},{"h":914.0,"input":"Boiling point of water at altitude 914 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"96.8 C (Engineering ToolBox table)","tb":96.8,"p":{"V1":96.94,"V2":96.97,"V3":96.91,"V4":96.94},"r":{"V1":0.1392,"V2":0.1663,"V3":0.1074,"V4":0.1351}},{"h":991.0,"input":"Boiling point of water at altitude 991 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"96.5 C (Engineering ToolBox table)","tb":96.5,"p":{"V1":96.68,"V2":96.72,"V3":96.65,"V4":96.68},"r":{"V1":0.1836,"V2":0.2154,"V3":0.1463,"V4":0.1788}},{"h":1067.0,"input":"Boiling point of water at altitude 1067 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"96.3 C (Engineering ToolBox table)","tb":96.3,"p":{"V1":96.43,"V2":96.47,"V3":96.39,"V4":96.43},"r":{"V1":0.1317,"V2":0.1681,"V3":0.0885,"V4":0.1257}},{"h":1143.0,"input":"Boiling point of water at altitude 1143 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"96.0 C (Engineering ToolBox table)","tb":96.0,"p":{"V1":96.18,"V2":96.22,"V3":96.13,"V4":96.17},"r":{"V1":0.1801,"V2":0.2213,"V3":0.1305,"V4":0.1726}},{"h":1219.0,"input":"Boiling point of water at altitude 1219 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"95.7 C (Engineering ToolBox table)","tb":95.7,"p":{"V1":95.93,"V2":95.97,"V3":95.87,"V4":95.92},"r":{"V1":0.2289,"V2":0.2748,"V3":0.1725,"V4":0.2195}},{"h":1295.0,"input":"Boiling point of water at altitude 1295 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"95.5 C (Engineering ToolBox table)","tb":95.5,"p":{"V1":95.68,"V2":95.73,"V3":95.61,"V4":95.67},"r":{"V1":0.178,"V2":0.2287,"V3":0.1144,"V4":0.1663}},{"h":1372.0,"input":"Boiling point of water at altitude 1372 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"95.2 C (Engineering ToolBox table)","tb":95.2,"p":{"V1":95.42,"V2":95.48,"V3":95.35,"V4":95.41},"r":{"V1":0.2242,"V2":0.2797,"V3":0.1528,"V4":0.2097}},{"h":1448.0,"input":"Boiling point of water at altitude 1448 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"94.9 C (Engineering ToolBox table)","tb":94.9,"p":{"V1":95.17,"V2":95.23,"V3":95.09,"V4":95.16},"r":{"V1":0.274,"V2":0.3344,"V3":0.1945,"V4":0.2564}},{"h":1524.0,"input":"Boiling point of water at altitude 1524 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"94.7 C (Engineering ToolBox table)","tb":94.7,"p":{"V1":94.92,"V2":94.99,"V3":94.84,"V4":94.9},"r":{"V1":0.2241,"V2":0.2894,"V3":0.1361,"V4":0.2031}},{"h":1600.0,"input":"Boiling point of water at altitude 1600 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"94.4 C (Engineering ToolBox table)","tb":94.4,"p":{"V1":94.67,"V2":94.74,"V3":94.58,"V4":94.65},"r":{"V1":0.2746,"V2":0.3448,"V3":0.1776,"V4":0.2497}},{"h":1676.0,"input":"Boiling point of water at altitude 1676 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"94.2 C (Engineering ToolBox table)","tb":94.2,"p":{"V1":94.43,"V2":94.5,"V3":94.32,"V4":94.4},"r":{"V1":0.2254,"V2":0.3006,"V3":0.119,"V4":0.1962}},{"h":1753.0,"input":"Boiling point of water at altitude 1753 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"93.9 C (Engineering ToolBox table)","tb":93.9,"p":{"V1":94.17,"V2":94.25,"V3":94.06,"V4":94.14},"r":{"V1":0.2733,"V2":0.3535,"V3":0.1569,"V4":0.2394}},{"h":1829.0,"input":"Boiling point of water at altitude 1829 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"93.6 C (Engineering ToolBox table)","tb":93.6,"p":{"V1":93.92,"V2":94.01,"V3":93.8,"V4":93.89},"r":{"V1":0.3248,"V2":0.41,"V3":0.1981,"V4":0.2859}},{"h":1905.0,"input":"Boiling point of water at altitude 1905 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"93.4 C (Engineering ToolBox table)","tb":93.4,"p":{"V1":93.68,"V2":93.77,"V3":93.54,"V4":93.63},"r":{"V1":0.2767,"V2":0.3669,"V3":0.1392,"V4":0.2323}},{"h":1981.0,"input":"Boiling point of water at altitude 1981 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"93.1 C (Engineering ToolBox table)","tb":93.1,"p":{"V1":93.43,"V2":93.52,"V3":93.28,"V4":93.38},"r":{"V1":0.3289,"V2":0.4242,"V3":0.1802,"V4":0.2786}},{"h":2057.0,"input":"Boiling point of water at altitude 2057 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"92.9 C (Engineering ToolBox table)","tb":92.9,"p":{"V1":93.18,"V2":93.28,"V3":93.02,"V4":93.12},"r":{"V1":0.2814,"V2":0.3818,"V3":0.1211,"V4":0.2249}},{"h":2134.0,"input":"Boiling point of water at altitude 2134 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"92.6 C (Engineering ToolBox table)","tb":92.6,"p":{"V1":92.93,"V2":93.04,"V3":92.76,"V4":92.87},"r":{"V1":0.331,"V2":0.4366,"V3":0.1586,"V4":0.2678}},{"h":2210.0,"input":"Boiling point of water at altitude 2210 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"92.4 C (Engineering ToolBox table)","tb":92.4,"p":{"V1":92.68,"V2":92.79,"V3":92.5,"V4":92.61},"r":{"V1":0.2841,"V2":0.395,"V3":0.0993,"V4":0.214}},{"h":2286.0,"input":"Boiling point of water at altitude 2286 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"92.1 C (Engineering ToolBox table)","tb":92.1,"p":{"V1":92.44,"V2":92.55,"V3":92.24,"V4":92.36},"r":{"V1":0.3376,"V2":0.4537,"V3":0.1399,"V4":0.2602}},{"h":2362.0,"input":"Boiling point of water at altitude 2362 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"91.8 C (Engineering ToolBox table)","tb":91.8,"p":{"V1":92.19,"V2":92.31,"V3":91.98,"V4":92.11},"r":{"V1":0.3915,"V2":0.5128,"V3":0.1804,"V4":0.3062}},{"h":2438.0,"input":"Boiling point of water at altitude 2438 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"91.6 C (Engineering ToolBox table)","tb":91.6,"p":{"V1":91.95,"V2":92.07,"V3":91.72,"V4":91.85},"r":{"V1":0.3457,"V2":0.4722,"V3":0.1208,"V4":0.2523}},{"h":2515.0,"input":"Boiling point of water at altitude 2515 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"91.3 C (Engineering ToolBox table)","tb":91.3,"p":{"V1":91.7,"V2":91.83,"V3":91.46,"V4":91.59},"r":{"V1":0.3969,"V2":0.5289,"V3":0.1577,"V4":0.2949}},{"h":2591.0,"input":"Boiling point of water at altitude 2591 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"91.1 C (Engineering ToolBox table)","tb":91.1,"p":{"V1":91.45,"V2":91.59,"V3":91.2,"V4":91.34},"r":{"V1":0.3518,"V2":0.4891,"V3":0.0979,"V4":0.2408}},{"h":2667.0,"input":"Boiling point of water at altitude 2667 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"90.8 C (Engineering ToolBox table)","tb":90.8,"p":{"V1":91.21,"V2":91.35,"V3":90.94,"V4":91.09},"r":{"V1":0.4069,"V2":0.5496,"V3":0.138,"V4":0.2867}},{"h":2743.0,"input":"Boiling point of water at altitude 2743 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"90.6 C (Engineering ToolBox table)","tb":90.6,"p":{"V1":90.96,"V2":91.11,"V3":90.68,"V4":90.83},"r":{"V1":0.3624,"V2":0.5105,"V3":0.078,"V4":0.2325}},{"h":2819.0,"input":"Boiling point of water at altitude 2819 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"90.3 C (Engineering ToolBox table)","tb":90.3,"p":{"V1":90.72,"V2":90.87,"V3":90.42,"V4":90.58},"r":{"V1":0.4183,"V2":0.5718,"V3":0.1179,"V4":0.2782}},{"h":2896.0,"input":"Boiling point of water at altitude 2896 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"90.1 C (Engineering ToolBox table)","tb":90.1,"p":{"V1":90.47,"V2":90.63,"V3":90.15,"V4":90.32},"r":{"V1":0.3712,"V2":0.5303,"V3":0.0543,"V4":0.2206}},{"h":2972.0,"input":"Boiling point of water at altitude 2972 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"89.8 C (Engineering ToolBox table)","tb":89.8,"p":{"V1":90.23,"V2":90.39,"V3":89.89,"V4":90.07},"r":{"V1":0.4277,"V2":0.5923,"V3":0.094,"V4":0.2662}},{"h":3048.0,"input":"Boiling point of water at altitude 3048 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"89.6 C (Engineering ToolBox table)","tb":89.6,"p":{"V1":89.98,"V2":90.15,"V3":89.63,"V4":89.81},"r":{"V1":0.3845,"V2":0.5546,"V3":0.0336,"V4":0.2118}},{"h":3124.0,"input":"Boiling point of water at altitude 3124 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"89.3 C (Engineering ToolBox table)","tb":89.3,"p":{"V1":89.74,"V2":89.92,"V3":89.37,"V4":89.56},"r":{"V1":0.4417,"V2":0.6173,"V3":0.0731,"V4":0.2573}},{"h":3200.0,"input":"Boiling point of water at altitude 3200 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"89.1 C (Engineering ToolBox table)","tb":89.1,"p":{"V1":89.5,"V2":89.68,"V3":89.11,"V4":89.3},"r":{"V1":0.3991,"V2":0.5804,"V3":0.0124,"V4":0.2027}},{"h":3277.0,"input":"Boiling point of water at altitude 3277 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"88.8 C (Engineering ToolBox table)","tb":88.8,"p":{"V1":89.25,"V2":89.44,"V3":88.85,"V4":89.04},"r":{"V1":0.4537,"V2":0.6407,"V3":0.0483,"V4":0.2448}},{"h":3353.0,"input":"Boiling point of water at altitude 3353 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"88.6 C (Engineering ToolBox table)","tb":88.6,"p":{"V1":89.01,"V2":89.2,"V3":88.59,"V4":88.79},"r":{"V1":0.4118,"V2":0.6045,"V3":-0.0126,"V4":0.1901}},{"h":3429.0,"input":"Boiling point of water at altitude 3429 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"88.3 C (Engineering ToolBox table)","tb":88.3,"p":{"V1":88.77,"V2":88.97,"V3":88.33,"V4":88.54},"r":{"V1":0.4703,"V2":0.6686,"V3":0.0265,"V4":0.2354}},{"h":3505.0,"input":"Boiling point of water at altitude 3505 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"88.1 C (Engineering ToolBox table)","tb":88.1,"p":{"V1":88.53,"V2":88.73,"V3":88.07,"V4":88.28},"r":{"V1":0.429,"V2":0.6331,"V3":-0.0346,"V4":0.1806}},{"h":3581.0,"input":"Boiling point of water at altitude 3581 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"87.8 C (Engineering ToolBox table)","tb":87.8,"p":{"V1":88.29,"V2":88.5,"V3":87.8,"V4":88.03},"r":{"V1":0.4881,"V2":0.6979,"V3":0.0043,"V4":0.2257}},{"h":3658.0,"input":"Boiling point of water at altitude 3658 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"87.6 C (Engineering ToolBox table)","tb":87.6,"p":{"V1":88.04,"V2":88.26,"V3":87.54,"V4":87.77},"r":{"V1":0.4443,"V2":0.66,"V3":-0.0604,"V4":0.1674}},{"h":3734.0,"input":"Boiling point of water at altitude 3734 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"87.3 C (Engineering ToolBox table)","tb":87.3,"p":{"V1":87.8,"V2":88.03,"V3":87.28,"V4":87.51},"r":{"V1":0.504,"V2":0.7255,"V3":-0.0218,"V4":0.2125}},{"h":3810.0,"input":"Boiling point of water at altitude 3810 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"87.1 C (Engineering ToolBox table)","tb":87.1,"p":{"V1":87.56,"V2":87.79,"V3":87.02,"V4":87.26},"r":{"V1":0.4641,"V2":0.6914,"V3":-0.0833,"V4":0.1574}},{"h":3886.0,"input":"Boiling point of water at altitude 3886 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"86.8 C (Engineering ToolBox table)","tb":86.8,"p":{"V1":87.32,"V2":87.56,"V3":86.76,"V4":87.0},"r":{"V1":0.5245,"V2":0.7576,"V3":-0.0449,"V4":0.2023}},{"h":3962.0,"input":"Boiling point of water at altitude 3962 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"86.6 C (Engineering ToolBox table)","tb":86.6,"p":{"V1":87.09,"V2":87.32,"V3":86.49,"V4":86.75},"r":{"V1":0.4851,"V2":0.7242,"V3":-0.1066,"V4":0.1471}},{"h":4037.0,"input":"Boiling point of water at altitude 4037 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"86.4 C (Engineering ToolBox table)","tb":86.4,"p":{"V1":86.85,"V2":87.09,"V3":86.23,"V4":86.5},"r":{"V1":0.4493,"V2":0.6942,"V3":-0.165,"V4":0.0952}},{"h":4115.0,"input":"Boiling point of water at altitude 4115 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"86.1 C (Engineering ToolBox table)","tb":86.1,"p":{"V1":86.6,"V2":86.86,"V3":85.97,"V4":86.23},"r":{"V1":0.5043,"V2":0.7553,"V3":-0.1339,"V4":0.1332}},{"h":4191.0,"input":"Boiling point of water at altitude 4191 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"85.9 C (Engineering ToolBox table)","tb":85.9,"p":{"V1":86.37,"V2":86.62,"V3":85.7,"V4":85.98},"r":{"V1":0.4659,"V2":0.7229,"V3":-0.1959,"V4":0.0778}},{"h":4267.0,"input":"Boiling point of water at altitude 4267 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"85.6 C (Engineering ToolBox table)","tb":85.6,"p":{"V1":86.13,"V2":86.39,"V3":85.44,"V4":85.72},"r":{"V1":0.5279,"V2":0.7909,"V3":-0.1581,"V4":0.1224}},{"h":4343.0,"input":"Boiling point of water at altitude 4343 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"85.4 C (Engineering ToolBox table)","tb":85.4,"p":{"V1":85.89,"V2":86.16,"V3":85.18,"V4":85.47},"r":{"V1":0.4902,"V2":0.7592,"V3":-0.2204,"V4":0.0669}},{"h":4420.0,"input":"Boiling point of water at altitude 4420 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"85.1 C (Engineering ToolBox table)","tb":85.1,"p":{"V1":85.65,"V2":85.92,"V3":84.91,"V4":85.21},"r":{"V1":0.5496,"V2":0.8248,"V3":-0.1862,"V4":0.108}},{"h":4496.0,"input":"Boiling point of water at altitude 4496 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"84.9 C (Engineering ToolBox table)","tb":84.9,"p":{"V1":85.41,"V2":85.69,"V3":84.65,"V4":84.95},"r":{"V1":0.5125,"V2":0.7937,"V3":-0.2487,"V4":0.0523}},{"h":4572.0,"input":"Boiling point of water at altitude 4572 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"84.7 C (Engineering ToolBox table)","tb":84.7,"p":{"V1":85.18,"V2":85.46,"V3":84.39,"V4":84.7},"r":{"V1":0.4757,"V2":0.7631,"V3":-0.3114,"V4":-0.0034}},{"h":4648.0,"input":"Boiling point of water at altitude 4648 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"84.4 C (Engineering ToolBox table)","tb":84.4,"p":{"V1":84.94,"V2":85.23,"V3":84.13,"V4":84.44},"r":{"V1":0.5392,"V2":0.8327,"V3":-0.2741,"V4":0.0408}},{"h":4724.0,"input":"Boiling point of water at altitude 4724 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"84.2 C (Engineering ToolBox table)","tb":84.2,"p":{"V1":84.7,"V2":85.0,"V3":83.86,"V4":84.18},"r":{"V1":0.5031,"V2":0.8028,"V3":-0.337,"V4":-0.015}},{"h":4801.0,"input":"Boiling point of water at altitude 4801 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"83.9 C (Engineering ToolBox table)","tb":83.9,"p":{"V1":84.46,"V2":84.77,"V3":83.6,"V4":83.93},"r":{"V1":0.5641,"V2":0.8701,"V3":-0.3034,"V4":0.0257}},{"h":4877.0,"input":"Boiling point of water at altitude 4877 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"83.7 C (Engineering ToolBox table)","tb":83.7,"p":{"V1":84.23,"V2":84.54,"V3":83.33,"V4":83.67},"r":{"V1":0.5286,"V2":0.8408,"V3":-0.3665,"V4":-0.0303}},{"h":4953.0,"input":"Boiling point of water at altitude 4953 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"83.5 C (Engineering ToolBox table)","tb":83.5,"p":{"V1":83.99,"V2":84.31,"V3":83.07,"V4":83.41},"r":{"V1":0.4934,"V2":0.8118,"V3":-0.4297,"V4":-0.0864}},{"h":5029.0,"input":"Boiling point of water at altitude 5029 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"83.2 C (Engineering ToolBox table)","tb":83.2,"p":{"V1":83.76,"V2":84.08,"V3":82.81,"V4":83.16},"r":{"V1":0.5584,"V2":0.8832,"V3":-0.393,"V4":-0.0425}},{"h":5105.0,"input":"Boiling point of water at altitude 5105 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"83.0 C (Engineering ToolBox table)","tb":83.0,"p":{"V1":83.52,"V2":83.85,"V3":82.54,"V4":82.9},"r":{"V1":0.5238,"V2":0.8549,"V3":-0.4565,"V4":-0.0987}},{"h":5182.0,"input":"Boiling point of water at altitude 5182 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"82.7 C (Engineering ToolBox table)","tb":82.7,"p":{"V1":83.29,"V2":83.62,"V3":82.28,"V4":82.64},"r":{"V1":0.5864,"V2":0.9239,"V3":-0.4235,"V4":-0.0584}},{"h":5258.0,"input":"Boiling point of water at altitude 5258 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"82.5 C (Engineering ToolBox table)","tb":82.5,"p":{"V1":83.05,"V2":83.4,"V3":82.01,"V4":82.39},"r":{"V1":0.5524,"V2":0.8963,"V3":-0.4872,"V4":-0.1148}},{"h":5334.0,"input":"Boiling point of water at altitude 5334 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"82.3 C (Engineering ToolBox table)","tb":82.3,"p":{"V1":82.82,"V2":83.17,"V3":81.75,"V4":82.13},"r":{"V1":0.5188,"V2":0.869,"V3":-0.5511,"V4":-0.1712}},{"h":5410.0,"input":"Boiling point of water at altitude 5410 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"82.0 C (Engineering ToolBox table)","tb":82.0,"p":{"V1":82.59,"V2":82.94,"V3":81.48,"V4":81.87},"r":{"V1":0.5854,"V2":0.942,"V3":-0.515,"V4":-0.1277}},{"h":5486.0,"input":"Boiling point of water at altitude 5486 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"81.8 C (Engineering ToolBox table)","tb":81.8,"p":{"V1":82.35,"V2":82.72,"V3":81.22,"V4":81.62},"r":{"V1":0.5523,"V2":0.9154,"V3":-0.5791,"V4":-0.1843}},{"h":5563.0,"input":"Boiling point of water at altitude 5563 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"81.6 C (Engineering ToolBox table)","tb":81.6,"p":{"V1":82.12,"V2":82.49,"V3":80.95,"V4":81.36},"r":{"V1":0.5165,"V2":0.8861,"V3":-0.6467,"V4":-0.2443}},{"h":5639.0,"input":"Boiling point of water at altitude 5639 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"81.3 C (Engineering ToolBox table)","tb":81.3,"p":{"V1":81.88,"V2":82.26,"V3":80.69,"V4":81.1},"r":{"V1":0.584,"V2":0.9601,"V3":-0.611,"V4":-0.2011}},{"h":5715.0,"input":"Boiling point of water at altitude 5715 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"81.1 C (Engineering ToolBox table)","tb":81.1,"p":{"V1":81.65,"V2":82.03,"V3":80.42,"V4":80.84},"r":{"V1":0.5519,"V2":0.9345,"V3":-0.6755,"V4":-0.2579}},{"h":5791.0,"input":"Boiling point of water at altitude 5791 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"80.9 C (Engineering ToolBox table)","tb":80.9,"p":{"V1":81.42,"V2":81.81,"V3":80.16,"V4":80.59},"r":{"V1":0.52,"V2":0.9092,"V3":-0.74,"V4":-0.3148}},{"h":5867.0,"input":"Boiling point of water at altitude 5867 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"80.6 C (Engineering ToolBox table)","tb":80.6,"p":{"V1":81.19,"V2":81.58,"V3":79.9,"V4":80.33},"r":{"V1":0.5885,"V2":0.9842,"V3":-0.7047,"V4":-0.2718}},{"h":5944.0,"input":"Boiling point of water at altitude 5944 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"80.4 C (Engineering ToolBox table)","tb":80.4,"p":{"V1":80.95,"V2":81.36,"V3":79.63,"V4":80.07},"r":{"V1":0.5542,"V2":0.9566,"V3":-0.773,"V4":-0.3322}},{"h":6020.0,"input":"Boiling point of water at altitude 6020 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"80.2 C (Engineering ToolBox table)","tb":80.2,"p":{"V1":80.72,"V2":81.13,"V3":79.36,"V4":79.81},"r":{"V1":0.5233,"V2":0.9322,"V3":-0.838,"V4":-0.3893}},{"h":6096.0,"input":"Boiling point of water at altitude 6096 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"79.9 C (Engineering ToolBox table)","tb":79.9,"p":{"V1":80.49,"V2":80.91,"V3":79.1,"V4":79.55},"r":{"V1":0.5926,"V2":1.0082,"V3":-0.803,"V4":-0.3465}},{"h":6172.0,"input":"Boiling point of water at altitude 6172 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"79.7 C (Engineering ToolBox table)","tb":79.7,"p":{"V1":80.26,"V2":80.68,"V3":78.83,"V4":79.3},"r":{"V1":0.5623,"V2":0.9846,"V3":-0.8682,"V4":-0.4038}},{"h":6248.0,"input":"Boiling point of water at altitude 6248 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"79.5 C (Engineering ToolBox table)","tb":79.5,"p":{"V1":80.03,"V2":80.46,"V3":78.57,"V4":79.04},"r":{"V1":0.5322,"V2":0.9612,"V3":-0.9335,"V4":-0.4612}},{"h":6325.0,"input":"Boiling point of water at altitude 6325 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"79.3 C (Engineering ToolBox table)","tb":79.3,"p":{"V1":79.8,"V2":80.24,"V3":78.3,"V4":78.78},"r":{"V1":0.4995,"V2":0.9352,"V3":-1.0025,"V4":-0.5221}},{"h":6401.0,"input":"Boiling point of water at altitude 6401 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"79.0 C (Engineering ToolBox table)","tb":79.0,"p":{"V1":79.57,"V2":80.01,"V3":78.03,"V4":78.52},"r":{"V1":0.57,"V2":1.0125,"V3":-0.9681,"V4":-0.4796}},{"h":6477.0,"input":"Boiling point of water at altitude 6477 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"78.8 C (Engineering ToolBox table)","tb":78.8,"p":{"V1":79.34,"V2":79.79,"V3":77.77,"V4":78.26},"r":{"V1":0.5409,"V2":0.9902,"V3":-1.0338,"V4":-0.5372}},{"h":6553.0,"input":"Boiling point of water at altitude 6553 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"78.6 C (Engineering ToolBox table)","tb":78.6,"p":{"V1":79.11,"V2":79.57,"V3":77.5,"V4":78.01},"r":{"V1":0.5121,"V2":0.9681,"V3":-1.0996,"V4":-0.5949}},{"h":6629.0,"input":"Boiling point of water at altitude 6629 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"78.3 C (Engineering ToolBox table)","tb":78.3,"p":{"V1":78.88,"V2":79.35,"V3":77.23,"V4":77.75},"r":{"V1":0.5835,"V2":1.0464,"V3":-1.0656,"V4":-0.5527}},{"h":6706.0,"input":"Boiling point of water at altitude 6706 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"78.1 C (Engineering ToolBox table)","tb":78.1,"p":{"V1":78.65,"V2":79.12,"V3":76.96,"V4":77.49},"r":{"V1":0.5523,"V2":1.022,"V3":-1.1352,"V4":-0.614}},{"h":6782.0,"input":"Boiling point of water at altitude 6782 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"77.9 C (Engineering ToolBox table)","tb":77.9,"p":{"V1":78.42,"V2":78.9,"V3":76.7,"V4":77.23},"r":{"V1":0.5243,"V2":1.0009,"V3":-1.2015,"V4":-0.672}},{"h":6858.0,"input":"Boiling point of water at altitude 6858 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"77.7 C (Engineering ToolBox table)","tb":77.7,"p":{"V1":78.2,"V2":78.68,"V3":76.43,"V4":76.97},"r":{"V1":0.4967,"V2":0.9802,"V3":-1.2678,"V4":-0.73}},{"h":6934.0,"input":"Boiling point of water at altitude 6934 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"77.4 C (Engineering ToolBox table)","tb":77.4,"p":{"V1":77.97,"V2":78.46,"V3":76.17,"V4":76.71},"r":{"V1":0.5693,"V2":1.0597,"V3":-1.2344,"V4":-0.6881}},{"h":7010.0,"input":"Boiling point of water at altitude 7010 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"77.2 C (Engineering ToolBox table)","tb":77.2,"p":{"V1":77.74,"V2":78.24,"V3":75.9,"V4":76.45},"r":{"V1":0.5422,"V2":1.0396,"V3":-1.301,"V4":-0.7464}},{"h":7087.0,"input":"Boiling point of water at altitude 7087 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"77.0 C (Engineering ToolBox table)","tb":77.0,"p":{"V1":77.51,"V2":78.02,"V3":75.63,"V4":76.19},"r":{"V1":0.5125,"V2":1.0168,"V3":-1.3713,"V4":-0.8081}},{"h":7163.0,"input":"Boiling point of water at altitude 7163 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"76.8 C (Engineering ToolBox table)","tb":76.8,"p":{"V1":77.29,"V2":77.8,"V3":75.36,"V4":75.93},"r":{"V1":0.486,"V2":0.9973,"V3":-1.4382,"V4":-0.8665}},{"h":7239.0,"input":"Boiling point of water at altitude 7239 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"76.5 C (Engineering ToolBox table)","tb":76.5,"p":{"V1":77.06,"V2":77.58,"V3":75.09,"V4":75.68},"r":{"V1":0.5598,"V2":1.0781,"V3":-1.4053,"V4":-0.825}},{"h":7315.0,"input":"Boiling point of water at altitude 7315 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"76.3 C (Engineering ToolBox table)","tb":76.3,"p":{"V1":76.83,"V2":77.36,"V3":74.83,"V4":75.42},"r":{"V1":0.534,"V2":1.0592,"V3":-1.4725,"V4":-0.8836}},{"h":7391.0,"input":"Boiling point of water at altitude 7391 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"76.1 C (Engineering ToolBox table)","tb":76.1,"p":{"V1":76.61,"V2":77.14,"V3":74.56,"V4":75.16},"r":{"V1":0.5084,"V2":1.0407,"V3":-1.5398,"V4":-0.9422}},{"h":7468.0,"input":"Boiling point of water at altitude 7468 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"75.9 C (Engineering ToolBox table)","tb":75.9,"p":{"V1":76.38,"V2":76.92,"V3":74.29,"V4":74.9},"r":{"V1":0.4801,"V2":1.0196,"V3":-1.6108,"V4":-1.0044}},{"h":7544.0,"input":"Boiling point of water at altitude 7544 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"75.6 C (Engineering ToolBox table)","tb":75.6,"p":{"V1":76.16,"V2":76.7,"V3":74.02,"V4":74.64},"r":{"V1":0.5551,"V2":1.1016,"V3":-1.5784,"V4":-0.9633}},{"h":7620.0,"input":"Boiling point of water at altitude 7620 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"75.4 C (Engineering ToolBox table)","tb":75.4,"p":{"V1":75.93,"V2":76.48,"V3":73.75,"V4":74.38},"r":{"V1":0.5303,"V2":1.084,"V3":-1.6462,"V4":-1.0222}},{"h":7696.0,"input":"Boiling point of water at altitude 7696 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"75.2 C (Engineering ToolBox table)","tb":75.2,"p":{"V1":75.71,"V2":76.27,"V3":73.49,"V4":74.12},"r":{"V1":0.5059,"V2":1.0667,"V3":-1.7141,"V4":-1.0813}},{"h":7772.0,"input":"Boiling point of water at altitude 7772 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"75.0 C (Engineering ToolBox table)","tb":75.0,"p":{"V1":75.48,"V2":76.05,"V3":73.22,"V4":73.86},"r":{"V1":0.4818,"V2":1.0497,"V3":-1.7821,"V4":-1.1404}},{"h":7849.0,"input":"Boiling point of water at altitude 7849 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"74.8 C (Engineering ToolBox table)","tb":74.8,"p":{"V1":75.25,"V2":75.83,"V3":72.95,"V4":73.6},"r":{"V1":0.455,"V2":1.0301,"V3":-1.8538,"V4":-1.2031}},{"h":7925.0,"input":"Boiling point of water at altitude 7925 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"74.5 C (Engineering ToolBox table)","tb":74.5,"p":{"V1":75.03,"V2":75.61,"V3":72.68,"V4":73.34},"r":{"V1":0.5314,"V2":1.1137,"V3":-1.8221,"V4":-1.1624}},{"h":8001.0,"input":"Boiling point of water at altitude 8001 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"74.3 C (Engineering ToolBox table)","tb":74.3,"p":{"V1":74.81,"V2":75.4,"V3":72.41,"V4":73.08},"r":{"V1":0.5081,"V2":1.0976,"V3":-1.8906,"V4":-1.2218}},{"h":8077.0,"input":"Boiling point of water at altitude 8077 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"74.1 C (Engineering ToolBox table)","tb":74.1,"p":{"V1":74.59,"V2":75.18,"V3":72.14,"V4":72.82},"r":{"V1":0.4851,"V2":1.0819,"V3":-1.9592,"V4":-1.2813}},{"h":8153.0,"input":"Boiling point of water at altitude 8153 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"73.9 C (Engineering ToolBox table)","tb":73.9,"p":{"V1":74.36,"V2":74.97,"V3":71.87,"V4":72.56},"r":{"V1":0.4624,"V2":1.0664,"V3":-2.028,"V4":-1.341}},{"h":8230.0,"input":"Boiling point of water at altitude 8230 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"73.7 C (Engineering ToolBox table)","tb":73.7,"p":{"V1":74.14,"V2":74.75,"V3":71.6,"V4":72.3},"r":{"V1":0.4371,"V2":1.0484,"V3":-2.1004,"V4":-1.4041}},{"h":8306.0,"input":"Boiling point of water at altitude 8306 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"73.5 C (Engineering ToolBox table)","tb":73.5,"p":{"V1":73.91,"V2":74.53,"V3":71.33,"V4":72.04},"r":{"V1":0.4149,"V2":1.0336,"V3":-2.1695,"V4":-1.4639}},{"h":8382.0,"input":"Boiling point of water at altitude 8382 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"73.2 C (Engineering ToolBox table)","tb":73.2,"p":{"V1":73.69,"V2":74.32,"V3":71.06,"V4":71.78},"r":{"V1":0.4931,"V2":1.119,"V3":-2.1387,"V4":-1.4238}},{"h":8458.0,"input":"Boiling point of water at altitude 8458 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"73.0 C (Engineering ToolBox table)","tb":73.0,"p":{"V1":73.47,"V2":74.1,"V3":70.79,"V4":71.52},"r":{"V1":0.4715,"V2":1.1048,"V3":-2.208,"V4":-1.4839}},{"h":8534.0,"input":"Boiling point of water at altitude 8534 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"72.8 C (Engineering ToolBox table)","tb":72.8,"p":{"V1":73.25,"V2":73.89,"V3":70.52,"V4":71.26},"r":{"V1":0.4502,"V2":1.0908,"V3":-2.2775,"V4":-1.544}},{"h":8611.0,"input":"Boiling point of water at altitude 8611 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"72.6 C (Engineering ToolBox table)","tb":72.6,"p":{"V1":73.03,"V2":73.67,"V3":70.25,"V4":70.99},"r":{"V1":0.4263,"V2":1.0744,"V3":-2.3507,"V4":-1.6076}},{"h":8687.0,"input":"Boiling point of water at altitude 8687 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"72.4 C (Engineering ToolBox table)","tb":72.4,"p":{"V1":72.81,"V2":73.46,"V3":69.98,"V4":70.73},"r":{"V1":0.4056,"V2":1.061,"V3":-2.4205,"V4":-1.668}},{"h":8763.0,"input":"Boiling point of water at altitude 8763 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"72.2 C (Engineering ToolBox table)","tb":72.2,"p":{"V1":72.59,"V2":73.25,"V3":69.71,"V4":70.47},"r":{"V1":0.3852,"V2":1.048,"V3":-2.4904,"V4":-1.7284}},{"h":8839.0,"input":"Boiling point of water at altitude 8839 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"72.0 C (Engineering ToolBox table)","tb":72.0,"p":{"V1":72.36,"V2":73.04,"V3":69.44,"V4":70.21},"r":{"V1":0.365,"V2":1.0353,"V3":-2.5605,"V4":-1.7889}},{"h":8916.0,"input":"Boiling point of water at altitude 8916 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"71.7 C (Engineering ToolBox table)","tb":71.7,"p":{"V1":72.14,"V2":72.82,"V3":69.17,"V4":69.95},"r":{"V1":0.4422,"V2":1.12,"V3":-2.5343,"V4":-1.753}},{"h":8992.0,"input":"Boiling point of water at altitude 8992 m (standard-atmosphere pressure, sea-level 101.325 kPa)","output":"71.5 C (Engineering ToolBox table)","tb":71.5,"p":{"V1":71.92,"V2":72.61,"V3":68.9,"V4":69.69},"r":{"V1":0.4226,"V2":1.1079,"V3":-2.6047,"V4":-1.8137}}]</script>
+<script type="application/json" id="data-bands" data-source="gen_art_experiment_1/results/summary_by_band.json">{"V1":{"0-3 km":{"n":40,"bias_K":0.2270660907650889,"mae_K":0.22769260865486524,"max_abs_K":0.4277050385303056},"3-6 km":{"n":39,"bias_K":0.5050429207931862,"mae_K":0.5050429207931862,"max_abs_K":0.588479934096398},"6-9 km":{"n":40,"bias_K":0.49776851129151006,"mae_K":0.49776851129151006,"max_abs_K":0.5926158324216146}},"V2":{"0-3 km":{"n":40,"bias_K":0.2922053902257769,"mae_K":0.29498162480320184,"max_abs_K":0.5922915529179278},"3-6 km":{"n":39,"bias_K":0.7880201275823548,"mae_K":0.7880201275823548,"max_abs_K":0.9841777532021467},"6-9 km":{"n":40,"bias_K":1.0421941210426386,"mae_K":1.0421941210426386,"max_abs_K":1.1200449865101945}},"V3":{"0-3 km":{"n":40,"bias_K":0.11422032067235328,"mae_K":0.11489081237526158,"max_abs_K":0.19809888073032766},"3-6 km":{"n":39,"bias_K":-0.28340432300120055,"mae_K":0.2935657047211187,"max_abs_K":0.7730188853875859},"6-9 km":{"n":40,"bias_K":-1.642997418425055,"mae_K":1.642997418425055,"max_abs_K":2.604748734318946}},"V4":{"0-3 km":{"n":40,"bias_K":0.18175560476346214,"mae_K":0.18457508440043108,"max_abs_K":0.306238292579863},"3-6 km":{"n":39,"bias_K":0.020580416040201336,"mae_K":0.15159378076342314,"max_abs_K":0.3321900001369329},"6-9 km":{"n":40,"bias_K":-1.0290964893226797,"mae_K":1.0290964893226797,"max_abs_K":1.8137373947903939}}}</script>
+<script type="application/json" id="data-sensitivity" data-source="gen_art_experiment_1/results/sensitivity.json (variants)">{"V1":{"dH=40150_P0=100.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":-0.11140222521116136,"mae_K":0.11867781035310791,"max_abs_K":0.30388122857505095},"3-6 km":{"n":39,"bias_K":0.06738432322593031,"mae_K":0.06775784394278397,"max_abs_K":0.12727048342229352},"6-9 km":{"n":40,"bias_K":-0.028551157869304334,"mae_K":0.06424366533180326,"max_abs_K":0.19794297714730646}}},"dH=40150_P0=101.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.1667999674036718,"mae_K":0.1677451762216105,"max_abs_K":0.309233442861526},"3-6 km":{"n":39,"bias_K":0.33104629781832184,"mae_K":0.33104629781832184,"max_abs_K":0.38773355196097725},"6-9 km":{"n":40,"bias_K":0.2216852191380287,"mae_K":0.2216852191380287,"max_abs_K":0.3625341768243686}}},"dH=40150_P0=102.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.44268488066621464,"mae_K":0.44268488066621464,"max_abs_K":0.5778000407255064},"3-6 km":{"n":39,"bias_K":0.5925016762696654,"mae_K":0.5925016762696654,"max_abs_K":0.6460144603956763},"6-9 km":{"n":40,"bias_K":0.46981797837162026,"mae_K":0.46981797837162026,"max_abs_K":0.6167331935637037}}},"dH=40650_P0=100.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":-0.04780625090844133,"mae_K":0.11335172390373564,"max_abs_K":0.2940144306122079},"3-6 km":{"n":39,"bias_K":0.24436919038803806,"mae_K":0.24436919038803806,"max_abs_K":0.33395312812061206},"6-9 km":{"n":40,"bias_K":0.25021733818474595,"mae_K":0.25021733818474595,"max_abs_K":0.3390873870547182}}},"dH=40650_P0=101.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.2270660907650889,"mae_K":0.22769260865486524,"max_abs_K":0.4277050385303056},"3-6 km":{"n":39,"bias_K":0.5050429207931862,"mae_K":0.5050429207931862,"max_abs_K":0.588479934096398},"6-9 km":{"n":40,"bias_K":0.49776851129151006,"mae_K":0.49776851129151006,"max_abs_K":0.5926158324216146}}},"dH=40650_P0=102.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.4996439078327423,"mae_K":0.4996439078327423,"max_abs_K":0.6931389351269814},"3-6 km":{"n":39,"bias_K":0.763530585785748,"mae_K":0.763530585785748,"max_abs_K":0.8418255789383551},"6-9 km":{"n":40,"bias_K":0.7432346028247881,"mae_K":0.7432346028247881,"max_abs_K":0.8440130790642968}}},"dH=41150_P0=100.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.014272043648189126,"mae_K":0.1415607875303234,"max_abs_K":0.2843869050010426},"3-6 km":{"n":39,"bias_K":0.4172272582026918,"mae_K":0.4172272582026918,"max_abs_K":0.5539180000218096},"6-9 km":{"n":40,"bias_K":0.5226461495861049,"mae_K":0.5226461495861049,"max_abs_K":0.5817722214828507}}},"dH=41150_P0=101.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.28589330265944957,"mae_K":0.28620886372823795,"max_abs_K":0.5433721212549045},"3-6 km":{"n":39,"bias_K":0.6749796134501386,"mae_K":0.6749796134501386,"max_abs_K":0.8056625375013198},"6-9 km":{"n":40,"bias_K":0.7675688474962247,"mae_K":0.7675688474962247,"max_abs_K":0.8264981526724853}}},"dH=41150_P0=102.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.5552423717440444,"mae_K":0.5552423717440444,"max_abs_K":0.8057455045001376},"3-6 km":{"n":39,"bias_K":0.9305660783234941,"mae_K":0.9305660783234941,"max_abs_K":1.0552874504182626},"6-9 km":{"n":40,"bias_K":1.0104246999404158,"mae_K":1.0104246999404158,"max_abs_K":1.0721700808944803}}}},"V4":{"dH=40150_P0=100.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":-0.0875566791720562,"mae_K":0.09512159559588121,"max_abs_K":0.30748085809716486},"3-6 km":{"n":39,"bias_K":-0.23212907786618642,"mae_K":0.23212907786618642,"max_abs_K":0.5770460571881983},"6-9 km":{"n":40,"bias_K":-1.2656249177679992,"mae_K":1.2656249177679992,"max_abs_K":2.0424061246965834}}},"dH=40150_P0=101.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.18175560476346214,"mae_K":0.18457508440043108,"max_abs_K":0.306238292579863},"3-6 km":{"n":39,"bias_K":0.020580416040201336,"mae_K":0.15159378076342314,"max_abs_K":0.3321900001369329},"6-9 km":{"n":40,"bias_K":-1.0290964893226797,"mae_K":1.0290964893226797,"max_abs_K":1.8137373947903939}}},"dH=40150_P0=102.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.44886884514333153,"mae_K":0.44886884514333153,"max_abs_K":0.5684910625182766},"3-6 km":{"n":39,"bias_K":0.27121191392238625,"mae_K":0.2816128125097438,"max_abs_K":0.5153442151951282},"6-9 km":{"n":40,"bias_K":-0.7945269511046827,"mae_K":0.7945269511046827,"max_abs_K":1.586969314851558}}},"dH=40650_P0=100.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":-0.0875566791720562,"mae_K":0.09512159559588121,"max_abs_K":0.30748085809716486},"3-6 km":{"n":39,"bias_K":-0.23212907786618642,"mae_K":0.23212907786618642,"max_abs_K":0.5770460571881983},"6-9 km":{"n":40,"bias_K":-1.2656249177679992,"mae_K":1.2656249177679992,"max_abs_K":2.0424061246965834}}},"dH=40650_P0=101.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.18175560476346214,"mae_K":0.18457508440043108,"max_abs_K":0.306238292579863},"3-6 km":{"n":39,"bias_K":0.020580416040201336,"mae_K":0.15159378076342314,"max_abs_K":0.3321900001369329},"6-9 km":{"n":40,"bias_K":-1.0290964893226797,"mae_K":1.0290964893226797,"max_abs_K":1.8137373947903939}}},"dH=40650_P0=102.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.44886884514333153,"mae_K":0.44886884514333153,"max_abs_K":0.5684910625182766},"3-6 km":{"n":39,"bias_K":0.27121191392238625,"mae_K":0.2816128125097438,"max_abs_K":0.5153442151951282},"6-9 km":{"n":40,"bias_K":-0.7945269511046827,"mae_K":0.7945269511046827,"max_abs_K":1.586969314851558}}},"dH=41150_P0=100.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":-0.0875566791720562,"mae_K":0.09512159559588121,"max_abs_K":0.30748085809716486},"3-6 km":{"n":39,"bias_K":-0.23212907786618642,"mae_K":0.23212907786618642,"max_abs_K":0.5770460571881983},"6-9 km":{"n":40,"bias_K":-1.2656249177679992,"mae_K":1.2656249177679992,"max_abs_K":2.0424061246965834}}},"dH=41150_P0=101.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.18175560476346214,"mae_K":0.18457508440043108,"max_abs_K":0.306238292579863},"3-6 km":{"n":39,"bias_K":0.020580416040201336,"mae_K":0.15159378076342314,"max_abs_K":0.3321900001369329},"6-9 km":{"n":40,"bias_K":-1.0290964893226797,"mae_K":1.0290964893226797,"max_abs_K":1.8137373947903939}}},"dH=41150_P0=102.325kPa":{"band_stats":{"0-3 km":{"n":40,"bias_K":0.44886884514333153,"mae_K":0.44886884514333153,"max_abs_K":0.5684910625182766},"3-6 km":{"n":39,"bias_K":0.27121191392238625,"mae_K":0.2816128125097438,"max_abs_K":0.5153442151951282},"6-9 km":{"n":40,"bias_K":-0.7945269511046827,"mae_K":0.7945269511046827,"max_abs_K":1.586969314851558}}}}}</script>
+<script type="application/json" id="data-meta" data-source="gen_art_experiment_1/full_method_out.json (metadata)">{"R":8.314462618,"M":0.0289644,"g":9.80665,"lapse":0.0065,"T0":288.15,"P0":101325.0,"dH":40650.0,"Tanchor":373.15,"n":119,"maxAlt":8992.0,"minAlt":0.0}</script>
+<script>
+(function () {
+  'use strict';
+  var NS = 'http://www.w3.org/2000/svg';
+  function J(id) { return JSON.parse(document.getElementById(id).textContent); }
+  var ITEMS = J('data-items'), BANDS = J('data-bands'), SENS = J('data-sensitivity'), META = J('data-meta');
+  var VARS = ['V1', 'V2', 'V3', 'V4'];
+  var BK = ['0-3 km', '3-6 km', '6-9 km'];
+  var BL = ['0 to 3 km', '3 to 6 km', '6 to 9 km'];
+  var VNAME = { V1: 'Isothermal, constant enthalpy (baseline)', V2: 'Isothermal, IAPWS model', V3: 'ISA, constant enthalpy', V4: 'ISA, IAPWS model' };
+  var VSHORT = { V1: 'Isothermal, constant enthalpy', V2: 'Isothermal, IAPWS', V3: 'ISA, constant enthalpy', V4: 'ISA, IAPWS' };
+  var VCOL = { V1: '#0072B2', V2: '#7fb8df', V3: '#D55E00', V4: '#a87400' };
+  var VDASH = { V1: null, V2: '7 4', V3: null, V4: '7 4' };
+  var MINUS = '−';
+
+  // ---------- formatting ----------
+  function fx(x, d) { var s = Math.abs(x).toFixed(d); if (Number(s) === 0) return (0).toFixed(d); return (x < 0 ? MINUS : '') + s; }
+  function sx(x, d) { var s = Math.abs(x).toFixed(d); if (Number(s) === 0) return (0).toFixed(d); return (x < 0 ? MINUS : '+') + s; }
+  function comma(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function bkey(h) { return h < 3000 ? 0 : (h < 6000 ? 1 : 2); }
+  function bs(v, b) { return BANDS[v][BK[b]]; }
+  function maxAbsOf(v) { var m = 0; for (var b = 0; b < 3; b++) m = Math.max(m, bs(v, b).max_abs_K); return m; }
+
+  // ---------- chart helpers ----------
+  var cvs = document.createElement('canvas').getContext('2d');
+  function tw(s, px, bold) { cvs.font = (bold ? '600 ' : '') + px + 'px system-ui, sans-serif'; return cvs.measureText(s).width; }
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+  function niceStep(span, target) {
+    var raw = span / target, p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
+    var m = f < 1.5 ? 1 : (f < 3.5 ? 2 : (f < 7.5 ? 5 : 10));
+    return m * p;
+  }
+  function domain(lo, hi) {
+    lo = Math.min(lo, 0); hi = Math.max(hi, 0);
+    var pad = (hi - lo) * 0.08 || 0.5; lo -= pad; hi += pad;
+    var step = niceStep(hi - lo, 5);
+    return { lo: Math.floor(lo / step) * step, hi: Math.ceil(hi / step) * step, step: step };
+  }
+  function width(c) { return Math.max(260, Math.min(c.clientWidth || 640, 900)); }
+
+  // ---------- tooltip for chart marks ----------
+  var tip = document.getElementById('chartTip');
+  function showTip(text, x, y) {
+    tip.textContent = text; tip.hidden = false;
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = Math.min(Math.max(8, x + 12), window.innerWidth - w - 8);
+    var top = y + 14 + h > window.innerHeight ? y - h - 10 : y + 14;
+    tip.style.left = left + 'px'; tip.style.top = Math.max(8, top) + 'px';
+  }
+  function hideTip() { tip.hidden = true; }
+  document.addEventListener('pointerdown', function (e) { if (!e.target.closest || !e.target.closest('svg rect, svg circle')) hideTip(); });
+  window.addEventListener('scroll', hideTip, { passive: true });
+  function markTip(node, textFn) {
+    node.addEventListener('pointerenter', function (e) { showTip(textFn(), e.clientX, e.clientY); });
+    node.addEventListener('pointermove', function (e) { showTip(textFn(), e.clientX, e.clientY); });
+    node.addEventListener('pointerleave', hideTip);
+    node.addEventListener('pointerdown', function (e) { showTip(textFn(), e.clientX, e.clientY); });
+    node.addEventListener('focus', function () { var r = node.getBoundingClientRect(); showTip(textFn(), r.left + r.width / 2, r.top); });
+    node.addEventListener('blur', hideTip);
+  }
+
+  // ---------- bar chart ----------
+  // groups: band labels; series: [{key,label,color,values[],fmt}]
+  function drawBars(container, groups, series, opt) {
+    clear(container);
+    var W = width(container), H = opt.height || 300;
+    var all = []; series.forEach(function (s) { s.values.forEach(function (v) { all.push(v); }); });
+    var d = domain(Math.min.apply(null, all), Math.max.apply(null, all));
+    var ticks = []; for (var t = d.lo; t <= d.hi + 1e-9; t += d.step) ticks.push(Math.round(t * 1000) / 1000);
+    var tickW = Math.max.apply(null, ticks.map(function (t) { return tw(opt.tickFmt(t), 14); }));
+    var left = 10 + 16 + 8 + tickW + 10, right = 14, top = 14, bottom = 58;
+    var x0 = left, x1 = W - right, y0 = top, y1 = H - bottom;
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'presentation', focusable: 'false' }, container);
+    function yp(v) { return y0 + (d.hi - v) / (d.hi - d.lo) * (y1 - y0); }
+    ticks.forEach(function (t) {
+      el('line', { x1: x0, x2: x1, y1: yp(t), y2: yp(t), stroke: t === 0 ? '#44505e' : '#e3e7ec', 'stroke-width': t === 0 ? 1.5 : 1 }, svg);
+      var tx = el('text', { x: x0 - 8, y: yp(t) + 5, 'text-anchor': 'end', 'font-size': 14, fill: '#3b4654' }, svg);
+      tx.textContent = opt.tickFmt(t);
+    });
+    var yt = el('text', { transform: 'translate(' + 16 + ',' + ((y0 + y1) / 2) + ') rotate(-90)', 'text-anchor': 'middle', 'font-size': 14, fill: '#1d2430', 'font-weight': 600 }, svg);
+    yt.textContent = opt.yLabel;
+    var gw = (x1 - x0) / groups.length;
+    groups.forEach(function (g, gi) {
+      var gx = x0 + gi * gw;
+      var tx = el('text', { x: gx + gw / 2, y: y1 + 22, 'text-anchor': 'middle', 'font-size': 15, fill: '#1d2430' }, svg);
+      tx.textContent = g;
+      var bw = Math.min(46, (gw * 0.8) / series.length);
+      var startX = gx + gw / 2 - (bw * series.length) / 2;
+      series.forEach(function (s, si) {
+        var v = s.values[gi];
+        var yv = yp(v), yz = yp(0);
+        var r = el('rect', { x: startX + si * bw + 2, y: Math.min(yv, yz), width: Math.max(4, bw - 4), height: Math.max(1, Math.abs(yv - yz)), fill: s.color, tabindex: '0', role: 'img', 'aria-label': s.label + ', ' + g + ': ' + s.fmt(v) + ' K' }, svg);
+        markTip(r, function () { return s.label + ', ' + g + ': ' + s.fmt(v) + ' K'; });
+      });
+    });
+    return svg;
+  }
+
+  function legend(ul, series) {
+    clear(ul);
+    series.forEach(function (s) {
+      var li = document.createElement('li');
+      var sw = document.createElement('span'); sw.className = 'sw' + (s.dash ? ' dash' : ''); sw.style.borderTopColor = s.color; sw.setAttribute('aria-hidden', 'true');
+      li.appendChild(sw); li.appendChild(document.createTextNode(s.label));
+      ul.appendChild(li);
+    });
+  }
+
+  function fillTable(table, head, rows) {
+    clear(table);
+    var thead = document.createElement('thead'), tr = document.createElement('tr');
+    head.forEach(function (h, i) { var th = document.createElement('th'); th.scope = 'col'; th.textContent = h; tr.appendChild(th); });
+    thead.appendChild(tr); table.appendChild(thead);
+    var tb = document.createElement('tbody');
+    rows.forEach(function (r) {
+      var row = document.createElement('tr');
+      r.forEach(function (c, i) { var td = document.createElement(i === 0 ? 'th' : 'td'); if (i === 0) td.scope = 'row'; td.textContent = c; row.appendChild(td); });
+      tb.appendChild(row);
+    });
+    table.appendChild(tb);
+  }
+
+  // ---------- 1. headline ----------
+  var hl = { V2: false, V3: true, V4: false, stat: 'bias' };
+  function renderHeadline() {
+    var stat = hl.stat;
+    var sel = ['V1'].concat(VARS.slice(1).filter(function (v) { return hl[v]; }));
+    var series = sel.map(function (v) {
+      return { key: v, label: VNAME[v], color: VCOL[v], dash: !!VDASH[v],
+        values: [0, 1, 2].map(function (b) { return stat === 'bias' ? bs(v, b).bias_K : bs(v, b).max_abs_K; }),
+        fmt: function (x) { return stat === 'bias' ? sx(x, 2) : fx(x, 2); } };
+    });
+    var note = stat === 'bias' ? 'Mean residual (bias), K' : 'Largest absolute residual, K';
+    drawBars(document.getElementById('hlChart'), BL, series, { yLabel: note, tickFmt: function (t) { return fx(t, 1); }, height: 310 });
+    legend(document.getElementById('hlLegend'), series);
+    var head = ['Combination (K)'].concat(BL);
+    var rows = series.map(function (s) { return [VSHORT[s.key]].concat(s.values.map(function (x) { return s.fmt(x); })); });
+    fillTable(document.getElementById('hlTable'), head, rows);
+    var v1 = series[0];
+    var parts = series.slice(1).map(function (s) { return s.label + ' ' + s.fmt(s.values[2]) + ' K at 6 to 9 km'; });
+    var lead = stat === 'bias'
+      ? 'Baseline bias: ' + sx(v1.values[0], 2) + ' K, ' + sx(v1.values[1], 2) + ' K and ' + sx(v1.values[2], 2) + ' K across the three bands.'
+      : 'Baseline largest absolute residual: ' + fx(v1.values[0], 2) + ' K, ' + fx(v1.values[1], 2) + ' K and ' + fx(v1.values[2], 2) + ' K across the three bands.';
+    document.getElementById('hlTake').textContent = lead + (parts.length ? ' Shown with it: ' + parts.join('; ') + '.' : ' No other combination is shown.');
+  }
+
+  // ---------- 2. residual against altitude ----------
+  var ln = { V2: false, V3: true, V4: false, idx: 0 };
+  function renderLine() {
+    var c = document.getElementById('lnChart');
+    clear(c);
+    var sel = ['V1'].concat(VARS.slice(1).filter(function (v) { return ln[v]; }));
+    var series = sel.map(function (v) { return { key: v, label: VNAME[v], color: VCOL[v], dash: !!VDASH[v] }; });
+    var W = width(c), H = 340;
+    var all = []; ITEMS.forEach(function (it) { sel.forEach(function (v) { all.push(it.r[v]); }); });
+    var d = domain(Math.min.apply(null, all), Math.max.apply(null, all));
+    var ticks = []; for (var t = d.lo; t <= d.hi + 1e-9; t += d.step) ticks.push(Math.round(t * 1000) / 1000);
+    var tickW = Math.max.apply(null, ticks.map(function (t) { return tw(fx(t, 1), 14); }));
+    var left = 10 + 16 + 8 + tickW + 10, right = 16, top = 14, bottom = 56;
+    var x0 = left, x1 = W - right, y0 = top, y1 = H - bottom;
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'presentation', focusable: 'false' }, c);
+    var xmax = 9000;
+    function xp(h) { return x0 + h / xmax * (x1 - x0); }
+    function yp(v) { return y0 + (d.hi - v) / (d.hi - d.lo) * (y1 - y0); }
+    ticks.forEach(function (t) {
+      el('line', { x1: x0, x2: x1, y1: yp(t), y2: yp(t), stroke: t === 0 ? '#44505e' : '#e3e7ec', 'stroke-width': t === 0 ? 1.5 : 1 }, svg);
+      var tx = el('text', { x: x0 - 8, y: yp(t) + 5, 'text-anchor': 'end', 'font-size': 14, fill: '#3b4654' }, svg); tx.textContent = fx(t, 1);
+    });
+    [0, 3000, 6000, 9000].forEach(function (h) {
+      el('line', { x1: xp(h), x2: xp(h), y1: y0, y2: y1, stroke: '#eef1f4', 'stroke-width': 1 }, svg);
+      var tx = el('text', { x: xp(h), y: y1 + 20, 'text-anchor': h === 0 ? 'start' : (h === 9000 ? 'end' : 'middle'), 'font-size': 14, fill: '#3b4654' }, svg); tx.textContent = comma(h);
+    });
+    var xt = el('text', { x: (x0 + x1) / 2, y: H - 10, 'text-anchor': 'middle', 'font-size': 14, fill: '#1d2430', 'font-weight': 600 }, svg); xt.textContent = 'Altitude, m';
+    var yt = el('text', { transform: 'translate(' + 16 + ',' + ((y0 + y1) / 2) + ') rotate(-90)', 'text-anchor': 'middle', 'font-size': 14, fill: '#1d2430', 'font-weight': 600 }, svg); yt.textContent = 'Residual, K (model minus table)';
+    series.forEach(function (s) {
+      var pts = ITEMS.map(function (it) { return xp(it.h) + ',' + yp(it.r[s.key]); }).join(' ');
+      el('polyline', { points: pts, fill: 'none', stroke: s.color, 'stroke-width': 2.2, 'stroke-dasharray': s.dash ? '7 4' : 'none', 'stroke-linejoin': 'round' }, svg);
+      ITEMS.forEach(function (it) { el('circle', { cx: xp(it.h), cy: yp(it.r[s.key]), r: 3.2, fill: s.color, stroke: '#fff', 'stroke-width': 0.8 }, svg); });
+    });
+    var cur = ITEMS[ln.idx];
+    el('line', { x1: xp(cur.h), x2: xp(cur.h), y1: y0, y2: y1, stroke: '#1d2430', 'stroke-width': 1, 'stroke-dasharray': '2 3' }, svg);
+    // hover: nearest record
+    var hit = el('rect', { x: x0, y: y0, width: x1 - x0, height: y1 - y0, fill: 'transparent' }, svg);
+    function nearest(e) {
+      var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+      var m = svg.getScreenCTM(); if (!m) return null;
+      var q = pt.matrixTransform(m.inverse());
+      var h = (q.x - x0) / (x1 - x0) * xmax, best = 0, bd = Infinity;
+      ITEMS.forEach(function (it, i) { var dd = Math.abs(it.h - h); if (dd < bd) { bd = dd; best = i; } });
+      return best;
+    }
+    function textFor(i) {
+      var it = ITEMS[i];
+      return comma(it.h) + ' m, table ' + fx(it.tb, 1) + ' °C. ' + sel.map(function (v) { return VSHORT[v] + ' ' + sx(it.r[v], 2) + ' K'; }).join('; ');
+    }
+    hit.addEventListener('pointermove', function (e) { var i = nearest(e); if (i !== null) showTip(textFor(i), e.clientX, e.clientY); });
+    hit.addEventListener('pointerdown', function (e) { var i = nearest(e); if (i !== null) showTip(textFor(i), e.clientX, e.clientY); });
+    hit.addEventListener('pointerleave', hideTip);
+    legend(document.getElementById('lnLegend'), series);
+    var rd = document.getElementById('lnReadout');
+    rd.textContent = comma(cur.h) + ' m';
+    var parts = sel.map(function (v) { return VSHORT[v] + ' ' + sx(cur.r[v], 2) + ' K'; });
+    var worst = { v: 'V1', val: 0, h: 0 };
+    sel.forEach(function (v) { ITEMS.forEach(function (it) { if (Math.abs(it.r[v]) > Math.abs(worst.val)) worst = { v: v, val: it.r[v], h: it.h }; }); });
+    document.getElementById('lnTake').textContent = 'At ' + comma(cur.h) + ' m: ' + parts.join('; ') + '. Largest residual among the shown combinations: ' + sx(worst.val, 2) + ' K, ' + VSHORT[worst.v] + ' at ' + comma(worst.h) + ' m.';
+  }
+
+  // ---------- 3. item browser ----------
+  var it = { band: 'all', sort: 'asc', q: '', flag: false, sel: -1 };
+  function isFlag(i) { return VARS.some(function (v) { return Math.abs(ITEMS[i].r[v]) > 1; }); }
+  function visibleIdx() {
+    var idx = ITEMS.map(function (_, i) { return i; });
+    if (it.band !== 'all') idx = idx.filter(function (i) { return bkey(ITEMS[i].h) === Number(it.band); });
+    if (it.q) idx = idx.filter(function (i) { return String(Math.round(ITEMS[i].h)).indexOf(it.q.replace(/[^0-9]/g, '')) !== -1; });
+    if (it.flag) idx = idx.filter(isFlag);
+    var keyf = {
+      asc: function (i) { return ITEMS[i].h; },
+      desc: function (i) { return -ITEMS[i].h; },
+      isa: function (i) { return -Math.abs(ITEMS[i].r.V3); },
+      base: function (i) { return -Math.abs(ITEMS[i].r.V1); }
+    }[it.sort];
+    idx.sort(function (a, b) { return keyf(a) - keyf(b) || a - b; });
+    return idx;
+  }
+  function renderItems() {
+    var idx = visibleIdx();
+    document.getElementById('itCount').textContent = 'Showing ' + idx.length + ' of ' + ITEMS.length + ' recorded altitudes.';
+    var body = document.getElementById('itBody'); clear(body);
+    idx.forEach(function (i) {
+      var r = ITEMS[i], tr = document.createElement('tr');
+      if (i === it.sel) tr.className = 'sel';
+      var td0 = document.createElement('td');
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'rowbtn';
+      b.textContent = comma(r.h) + ' m';
+      b.setAttribute('aria-pressed', i === it.sel ? 'true' : 'false');
+      b.addEventListener('click', function () { it.sel = i; renderItems(); });
+      td0.appendChild(b); tr.appendChild(td0);
+      [fx(r.tb, 1), sx(r.r.V1, 2), sx(r.r.V3, 2)].forEach(function (x) { var td = document.createElement('td'); td.textContent = x; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    if (it.sel < 0 && ITEMS.length) it.sel = idx.length ? idx[0] : 0;
+    renderDetail();
+  }
+  function renderDetail() {
+    var box = document.getElementById('itDetail');
+    var r = ITEMS[it.sel >= 0 ? it.sel : 0];
+    var dv = r.p.V3 - r.p.V1;
+    var rv = r.r.V3 - r.r.V1;
+    box.innerHTML = '';
+    var h4 = document.createElement('h4'); h4.textContent = 'Altitude ' + comma(r.h) + ' m (recorded input)'; h4.style.margin = '0 0 6px';
+    var pi = document.createElement('p'); pi.className = 'io'; pi.textContent = 'Input: ' + r.input;
+    var po = document.createElement('p'); po.className = 'io'; po.textContent = 'Engineering ToolBox output: ' + r.output;
+    box.appendChild(h4); box.appendChild(pi); box.appendChild(po);
+    var ba = document.createElement('div'); ba.className = 'ba';
+    function card(title, v) {
+      var c = document.createElement('div'); c.className = 'card';
+      c.innerHTML = '<h4></h4><dl><dt>Predicted boiling point (recorded)</dt><dd></dd><dt>Residual against the table (recorded)</dt><dd></dd></dl>';
+      c.querySelector('h4').textContent = title;
+      c.querySelectorAll('dd')[0].textContent = fx(r.p[v], 2) + ' °C';
+      c.querySelectorAll('dd')[1].textContent = sx(r.r[v], 2) + ' K';
+      return c;
+    }
+    ba.appendChild(card('Before: baseline, ' + VSHORT.V1, 'V1'));
+    ba.appendChild(card('After: atmosphere switched to ISA, ' + VSHORT.V3, 'V3'));
+    box.appendChild(ba);
+    var p2 = document.createElement('p'); p2.className = 'io'; p2.style.marginTop = '10px';
+    p2.textContent = 'Other combinations at this altitude: ' + VSHORT.V2 + ' ' + fx(r.p.V2, 2) + ' °C (residual ' + sx(r.r.V2, 2) + ' K); ' + VSHORT.V4 + ' ' + fx(r.p.V4, 2) + ' °C (residual ' + sx(r.r.V4, 2) + ' K).';
+    box.appendChild(p2);
+    document.getElementById('itTake').textContent = 'At ' + comma(r.h) + ' m the ISA model with constant enthalpy predicts ' + fx(Math.abs(dv), 2) + ' K ' + (dv < 0 ? 'lower' : 'higher') + ' than the baseline, which moves the residual from ' + sx(r.r.V1, 2) + ' K to ' + sx(r.r.V3, 2) + ' K.';
+  }
+
+  // ---------- 4. sensitivity ----------
+  var sn = { dh: '40650', p: '101.325' };
+  function renderSens() {
+    var key = 'dH=' + sn.dh + '_P0=' + sn.p + 'kPa';
+    var series = ['V1', 'V4'].map(function (v) {
+      return { key: v, label: VNAME[v], color: VCOL[v], dash: !!VDASH[v],
+        values: [0, 1, 2].map(function (b) { return SENS[v][key].band_stats[BK[b]].bias_K; }),
+        fmt: function (x) { return sx(x, 2); } };
+    });
+    drawBars(document.getElementById('snChart'), BL, series, { yLabel: 'Mean residual (bias), K', tickFmt: function (t) { return fx(t, 1); }, height: 290 });
+    legend(document.getElementById('snLegend'), series);
+    var rows = series.map(function (s) { return [VSHORT[s.key]].concat(s.values.map(function (x) { return sx(x, 2); })); });
+    fillTable(document.getElementById('snTable'), ['Combination (K)'].concat(BL), rows);
+    var def = SENS.V1['dH=40650_P0=101.325kPa'].band_stats['6-9 km'].bias_K;
+    var cur = series[0].values[2];
+    document.getElementById('snTake').textContent = 'Isothermal bias at 6 to 9 km is ' + sx(cur, 2) + ' K with these conditions, against ' + sx(def, 2) + ' K at the default 40.65 kJ/mol and 101.325 kPa. The ISA, IAPWS model does not use the enthalpy constant, so its bias is the same at every enthalpy setting.';
+  }
+
+  // ---------- 5. try it ----------
+  var R = META.R, M = META.M, G = META.g, LA = META.lapse, T0 = META.T0, P0 = META.P0, TA = META.Tanchor;
+  var H = R * T0 / (M * G);
+  function pIso(h) { return P0 * Math.exp(-h / H); }
+  function pIsa(h) { return P0 * Math.pow(1 - LA * h / T0, G * M / (R * LA)); }
+  function tCE(p, dh) { return 1 / (1 / TA - (R / dh) * Math.log(p / P0)) - 273.15; }
+  var DH0 = META.dH;
+  function checkRecorded() {
+    var n1 = 0, n3 = 0, worst = 0;
+    ITEMS.forEach(function (r) {
+      var a = Math.abs(tCE(pIso(r.h), DH0) - r.p.V1), b = Math.abs(tCE(pIsa(r.h), DH0) - r.p.V3);
+      worst = Math.max(worst, a, b);
+      if (a <= 0.005 + 1e-9) n1++; if (b <= 0.005 + 1e-9) n3++;
+    });
+    return { n1: n1, n3: n3, worst: worst };
+  }
+  var CHK = checkRecorded();
+  function renderTry() {
+    var h = Number(document.getElementById('tyAlt').value);
+    var dh = Number(document.getElementById('tyDh').value) * 1000;
+    document.getElementById('tyAltOut').textContent = comma(h) + ' m';
+    document.getElementById('tyDhOut').textContent = (dh / 1000).toFixed(2) + ' kJ/mol';
+    var pi = pIso(h) / 1000, pa = pIsa(h) / 1000;
+    var bi = tCE(pIso(h), dh), ba = tCE(pIsa(h), dh);
+    var rows = [
+      ['Pressure, isothermal atmosphere (kPa)', pi.toFixed(2)],
+      ['Pressure, ISA atmosphere (kPa)', pa.toFixed(2)],
+      ['Boiling point, isothermal, constant enthalpy (°C)', fx(bi, 2)],
+      ['Boiling point, ISA, constant enthalpy (°C)', fx(ba, 2)]
+    ];
+    if (ITEMS.length) {
+      var table = null;
+      for (var i = 0; i < ITEMS.length; i++) if (ITEMS[i].h === h) { table = ITEMS[i]; break; }
+      if (table && Math.abs(dh - DH0) < 1e-6) {
+        rows.push(['Engineering ToolBox table at this altitude (°C)', fx(table.tb, 1)]);
+      }
+    }
+    fillTable(document.getElementById('tyTable'), ['Quantity', 'Value'], rows);
+    var rec = ITEMS.filter(function (r) { return r.h === h; })[0];
+    var t = document.getElementById('tyRec');
+    if (rec && Math.abs(dh - DH0) < 1e-6) {
+      t.textContent = 'The run recorded this altitude: isothermal ' + fx(rec.p.V1, 2) + ' °C, ISA ' + fx(rec.p.V3, 2) + ' °C, table ' + fx(rec.tb, 1) + ' °C.';
+    } else {
+      t.textContent = 'The run recorded per-altitude values only at 40.65 kJ/mol, and only at the 119 table altitudes. Other settings here are recomputed, not recorded.';
+    }
+    document.getElementById('tyCheck').textContent = 'Page check, run at load: at 40.65 kJ/mol the formulas above reproduce ' + CHK.n1 + ' of ' + ITEMS.length + ' recorded isothermal values and ' + CHK.n3 + ' of ' + ITEMS.length + ' recorded ISA values to within 0.005 °C (largest difference ' + CHK.worst.toFixed(4) + ' °C).';
+    document.getElementById('tyTake').textContent = 'At ' + comma(h) + ' m and ' + (dh / 1000).toFixed(2) + ' kJ/mol the isothermal model gives ' + fx(bi, 2) + ' °C and the ISA model gives ' + fx(ba, 2) + ' °C, a gap of ' + fx(Math.abs(ba - bi), 2) + ' K.';
+  }
+
+  // ---------- 6. where it fails ----------
+  function renderFail() {
+    var thr = Number(document.getElementById('flThr').value);
+    document.getElementById('flThrOut').textContent = thr.toFixed(2) + ' K';
+    var counts = VARS.map(function (v) { return ITEMS.filter(function (r) { return Math.abs(r.r[v]) > thr; }); });
+    var series = VARS.map(function (v, k) { return { key: v, label: VNAME[v], color: VCOL[v], dash: !!VDASH[v], values: [counts[k].length], fmt: function (x) { return String(x); } }; });
+    drawBars(document.getElementById('flChart'), ['Altitudes flagged'], series, { yLabel: 'Altitudes flagged (count)', tickFmt: function (t) { return String(Math.round(t)); }, height: 260 });
+    fillTable(document.getElementById('flTable'), ['Combination', 'Altitudes flagged', 'Flagged altitudes, m'], VARS.map(function (v, k) {
+      var hs = counts[k].map(function (r) { return comma(r.h); });
+      return [VNAME[v], String(counts[k].length), hs.length ? hs.join(', ') : 'none'];
+    }));
+    var isa = counts[2];
+    var t = 'At ' + thr.toFixed(2) + ' K, the ISA model with constant enthalpy flags ' + isa.length + ' of ' + ITEMS.length + ' altitudes';
+    if (isa.length) t += ', from ' + comma(Math.min.apply(null, isa.map(function (r) { return r.h; }))) + ' m to ' + comma(Math.max.apply(null, isa.map(function (r) { return r.h; }))) + ' m';
+    t += '. The baseline flags ' + counts[0].length + '.';
+    document.getElementById('flTake').textContent = t;
+  }
+
+  // ---------- 7. stepper ----------
+  var EX = ITEMS.filter(function (r) { return r.h === 8992; })[0] || ITEMS[ITEMS.length - 1];
+  var STAGES = [
+    { name: 'Altitude', tab: '1 Altitude', inp: 'The altitude of one row of the Engineering ToolBox table: ' + comma(EX.h) + ' m.',
+      does: 'Read the altitude. Every later step starts from it, so the altitude grid sets which points can be compared.',
+      out: comma(EX.h) + ' m above sea level (recorded input: "' + EX.input + '").', why: 'The table is the only reference. The models are evaluated at the same altitudes, not at interpolated ones.' },
+    { name: 'Pressure', tab: '2 Pressure', inp: 'Altitude ' + comma(EX.h) + ' m, sea-level pressure ' + (P0 / 1000).toFixed(3) + ' kPa, scale height ' + comma(H) + ' m (isothermal) and lapse rate ' + (LA * 1000).toFixed(1) + ' K/km (ISA).',
+      does: 'Isothermal: p = P0 · exp(−h/H). ISA: p = P0 · (1 − L·h/T0) raised to gM/(RL). Both formulas are the run\'s own, and the page evaluates them here.',
+      out: 'Isothermal ' + (pIso(EX.h) / 1000).toFixed(2) + ' kPa; ISA ' + (pIsa(EX.h) / 1000).toFixed(2) + ' kPa. The run stored pressures only on a 100 m grid, so these two values are computed here.', why: 'The two atmosphere models differ most at altitude, and this is where the paper finds the largest disagreement.' },
+    { name: 'Boiling point', tab: '3 Boiling point', inp: 'The pressures from stage 2 and the enthalpy of vaporisation ' + (DH0 / 1000).toFixed(2) + ' kJ/mol, anchored at ' + TA.toFixed(2) + ' K at sea-level pressure.',
+      does: 'Invert the Clausius-Clapeyron equation with a constant enthalpy: 1/T = 1/T_anchor − (R/ΔH) · ln(p/P0).',
+      out: 'Recorded: isothermal ' + fx(EX.p.V1, 2) + ' °C; ISA ' + fx(EX.p.V3, 2) + ' °C.', why: 'The constant-enthalpy step is the shortcut the paper tests against the IAPWS saturation curve, which gives the other two columns of the table.' },
+    { name: 'Table comparison', tab: '4 Table comparison', inp: 'The model boiling points from stage 3 and the Engineering ToolBox value of ' + fx(EX.tb, 1) + ' °C.',
+      does: 'Residual = model minus table, in kelvin, at the same altitude.',
+      out: 'Recorded residuals: isothermal ' + sx(EX.r.V1, 2) + ' K; ISA ' + sx(EX.r.V3, 2) + ' K.', why: 'The table has no stated method, so the residual measures agreement with a computed reference, not accuracy against measurement.' },
+    { name: 'Band statistics', tab: '5 Band statistics', inp: 'All recorded residuals in the 6 to 9 km band (' + BANDS.V1['6-9 km'].n + ' altitudes).',
+      does: 'Average the residuals (bias), average their absolute values (mean absolute error) and take the largest absolute value.',
+      out: 'Bias at 6 to 9 km: isothermal ' + sx(BANDS.V1['6-9 km'].bias_K, 2) + ' K; ISA ' + sx(BANDS.V3['6-9 km'].bias_K, 2) + ' K. Largest absolute residual in the band: ' + fx(BANDS.V3['6-9 km'].max_abs_K, 2) + ' K for ISA.', why: 'These are the band numbers the paper reports. They are the file\'s summary, not recomputed.' }
+  ];
+  var stage = 0;
+  function renderStep() {
+    var ul = document.getElementById('stageTabs'); clear(ul);
+    STAGES.forEach(function (s, i) {
+      var li = document.createElement('li'), b = document.createElement('button');
+      b.type = 'button'; b.textContent = s.tab;
+      if (i === stage) b.setAttribute('aria-current', 'step');
+      b.addEventListener('click', function () { stage = i; renderStep(); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    var s = STAGES[stage], dl = document.getElementById('stepBody'); clear(dl);
+    [['What goes in', s.inp], ['What is done', s.does], ['What comes out', s.out], ['Why', s.why]].forEach(function (p) {
+      var dt = document.createElement('dt'); dt.textContent = p[0];
+      var dd = document.createElement('dd'); dd.textContent = p[1];
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    document.getElementById('stepPrev').disabled = stage === 0;
+    document.getElementById('stepNext').disabled = stage === STAGES.length - 1;
+    document.getElementById('stepAnnounce').textContent = 'Stage ' + (stage + 1) + ' of ' + STAGES.length + ': ' + s.name + '.';
+    drawPipe();
+  }
+  function drawPipe() {
+    var svg = document.getElementById('pipe'); clear(svg);
+    var labels = ['Altitude', 'Pressure', 'Boiling point', 'Table comparison', 'Band statistics'];
+    labels.forEach(function (lab, i) {
+      var y = 10 + i * 62, cur = i === stage;
+      el('rect', { x: 20, y: y, width: 260, height: 44, rx: 6, 'class': 'box' + (cur ? ' cur' : ''), stroke: cur ? '#0b5ea8' : '#aab3bf', fill: cur ? '#0b5ea8' : '#eef2f7', 'stroke-width': 1.5 }, svg);
+      var t = el('text', { x: 150, y: y + 28, 'text-anchor': 'middle', 'font-size': 15, 'class': 'lbl' + (cur ? ' cur' : ''), fill: cur ? '#ffffff' : '#1d2430', 'font-weight': cur ? 650 : 400 }, svg);
+      t.textContent = (i + 1) + '. ' + lab;
+      if (i < labels.length - 1) el('path', { d: 'M150 ' + (y + 44) + ' L150 ' + (y + 62), stroke: '#8a96a5', 'stroke-width': 2, fill: 'none' }, svg);
+    });
+    // clickable area per stage
+    labels.forEach(function (lab, i) {
+      var y = 10 + i * 62;
+      var r = el('rect', { x: 20, y: y, width: 260, height: 44, fill: 'transparent', style: 'cursor:pointer' }, svg);
+      r.addEventListener('click', function () { stage = i; renderStep(); });
+    });
+  }
+  document.getElementById('stepPrev').addEventListener('click', function () { if (stage > 0) { stage--; renderStep(); } });
+  document.getElementById('stepNext').addEventListener('click', function () { if (stage < STAGES.length - 1) { stage++; renderStep(); } });
+  document.querySelector('[data-stepper]').addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' && stage > 0) { stage--; renderStep(); e.preventDefault(); }
+    if (e.key === 'ArrowRight' && stage < STAGES.length - 1) { stage++; renderStep(); e.preventDefault(); }
+  });
+
+  // ---------- glossary and term tooltips ----------
+  var GLOSS = {
+    reftable: ['Engineering ToolBox table', 'A published table of water boiling points against altitude from sea level to 9,144 m. Its method is not stated, so the study treats it as a computed reference, not a measurement.'],
+    residual: ['Residual', 'The model minus the table, in kelvin, at each altitude. A positive residual means the model boils water hotter than the table.'],
+    bias: ['Bias', 'The mean signed residual over an altitude band.'],
+    mae: ['Mean absolute error', 'The average of the absolute residuals over an altitude band, ignoring sign.'],
+    maxabs: ['Largest absolute residual', 'The residual with the largest size, ignoring sign, over all altitudes in the set.'],
+    isothermal: ['Isothermal atmosphere', 'An atmosphere with one scale height, so pressure falls exponentially with altitude. Its scale height is RT/(Mg).'],
+    isa: ['International Standard Atmosphere (ISA)', 'A standard atmosphere with a troposphere whose temperature falls by a fixed 6.5 K per km up to 11 km.'],
+    cc: ['Clausius-Clapeyron equation', 'An equation that relates vapour pressure to temperature through the enthalpy of vaporisation.'],
+    enthalpy: ['Enthalpy of vaporisation', 'The energy needed to turn liquid water into vapour. The constant-enthalpy model holds it at 40.65 kJ/mol.'],
+    chmodel: ['Constant-enthalpy model', 'The boiling-point step that applies the Clausius-Clapeyron equation with one fixed enthalpy of vaporisation. It is the textbook shortcut.'],
+    iapws: ['IAPWS model', 'The boiling-point step that inverts the IAPWS industrial formulation for water and steam, the reference saturation curve.'],
+    measured: ['Measured boiling-point pair', 'A boiling temperature measured together with the station pressure at which it was measured. None could be recovered in this study.']
+  };
+  // every term button in the page gets a tooltip built from GLOSS
+  var openTips = [];
+  function placeTip(btn, tipEl) {
+    tipEl.style.left = '0px';
+    var r = tipEl.getBoundingClientRect();
+    var over = r.right - (window.innerWidth - 10);
+    if (over > 0) tipEl.style.left = (-over) + 'px';
+    var l = tipEl.getBoundingClientRect().left;
+    if (l < 10) tipEl.style.left = (parseFloat(tipEl.style.left) + (10 - l)) + 'px';
+  }
+  function openTip(btn) {
+    var t = document.getElementById(btn.getAttribute('aria-describedby'));
+    if (!t) return;
+    t.hidden = false; placeTip(btn, t);
+    if (openTips.indexOf(btn) < 0) openTips.push(btn);
+  }
+  function closeTip(btn) {
+    var t = document.getElementById(btn.getAttribute('aria-describedby'));
+    if (t) t.hidden = true;
+    openTips = openTips.filter(function (b) { return b !== btn; });
+  }
+  function closeAll() { openTips.slice().forEach(closeTip); }
+  function wireTerms() {
+    document.querySelectorAll('button.term').forEach(function (btn) {
+      var key = btn.getAttribute('data-term'), g = GLOSS[key];
+      var wrap = btn.parentNode;
+      var tip = document.createElement('span');
+      tip.className = 'tip'; tip.id = 'tip-' + key; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
+      tip.textContent = g[0] + '. ' + g[1];
+      wrap.appendChild(tip);
+      btn.setAttribute('aria-describedby', tip.id);
+      btn.addEventListener('pointerenter', function (e) { openTip(btn); });
+      btn.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') closeTip(btn); });
+      btn.addEventListener('focus', function () { openTip(btn); });
+      btn.addEventListener('blur', function () { closeTip(btn); });
+      btn.addEventListener('click', function () { openTip(btn); });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+    document.addEventListener('pointerdown', function (e) { if (!e.target.closest || !e.target.closest('.term-wrap')) closeAll(); });
+    document.addEventListener('click', function (e) { if (!e.target.closest || !e.target.closest('.term-wrap')) closeAll(); });
+    var gl = document.getElementById('glossList'); clear(gl);
+    Object.keys(GLOSS).forEach(function (k) {
+      var dt = document.createElement('dt'), dd = document.createElement('dd');
+      dt.textContent = GLOSS[k][0]; dd.textContent = GLOSS[k][1];
+      gl.appendChild(dt); gl.appendChild(dd);
+    });
+  }
+
+  // ---------- provenance ----------
+  function provenance() {
+    var ul = document.getElementById('provList'); clear(ul);
+    var lines = [
+      ['Finding, band table and bar chart', 'gen_art_experiment_1/results/summary_by_band.json (band bias, largest absolute residual, n).'],
+      ['Residual against altitude, item browser, where it fails', 'gen_art_experiment_1/full_method_out.json, 119 records (input, table output, four predictions and four residuals).'],
+      ['Conditions (enthalpy, sea-level pressure)', 'gen_art_experiment_1/results/sensitivity.json, isothermal and IAPWS variants.'],
+      ['Try it, stepper pressures', 'Formulas and constants from gen_art_experiment_1/full_method_out.json (metadata.parameters); pressures are computed in the page.']
+    ];
+    lines.forEach(function (l) { var li = document.createElement('li'); li.innerHTML = '<strong></strong> <code></code>'; li.querySelector('strong').textContent = l[0] + ': '; li.querySelector('code').textContent = l[1]; ul.appendChild(li); });
+    var checks = VARS.map(function (v) {
+      var worst = 0;
+      for (var b = 0; b < 3; b++) {
+        var xs = ITEMS.filter(function (r) { return bkey(r.h) === b; }).map(function (r) { return r.r[v]; });
+        var mean = xs.reduce(function (a, c) { return a + c; }, 0) / xs.length;
+        worst = Math.max(worst, Math.abs(mean - bs(v, b).bias_K));
+      }
+      return worst;
+    });
+    var li = document.createElement('li');
+    li.innerHTML = '<strong>Checks run in the page: </strong>';
+    li.appendChild(document.createTextNode('band counts match the file (' + BK.map(function (k) { return BANDS.V1[k].n; }).join(', ') + '); band means recomputed from the rounded records differ from the file\'s bias by at most ' + Math.max.apply(null, checks).toFixed(4) + ' K. The range of the recorded altitudes is ' + comma(META.minAlt) + ' to ' + comma(META.maxAlt) + ' m. The paper gives 0 to 9,144 m for this 119-altitude computation, but the largest altitude in this file is ' + comma(META.maxAlt) + ' m.'));
+    ul.appendChild(li);
+  }
+
+  // ---------- wiring ----------
+  function bindControls() {
+    ['V2', 'V3', 'V4'].forEach(function (v) { document.getElementById('hl-' + v).addEventListener('change', function (e) { hl[v] = e.target.checked; renderHeadline(); }); });
+    document.querySelectorAll('input[name="hl-stat"]').forEach(function (r) { r.addEventListener('change', function (e) { if (e.target.checked) { hl.stat = e.target.value; renderHeadline(); } }); });
+    document.querySelectorAll('.ln-chk').forEach(function (c) { c.addEventListener('change', function (e) { ln[e.target.value] = e.target.checked; renderLine(); }); });
+    document.getElementById('lnIdx').addEventListener('input', function (e) { ln.idx = Number(e.target.value); renderLine(); });
+    document.getElementById('itBand').addEventListener('change', function (e) { it.band = e.target.value; renderItems(); });
+    document.getElementById('itSort').addEventListener('change', function (e) { it.sort = e.target.value; renderItems(); });
+    document.getElementById('itSearch').addEventListener('input', function (e) { it.q = e.target.value; renderItems(); });
+    document.getElementById('itFlag').addEventListener('change', function (e) { it.flag = e.target.checked; renderItems(); });
+    document.querySelectorAll('input[name="sn-dh"]').forEach(function (r) { r.addEventListener('change', function (e) { if (e.target.checked) { sn.dh = e.target.value; renderSens(); } }); });
+    document.querySelectorAll('input[name="sn-p"]').forEach(function (r) { r.addEventListener('change', function (e) { if (e.target.checked) { sn.p = e.target.value; renderSens(); } }); });
+    document.getElementById('tyAlt').addEventListener('input', renderTry);
+    document.getElementById('tyDh').addEventListener('input', renderTry);
+    document.getElementById('flThr').addEventListener('input', renderFail);
+  }
+  function renderAll() {
+    renderHeadline(); renderLine(); renderItems(); renderSens(); renderTry(); renderFail(); renderStep();
+  }
+  var rt = null;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { renderHeadline(); renderLine(); renderSens(); renderFail(); }, 120); });
+
+  // big number and section nav
+  document.getElementById('bigNum').textContent = fx(maxAbsOf('V1'), 2) + ' K';
+  var sec = document.querySelectorAll('.sec-nav a');
+  if ('IntersectionObserver' in window) {
+    var map = {}; sec.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting && map[en.target.id]) { sec.forEach(function (a) { a.removeAttribute('aria-current'); }); map[en.target.id].setAttribute('aria-current', 'true'); } });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    ['finding', 'how', 'evidence', 'try', 'fails'].forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  }
+
+  // counts text tune
+  document.getElementById('itSearch').setAttribute('aria-describedby', 'itCount');
+  wireTerms();
+  provenance();
+  bindControls();
+  renderAll();
+})();
+</script>
+</body></html>
