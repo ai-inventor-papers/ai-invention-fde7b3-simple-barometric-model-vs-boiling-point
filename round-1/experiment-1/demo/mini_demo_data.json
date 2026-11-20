@@ -1,0 +1,312 @@
+{
+ "metadata": {
+  "artifact": "art_SznfD9DKXm93",
+  "description": "Engineering ToolBox boiling-point-vs-altitude table (0-9 km), every other row of the 119 in range (60 examples). Curated subset for the demo.",
+  "benchmark": "Engineering ToolBox table (method unstated; a reference curve, not a measurement)",
+  "full_table_rows_0_9km": 119,
+  "subsample": "every other row (inrange[::2])"
+ },
+ "table": [
+  {
+   "altitude_m": 0.0,
+   "bp_C": 100.0,
+   "altitude_ft": 0.0
+  },
+  {
+   "altitude_m": 152.0,
+   "bp_C": 99.5,
+   "altitude_ft": 500.0
+  },
+  {
+   "altitude_m": 305.0,
+   "bp_C": 98.9,
+   "altitude_ft": 1000.0
+  },
+  {
+   "altitude_m": 457.0,
+   "bp_C": 98.4,
+   "altitude_ft": 1500.0
+  },
+  {
+   "altitude_m": 610.0,
+   "bp_C": 97.8,
+   "altitude_ft": 2000.0
+  },
+  {
+   "altitude_m": 762.0,
+   "bp_C": 97.3,
+   "altitude_ft": 2500.0
+  },
+  {
+   "altitude_m": 914.0,
+   "bp_C": 96.8,
+   "altitude_ft": 3000.0
+  },
+  {
+   "altitude_m": 1067.0,
+   "bp_C": 96.3,
+   "altitude_ft": 3500.0
+  },
+  {
+   "altitude_m": 1219.0,
+   "bp_C": 95.7,
+   "altitude_ft": 4000.0
+  },
+  {
+   "altitude_m": 1372.0,
+   "bp_C": 95.2,
+   "altitude_ft": 4500.0
+  },
+  {
+   "altitude_m": 1524.0,
+   "bp_C": 94.7,
+   "altitude_ft": 5000.0
+  },
+  {
+   "altitude_m": 1676.0,
+   "bp_C": 94.2,
+   "altitude_ft": 5500.0
+  },
+  {
+   "altitude_m": 1829.0,
+   "bp_C": 93.6,
+   "altitude_ft": 6000.0
+  },
+  {
+   "altitude_m": 1981.0,
+   "bp_C": 93.1,
+   "altitude_ft": 6500.0
+  },
+  {
+   "altitude_m": 2134.0,
+   "bp_C": 92.6,
+   "altitude_ft": 7000.0
+  },
+  {
+   "altitude_m": 2286.0,
+   "bp_C": 92.1,
+   "altitude_ft": 7500.0
+  },
+  {
+   "altitude_m": 2438.0,
+   "bp_C": 91.6,
+   "altitude_ft": 8000.0
+  },
+  {
+   "altitude_m": 2591.0,
+   "bp_C": 91.1,
+   "altitude_ft": 8500.0
+  },
+  {
+   "altitude_m": 2743.0,
+   "bp_C": 90.6,
+   "altitude_ft": 9000.0
+  },
+  {
+   "altitude_m": 2896.0,
+   "bp_C": 90.1,
+   "altitude_ft": 9500.0
+  },
+  {
+   "altitude_m": 3048.0,
+   "bp_C": 89.6,
+   "altitude_ft": 10000.0
+  },
+  {
+   "altitude_m": 3200.0,
+   "bp_C": 89.1,
+   "altitude_ft": 10500.0
+  },
+  {
+   "altitude_m": 3353.0,
+   "bp_C": 88.6,
+   "altitude_ft": 11000.0
+  },
+  {
+   "altitude_m": 3505.0,
+   "bp_C": 88.1,
+   "altitude_ft": 11500.0
+  },
+  {
+   "altitude_m": 3658.0,
+   "bp_C": 87.6,
+   "altitude_ft": 12000.0
+  },
+  {
+   "altitude_m": 3810.0,
+   "bp_C": 87.1,
+   "altitude_ft": 12500.0
+  },
+  {
+   "altitude_m": 3962.0,
+   "bp_C": 86.6,
+   "altitude_ft": 13000.0
+  },
+  {
+   "altitude_m": 4115.0,
+   "bp_C": 86.1,
+   "altitude_ft": 13500.0
+  },
+  {
+   "altitude_m": 4267.0,
+   "bp_C": 85.6,
+   "altitude_ft": 14000.0
+  },
+  {
+   "altitude_m": 4420.0,
+   "bp_C": 85.1,
+   "altitude_ft": 14500.0
+  },
+  {
+   "altitude_m": 4572.0,
+   "bp_C": 84.7,
+   "altitude_ft": 15000.0
+  },
+  {
+   "altitude_m": 4724.0,
+   "bp_C": 84.2,
+   "altitude_ft": 15500.0
+  },
+  {
+   "altitude_m": 4877.0,
+   "bp_C": 83.7,
+   "altitude_ft": 16000.0
+  },
+  {
+   "altitude_m": 5029.0,
+   "bp_C": 83.2,
+   "altitude_ft": 16500.0
+  },
+  {
+   "altitude_m": 5182.0,
+   "bp_C": 82.7,
+   "altitude_ft": 17000.0
+  },
+  {
+   "altitude_m": 5334.0,
+   "bp_C": 82.3,
+   "altitude_ft": 17500.0
+  },
+  {
+   "altitude_m": 5486.0,
+   "bp_C": 81.8,
+   "altitude_ft": 18000.0
+  },
+  {
+   "altitude_m": 5639.0,
+   "bp_C": 81.3,
+   "altitude_ft": 18500.0
+  },
+  {
+   "altitude_m": 5791.0,
+   "bp_C": 80.9,
+   "altitude_ft": 19000.0
+  },
+  {
+   "altitude_m": 5944.0,
+   "bp_C": 80.4,
+   "altitude_ft": 19500.0
+  },
+  {
+   "altitude_m": 6096.0,
+   "bp_C": 79.9,
+   "altitude_ft": 20000.0
+  },
+  {
+   "altitude_m": 6248.0,
+   "bp_C": 79.5,
+   "altitude_ft": 20500.0
+  },
+  {
+   "altitude_m": 6401.0,
+   "bp_C": 79.0,
+   "altitude_ft": 21000.0
+  },
+  {
+   "altitude_m": 6553.0,
+   "bp_C": 78.6,
+   "altitude_ft": 21500.0
+  },
+  {
+   "altitude_m": 6706.0,
+   "bp_C": 78.1,
+   "altitude_ft": 22000.0
+  },
+  {
+   "altitude_m": 6858.0,
+   "bp_C": 77.7,
+   "altitude_ft": 22500.0
+  },
+  {
+   "altitude_m": 7010.0,
+   "bp_C": 77.2,
+   "altitude_ft": 23000.0
+  },
+  {
+   "altitude_m": 7163.0,
+   "bp_C": 76.8,
+   "altitude_ft": 23500.0
+  },
+  {
+   "altitude_m": 7315.0,
+   "bp_C": 76.3,
+   "altitude_ft": 24000.0
+  },
+  {
+   "altitude_m": 7468.0,
+   "bp_C": 75.9,
+   "altitude_ft": 24500.0
+  },
+  {
+   "altitude_m": 7620.0,
+   "bp_C": 75.4,
+   "altitude_ft": 25000.0
+  },
+  {
+   "altitude_m": 7772.0,
+   "bp_C": 75.0,
+   "altitude_ft": 25500.0
+  },
+  {
+   "altitude_m": 7925.0,
+   "bp_C": 74.5,
+   "altitude_ft": 26000.0
+  },
+  {
+   "altitude_m": 8077.0,
+   "bp_C": 74.1,
+   "altitude_ft": 26500.0
+  },
+  {
+   "altitude_m": 8230.0,
+   "bp_C": 73.7,
+   "altitude_ft": 27000.0
+  },
+  {
+   "altitude_m": 8382.0,
+   "bp_C": 73.2,
+   "altitude_ft": 27500.0
+  },
+  {
+   "altitude_m": 8534.0,
+   "bp_C": 72.8,
+   "altitude_ft": 28000.0
+  },
+  {
+   "altitude_m": 8687.0,
+   "bp_C": 72.4,
+   "altitude_ft": 28500.0
+  },
+  {
+   "altitude_m": 8839.0,
+   "bp_C": 72.0,
+   "altitude_ft": 29000.0
+  },
+  {
+   "altitude_m": 8992.0,
+   "bp_C": 71.5,
+   "altitude_ft": 29500.0
+  }
+ ],
+ "measured_pairs": []
+}
