@@ -1,0 +1,46 @@
+{
+ "type": "bar",
+ "title": "Bias against the ToolBox table, by variant",
+ "xlabel": "Altitude band",
+ "ylabel": "Bias (K)",
+ "aspect": "4:3",
+ "categories": [
+  "0-3 km",
+  "3-6 km",
+  "6 km and above"
+ ],
+ "series": [
+  {
+   "label": "V1 iso, const H",
+   "values": [
+    0.20181353678308653,
+    0.4812248602661224,
+    0.470354086602364
+   ]
+  },
+  {
+   "label": "V2 iso, IAPWS",
+   "values": [
+    0.29227050690195283,
+    0.7882071385219663,
+    1.04478305139553
+   ]
+  },
+  {
+   "label": "V3 ISA, const H",
+   "values": [
+    0.0889846682413733,
+    -0.3071072690486916,
+    -1.715992994414034
+   ]
+  },
+  {
+   "label": "V4 ISA, IAPWS",
+   "values": [
+    0.18182216963050876,
+    0.02077696080199769,
+    -1.0704870832750597
+   ]
+  }
+ ]
+}

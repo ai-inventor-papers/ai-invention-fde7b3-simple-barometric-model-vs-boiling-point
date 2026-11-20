@@ -1,0 +1,10 @@
+{
+  "fig2": {
+    "title": "Bias against the ToolBox table, by variant",
+    "caption": "Bias of four model variants against the Engineering ToolBox table, model minus table, in kelvin, in three altitude bands (n = 40, 39 and 42). Computed reference only, not measured data. Bars show bias alone; no error bars are drawn. The legend codes match the row labels of Table 7, and the constant-enthalpy and IAPWS-curve variants are described in the text."
+  },
+  "fig1": {
+    "title": "Model residual against the table, by altitude",
+    "caption": "Residual of four boiling-point models against the Engineering ToolBox table, from 0 to 8992 m at 119 table altitudes. Residual is model minus table, in kelvin. The isothermal, constant-enthalpy curve stays between 0 and about +0.6 K. Both ISA curves fall below zero, the constant-enthalpy one from about 3.5 km and the IAPWS one from about 4.5 km, and reach about -1.8 K and -2.6 K near 9 km. The drawing uses one line per model with markers at every fifth altitude."
+  }
+}
